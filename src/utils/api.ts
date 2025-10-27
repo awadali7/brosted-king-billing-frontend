@@ -31,6 +31,12 @@ const getAuthHeaders = (): Record<string, string> => {
     return headers;
 };
 
+const getPublicHeaders = (): Record<string, string> => {
+    return {
+        "Content-Type": "application/json",
+    };
+};
+
 const handleResponse = async (response: Response) => {
     if (!response.ok) {
         let errorData;
@@ -168,6 +174,70 @@ export const api = {
         if (typeof window !== "undefined") {
             window.location.href = "/auth/login";
         }
+    },
+
+    // Menu API methods
+    menu: {
+        /**
+         * Get menu items with optional category filter and search
+         * @param category_id - Optional category ID to filter by
+         * @param search - Optional search term
+         */
+        async getMenu(category_id?: number, search?: string) {
+            const params: Record<string, any> = {};
+            if (category_id !== undefined) {
+                params.category_id = category_id;
+            }
+            if (search) {
+                params.search = search;
+            }
+            return api.get("/menu", params);
+        },
+        async getCategories() {
+            return api.get("/menu/categories");
+        },
+        async createItem(itemData: any) {
+            return api.post("/items", itemData);
+        },
+        async updateItem(itemId: number, itemData: any) {
+            return api.put(`/items/${itemId}`, itemData);
+        },
+        async getItem(itemId: number) {
+            return api.get(`/items/${itemId}`);
+        },
+        async deleteItem(itemId: number) {
+            return api.delete(`/items/${itemId}`);
+        },
+        async getItemsByCategory(categoryId: number, available?: boolean) {
+            const params: Record<string, any> = { category_id: categoryId };
+            if (available !== undefined) {
+                params.available = available;
+            }
+            return api.get("/items", params);
+        },
+    },
+    bills: {
+        async createBill(billData: any) {
+            return api.post("/bills", billData);
+        },
+        async getTodayBills() {
+            return api.get("/bills/today");
+        },
+        async searchBills(query: string) {
+            return api.get(`/bills/search?q=${encodeURIComponent(query)}`);
+        },
+        async getBill(billId: number) {
+            return api.get(`/bills/${billId}`);
+        },
+        async updateBill(billId: number, billData: any) {
+            return api.put(`/bills/${billId}`, billData);
+        },
+        async printBill(billId: number) {
+            return api.get(`/bills/${billId}/print`);
+        },
+        async sendBillEmail(billId: number) {
+            return api.post(`/bills/${billId}/send-email`);
+        },
     },
 };
 

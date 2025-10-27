@@ -2,21 +2,20 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Sidebar from "./Sidebar";
-import Header from "./Header";
+import Sidebar from "@/components/layout/Sidebar";
+import Header from "@/components/layout/Header";
 
 interface MainLayoutProps {
     children: React.ReactNode;
-    user: any;
     currentPage?: string;
 }
 
 export default function MainLayout({
     children,
-    user,
     currentPage = "dashboard",
 }: MainLayoutProps) {
     const router = useRouter();
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
     const [activePage, setActivePage] = useState(currentPage);
 
     const handleNavigate = (page: string) => {
@@ -26,32 +25,44 @@ export default function MainLayout({
             case "dashboard":
                 router.push("/dashboard");
                 break;
-            case "billing":
-                router.push("/billing");
+            case "pos":
+                router.push("/pos");
                 break;
             case "menu":
                 router.push("/menu");
                 break;
-            case "categories":
-                router.push("/categories");
+            case "tables":
+                router.push("/tables");
                 break;
-            case "combos":
-                router.push("/combos");
+            case "reservations":
+                router.push("/reservations");
                 break;
-            case "expenses":
-                router.push("/expenses");
+            case "orders":
+                router.push("/orders");
                 break;
-            case "income":
-                router.push("/income");
+            case "delivery":
+                router.push("/delivery");
+                break;
+            case "payments":
+                router.push("/payments");
+                break;
+            case "customer":
+                router.push("/customer");
+                break;
+            case "invoice":
+                router.push("/invoice");
+                break;
+            case "testimonial":
+                router.push("/testimonial");
+                break;
+            case "users":
+                router.push("/users");
                 break;
             case "reports":
                 router.push("/reports");
                 break;
             case "settings":
                 router.push("/settings");
-                break;
-            case "users":
-                router.push("/users");
                 break;
             default:
                 router.push("/dashboard");
@@ -65,7 +76,7 @@ export default function MainLayout({
     };
 
     return (
-        <div className="flex min-h-screen bg-gray-50">
+        <div className="flex min-h-screen bg-[#F9FAFB] dark:bg-[#0F0F0F]">
             {/* Sidebar */}
             <Sidebar
                 activePage={activePage}
@@ -76,10 +87,16 @@ export default function MainLayout({
             {/* Main Content */}
             <div className="flex-1 flex flex-col">
                 {/* Header */}
-                <Header user={user} onLogout={handleLogout} />
+                <Header
+                    user={user}
+                    onLogout={handleLogout}
+                    activePage={activePage}
+                />
 
                 {/* Page Content */}
-                <main className="flex-1 p-6 overflow-auto">{children}</main>
+                <main className="flex-1  overflow-auto bg-white dark:bg-[#0F0F0F]">
+                    <div className="max-w-[1280px] mx-auto">{children}</div>
+                </main>
             </div>
         </div>
     );

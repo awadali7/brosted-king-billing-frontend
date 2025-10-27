@@ -1,0 +1,85 @@
+"use client";
+
+import React from "react";
+import { Minus, Plus, Trash2 } from "lucide-react";
+
+interface OrderItemProps {
+    item: {
+        id: number;
+        name: string;
+        price: number;
+        quantity: number;
+        total: number;
+    };
+    onUpdateQuantity: (id: number, quantity: number) => void;
+    onRemove: (id: number) => void;
+}
+
+export default function OrderItem({
+    item,
+    onUpdateQuantity,
+    onRemove,
+}: OrderItemProps) {
+    const handleIncrement = () => {
+        onUpdateQuantity(item.id, item.quantity + 1);
+    };
+
+    const handleDecrement = () => {
+        if (item.quantity > 1) {
+            onUpdateQuantity(item.id, item.quantity - 1);
+        } else {
+            onRemove(item.id);
+        }
+    };
+
+    const handleRemove = () => {
+        onRemove(item.id);
+    };
+
+    return (
+        <div className="bg-white dark:bg-[#18181B] rounded-lg border border-gray-200 dark:border-[#3F3F46] p-4">
+            <div className="flex items-start justify-between mb-3">
+                <div className="flex-1 min-w-0">
+                    <h3 className="text-sm font-medium text-gray-900 dark:text-[#FAFAFA] line-clamp-2">
+                        {item.name}
+                    </h3>
+                    <p className="text-xs text-gray-500 dark:text-[#A1A1AA] mt-1">
+                        ₹{item.price.toFixed(2)} each
+                    </p>
+                </div>
+                <button
+                    onClick={handleRemove}
+                    className="p-1 text-gray-400 hover:text-red-500 transition-colors"
+                    title="Remove item"
+                >
+                    <Trash2 className="w-4 h-4" />
+                </button>
+            </div>
+
+            <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                    <button
+                        onClick={handleDecrement}
+                        className="p-1 rounded-full bg-gray-100 dark:bg-[#27272A] hover:bg-gray-200 dark:hover:bg-[#3F3F46] transition-colors"
+                        title="Decrease quantity"
+                    >
+                        <Minus className="w-3 h-3 text-gray-600 dark:text-[#A1A1AA]" />
+                    </button>
+                    <span className="text-sm font-medium text-gray-900 dark:text-[#FAFAFA] min-w-[2rem] text-center">
+                        {item.quantity}
+                    </span>
+                    <button
+                        onClick={handleIncrement}
+                        className="p-1 rounded-full bg-gray-100 dark:bg-[#27272A] hover:bg-gray-200 dark:hover:bg-[#3F3F46] transition-colors"
+                        title="Increase quantity"
+                    >
+                        <Plus className="w-3 h-3 text-gray-600 dark:text-[#A1A1AA]" />
+                    </button>
+                </div>
+                <span className="text-sm font-semibold text-[#eb1700]">
+                    ₹{item.total.toFixed(2)}
+                </span>
+            </div>
+        </div>
+    );
+}
