@@ -19,13 +19,15 @@ class ApiError extends Error {
 }
 
 const getAuthHeaders = (): Record<string, string> => {
-    const token = localStorage.getItem("token");
     const headers: Record<string, string> = {
         "Content-Type": "application/json",
     };
 
-    if (token) {
-        headers["Authorization"] = `Bearer ${token}`;
+    if (typeof window !== "undefined") {
+        const token = localStorage.getItem("token");
+        if (token) {
+            headers["Authorization"] = `Bearer ${token}`;
+        }
     }
 
     return headers;
@@ -148,11 +150,13 @@ export const api = {
      * @param formData - FormData object with file(s)
      */
     async upload<T = any>(endpoint: string, formData: FormData): Promise<T> {
-        const token = localStorage.getItem("token");
         const headers: Record<string, string> = {};
 
-        if (token) {
-            headers["Authorization"] = `Bearer ${token}`;
+        if (typeof window !== "undefined") {
+            const token = localStorage.getItem("token");
+            if (token) {
+                headers["Authorization"] = `Bearer ${token}`;
+            }
         }
 
         // Don't set Content-Type for FormData, browser will set it with boundary
@@ -169,9 +173,9 @@ export const api = {
      * Logout - Clear all auth data
      */
     logout() {
-        localStorage.removeItem("token");
-        localStorage.removeItem("user");
         if (typeof window !== "undefined") {
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
             window.location.href = "/auth/login";
         }
     },

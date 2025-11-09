@@ -23,6 +23,7 @@ export interface CategoryInfo {
     name: string;
     description: string;
     created_at: string;
+    item_count?: number;
 }
 
 export interface CategoriesResponse {
