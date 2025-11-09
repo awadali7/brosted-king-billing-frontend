@@ -1,26 +1,23 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Sidebar from "@/components/layout/Sidebar";
 import Header from "@/components/layout/Header";
 
 interface MainLayoutProps {
     children: React.ReactNode;
-    currentPage?: string;
 }
 
-export default function MainLayout({
-    children,
-    currentPage = "dashboard",
-}: MainLayoutProps) {
+export default function MainLayout({ children }: MainLayoutProps) {
     const router = useRouter();
+    const pathname = usePathname();
     const user = JSON.parse(localStorage.getItem("user") || "{}");
-    const [activePage, setActivePage] = useState(currentPage);
+
+    // Extract the current page from the URL
+    const activePage = pathname.split("/")[1] || "dashboard";
 
     const handleNavigate = (page: string) => {
-        setActivePage(page);
-        // Add navigation logic here
+        // Navigate to the page - the URL will automatically update
         switch (page) {
             case "dashboard":
                 router.push("/dashboard");
@@ -87,15 +84,11 @@ export default function MainLayout({
             {/* Main Content */}
             <div className="flex-1 flex flex-col">
                 {/* Header */}
-                <Header
-                    user={user}
-                    onLogout={handleLogout}
-                    activePage={activePage}
-                />
+                <Header user={user} onLogout={handleLogout} />
 
                 {/* Page Content */}
                 <main className="flex-1  overflow-auto bg-white dark:bg-[#0F0F0F]">
-                    <div className="max-w-[1280px] mx-auto">{children}</div>
+                    <div className="">{children}</div>
                 </main>
             </div>
         </div>

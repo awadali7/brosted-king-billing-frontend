@@ -28,7 +28,7 @@ export default function MenuGrid({
     }
 
     return (
-        <div className="max-w-7xl mx-auto px-4 py-4">
+        <div className="  mx-auto px-4 py-4">
             {selectedCategory === undefined ? (
                 // Show all items in one compact grid
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">

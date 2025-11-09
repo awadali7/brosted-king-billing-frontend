@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ShoppingCart, Trash2 } from "lucide-react";
 import OrderItem from "./OrderItem";
 
@@ -17,6 +17,7 @@ interface OrderSidebarProps {
     onUpdateQuantity: (id: number, quantity: number) => void;
     onRemoveItem: (id: number) => void;
     onClearOrder: () => void;
+    onProceedToPayment: () => void;
 }
 
 export default function OrderSidebar({
@@ -24,13 +25,35 @@ export default function OrderSidebar({
     onUpdateQuantity,
     onRemoveItem,
     onClearOrder,
+    onProceedToPayment,
 }: OrderSidebarProps) {
+    const [taxPercentage, setTaxPercentage] = useState(18); // Default 18%
+    const [currencySymbol, setCurrencySymbol] = useState("₹"); // Default ₹
+
+    useEffect(() => {
+        // Get settings from localStorage
+        const settingsStr = localStorage.getItem("settings");
+        if (settingsStr) {
+            try {
+                const settings = JSON.parse(settingsStr);
+                if (settings.tax_percentage?.value !== undefined) {
+                    setTaxPercentage(settings.tax_percentage.value);
+                }
+                if (settings.currency_symbol?.value) {
+                    setCurrencySymbol(settings.currency_symbol.value);
+                }
+            } catch (error) {
+                console.error("Error parsing settings:", error);
+            }
+        }
+    }, []);
+
     const subtotal = items.reduce((sum, item) => sum + item.total, 0);
-    const tax = subtotal * 0.18; // 18% tax
+    const tax = subtotal * (taxPercentage / 100);
     const total = subtotal + tax;
 
     return (
-        <div className="w-80 bg-white dark:bg-[#0F0F0F] border-l border-gray-200 dark:border-[#3F3F46] flex flex-col h-full">
+        <div className="w-80 bg-white dark:bg-[#0F0F0F] border-l border-gray-200 dark:border-[#3F3F46] flex flex-col h-[calc(100vh-4rem)]">
             {/* Header */}
             <div className="p-4 border-b border-gray-200 dark:border-[#3F3F46]">
                 <div className="flex items-center justify-between">
@@ -54,7 +77,7 @@ export default function OrderSidebar({
             </div>
 
             {/* Order Items */}
-            <div className="flex-1 overflow-y-auto p-6">
+            <div className="modal-scroll flex-1 p-6">
                 {items.length === 0 ? (
                     <div className="text-center py-12">
                         <div className="text-gray-400 dark:text-[#A1A1AA] text-4xl mb-3">
@@ -90,30 +113,38 @@ export default function OrderSidebar({
                                 Subtotal
                             </span>
                             <span className="text-gray-900 dark:text-[#FAFAFA]">
-                                ₹{subtotal.toFixed(2)}
+                                {currencySymbol}
+                                {subtotal.toFixed(2)}
                             </span>
                         </div>
-                        <div className="flex justify-between text-sm">
-                            <span className="text-gray-600 dark:text-[#A1A1AA]">
-                                Tax (18%)
-                            </span>
-                            <span className="text-gray-900 dark:text-[#FAFAFA]">
-                                ₹{tax.toFixed(2)}
-                            </span>
-                        </div>
+                        {taxPercentage > 0 && (
+                            <div className="flex justify-between text-sm">
+                                <span className="text-gray-600 dark:text-[#A1A1AA]">
+                                    Tax ({taxPercentage}%)
+                                </span>
+                                <span className="text-gray-900 dark:text-[#FAFAFA]">
+                                    {currencySymbol}
+                                    {tax.toFixed(2)}
+                                </span>
+                            </div>
+                        )}
                         <div className="border-t border-gray-200 dark:border-[#3F3F46] pt-2">
                             <div className="flex justify-between text-base font-semibold">
                                 <span className="text-gray-900 dark:text-[#FAFAFA]">
                                     Total
                                 </span>
                                 <span className="text-[#eb1700]">
-                                    ₹{total.toFixed(2)}
+                                    {currencySymbol}
+                                    {total.toFixed(2)}
                                 </span>
                             </div>
                         </div>
                     </div>
 
-                    <button className="w-full bg-[#eb1700] hover:bg-[#c41400] text-white font-medium py-3 px-4 rounded-lg transition-colors">
+                    <button
+                        onClick={onProceedToPayment}
+                        className="w-full bg-[#eb1700] hover:bg-[#c41400] text-white font-medium py-3 px-4 rounded-lg transition-colors"
+                    >
                         Proceed to Payment
                     </button>
                 </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { MenuItem } from "@/types/menu";
 
 // Helper function to format numbers safely
@@ -24,6 +24,21 @@ export default function POSMenuItemCard({
     item,
     onAddToOrder,
 }: POSMenuItemCardProps) {
+    const [currencySymbol, setCurrencySymbol] = useState("₹");
+
+    useEffect(() => {
+        const settingsStr = localStorage.getItem("settings");
+        if (settingsStr) {
+            try {
+                const settings = JSON.parse(settingsStr);
+                if (settings.currency_symbol?.value) {
+                    setCurrencySymbol(settings.currency_symbol.value);
+                }
+            } catch (error) {
+                console.error("Error parsing settings:", error);
+            }
+        }
+    }, []);
     return (
         <div className="group cursor-pointer bg-white dark:bg-[#18181B] rounded-lg border border-gray-200 dark:border-[#3F3F46] hover:border-[#eb1700]/30 dark:hover:border-[#eb1700]/30 hover:shadow-sm transition-all duration-200 overflow-hidden">
             {/* Image */}
@@ -73,7 +88,8 @@ export default function POSMenuItemCard({
                         {item.name}
                     </h3>
                     <span className="text-sm font-semibold text-[#eb1700] ml-2">
-                        ₹{formatPrice(item.price)}
+                        {currencySymbol}
+                        {formatPrice(item.price)}
                     </span>
                 </div>
 
@@ -85,9 +101,13 @@ export default function POSMenuItemCard({
 
                 {/* Profit Information */}
                 <div className="flex items-center justify-between text-xs text-gray-500 dark:text-[#A1A1AA] mb-3">
-                    <span>Cost: ₹{formatPrice(item.make_price)}</span>
                     <span>
-                        Profit: ₹{formatPrice(item.profit)} (
+                        Cost: {currencySymbol}
+                        {formatPrice(item.make_price)}
+                    </span>
+                    <span>
+                        Profit: {currencySymbol}
+                        {formatPrice(item.profit)} (
                         {formatPrice(item.profit_percentage)}%)
                     </span>
                 </div>

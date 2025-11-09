@@ -37,7 +37,7 @@ export default function CategoryFilters({
 
     if (loading) {
         return (
-            <div className="max-w-7xl mx-auto px-4 py-2">
+            <div className="mx-auto px-4 py-2">
                 <div className="flex gap-1 overflow-x-auto pb-2">
                     <div className="px-4 py-2 text-sm font-medium rounded-full bg-gray-100 dark:bg-[#27272A] text-gray-400 dark:text-[#A1A1AA] animate-pulse">
                         Loading categories...
@@ -49,7 +49,7 @@ export default function CategoryFilters({
 
     if (error) {
         return (
-            <div className="max-w-7xl mx-auto px-4 py-2">
+            <div className="mx-auto px-4 py-2">
                 <div className="text-center text-red-500 dark:text-red-400 text-sm">
                     {error}
                 </div>
@@ -58,7 +58,7 @@ export default function CategoryFilters({
     }
 
     return (
-        <div className="max-w-7xl mx-auto px-4 py-2">
+        <div className="mx-auto px-4 py-2">
             <div className="flex gap-1 overflow-x-auto pb-2">
                 <button
                     onClick={() => onCategoryFilter(undefined)}

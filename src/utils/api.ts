@@ -239,6 +239,125 @@ export const api = {
             return api.post(`/bills/${billId}/send-email`);
         },
     },
+    combos: {
+        /**
+         * Get all combos
+         */
+        async getCombos() {
+            return api.get("/combos");
+        },
+        /**
+         * Get available combos only
+         */
+        async getAvailableCombos() {
+            return api.get("/combos", { available: true });
+        },
+        /**
+         * Get a single combo by ID
+         */
+        async getCombo(comboId: number) {
+            return api.get(`/combos/${comboId}`);
+        },
+        /**
+         * Delete a combo by ID
+         */
+        async deleteCombo(comboId: number) {
+            return api.delete(`/combos/${comboId}`);
+        },
+    },
+    settings: {
+        /**
+         * Get all settings
+         */
+        async getSettings() {
+            return api.get("/settings");
+        },
+        /**
+         * Update a specific setting
+         * @param key - Setting key to update
+         * @param value - New value for the setting
+         */
+        async updateSetting(key: string, value: string | number | boolean) {
+            return api.put(`/settings/${key}`, { value });
+        },
+    },
+    dashboard: {
+        /**
+         * Get dashboard statistics
+         * @param date - Optional date (YYYY-MM-DD format)
+         */
+        async getStats(date?: string) {
+            const params: Record<string, any> = {};
+            if (date) params.date = date;
+            return api.get("/dashboard", params);
+        },
+    },
+    reports: {
+        /**
+         * Get sales report
+         * @param start_date - Start date (YYYY-MM-DD format)
+         * @param end_date - End date (YYYY-MM-DD format)
+         */
+        async getSalesReport(start_date?: string, end_date?: string) {
+            const params: Record<string, any> = {};
+            if (start_date) params.start_date = start_date;
+            if (end_date) params.end_date = end_date;
+            return api.get("/reports/sales", params);
+        },
+        /**
+         * Get daily report
+         * @param date - Date (YYYY-MM-DD format)
+         */
+        async getDailyReport(date?: string) {
+            const params: Record<string, any> = {};
+            if (date) params.date = date;
+            return api.get("/reports/daily", params);
+        },
+        /**
+         * Get monthly report
+         * @param year - Year
+         * @param month - Month (1-12)
+         */
+        async getMonthlyReport(year?: number, month?: number) {
+            const params: Record<string, any> = {};
+            if (year) params.year = year;
+            if (month) params.month = month;
+            return api.get("/reports/monthly", params);
+        },
+        /**
+         * Get items performance report
+         * @param start_date - Start date (YYYY-MM-DD format)
+         * @param end_date - End date (YYYY-MM-DD format)
+         */
+        async getItemsPerformance(start_date?: string, end_date?: string) {
+            const params: Record<string, any> = {};
+            if (start_date) params.start_date = start_date;
+            if (end_date) params.end_date = end_date;
+            return api.get("/reports/items", params);
+        },
+        /**
+         * Get profit & loss statement
+         * @param start_date - Start date (YYYY-MM-DD format)
+         * @param end_date - End date (YYYY-MM-DD format)
+         */
+        async getProfitLoss(start_date?: string, end_date?: string) {
+            const params: Record<string, any> = {};
+            if (start_date) params.start_date = start_date;
+            if (end_date) params.end_date = end_date;
+            return api.get("/reports/profit-loss", params);
+        },
+        /**
+         * Get GST/Tax report
+         * @param start_date - Start date (YYYY-MM-DD format)
+         * @param end_date - End date (YYYY-MM-DD format)
+         */
+        async getGSTReport(start_date?: string, end_date?: string) {
+            const params: Record<string, any> = {};
+            if (start_date) params.start_date = start_date;
+            if (end_date) params.end_date = end_date;
+            return api.get("/reports/gst", params);
+        },
+    },
 };
 
 // Export API_URL for direct use if needed

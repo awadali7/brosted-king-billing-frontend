@@ -102,3 +102,33 @@ export interface CreateBillRequest {
     payment_method: "cash" | "card" | "upi" | "other";
     items: BillItem[];
 }
+
+// Combo-related types
+export interface ComboItem {
+    item_id: number;
+    item_name: string;
+    quantity: number;
+    make_price: number;
+    price: number;
+    total_make_price: number;
+}
+
+export interface Combo {
+    id: number;
+    name: string;
+    description: string;
+    make_price: number | string;
+    price: number | string;
+    profit: number | string;
+    profit_percentage: number | string;
+    total_items_make_price: number | string;
+    is_available: boolean;
+    items: ComboItem[];
+}
+
+export interface CombosResponse {
+    success: boolean;
+    message: string;
+    data: Combo[];
+    count: number;
+}

@@ -1,5 +1,7 @@
 "use client";
 
+import { usePathname } from "next/navigation";
+
 interface HeaderProps {
     user: {
         username: string;
@@ -7,15 +9,16 @@ interface HeaderProps {
         role: string;
     };
     onLogout: () => void;
-    activePage?: string;
 }
 
-export default function Header({
-    user,
-    onLogout,
-    activePage = "dashboard",
-}: HeaderProps) {
+export default function Header({ user, onLogout }: HeaderProps) {
     console.log(user, "user ====>");
+
+    // Get current path from URL
+    const pathname = usePathname();
+
+    // Extract the page name from the pathname (e.g., "/dashboard" -> "dashboard")
+    const activePage = pathname.split("/")[1] || "dashboard";
 
     // Page display mapping
     const pageDisplayNames: Record<string, string> = {
@@ -69,7 +72,7 @@ export default function Header({
                         {activePage === "reports" &&
                             "View analytics and reports"}
                         {activePage === "settings" &&
-                            "Configure system settings"}
+                            "Configure your restaurant and billing preferences"}
                     </p>
                 </div>
                 <div className="flex items-center gap-4">

@@ -21,6 +21,10 @@ interface FormData {
     image_url: string | null;
 }
 
+type FormErrors = {
+    [K in keyof FormData]?: string;
+};
+
 export default function AddItemModal({
     isOpen,
     onClose,
@@ -38,7 +42,23 @@ export default function AddItemModal({
         category_id: 0,
         image_url: null,
     });
-    const [errors, setErrors] = useState<Partial<FormData>>({});
+    const [errors, setErrors] = useState<FormErrors>({});
+    const [currencySymbol, setCurrencySymbol] = useState("₹");
+
+    // Load currency symbol from localStorage
+    useEffect(() => {
+        const settingsStr = localStorage.getItem("settings");
+        if (settingsStr) {
+            try {
+                const settings = JSON.parse(settingsStr);
+                if (settings.currency_symbol?.value) {
+                    setCurrencySymbol(settings.currency_symbol.value);
+                }
+            } catch (error) {
+                console.error("Error parsing settings:", error);
+            }
+        }
+    }, []);
 
     // Fetch categories on mount
     useEffect(() => {
@@ -112,7 +132,7 @@ export default function AddItemModal({
     };
 
     const validateForm = (): boolean => {
-        const newErrors: Partial<FormData> = {};
+        const newErrors: FormErrors = {};
 
         if (!formData.name.trim()) newErrors.name = "Item name is required";
         if (!formData.description.trim())
@@ -205,7 +225,7 @@ export default function AddItemModal({
                 {/* Form */}
                 <form
                     onSubmit={handleSubmit}
-                    className="p-4 space-y-4 overflow-y-auto max-h-[calc(85vh-120px)]"
+                    className="modal-scroll p-4 space-y-4 max-h-[calc(85vh-120px)]"
                 >
                     {/* Item Name */}
                     <div>
@@ -297,7 +317,7 @@ export default function AddItemModal({
                     <div className="grid grid-cols-2 gap-3">
                         <div>
                             <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1">
-                                Cost (₹) *
+                                Cost ({currencySymbol}) *
                             </label>
                             <input
                                 type="number"
@@ -322,7 +342,7 @@ export default function AddItemModal({
 
                         <div>
                             <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1">
-                                Price (₹) *
+                                Price ({currencySymbol}) *
                             </label>
                             <input
                                 type="number"
@@ -354,7 +374,7 @@ export default function AddItemModal({
                                     Profit:
                                 </span>
                                 <span className="text-sm font-bold text-green-900 dark:text-green-100">
-                                    ₹
+                                    {currencySymbol}
                                     {(
                                         formData.price - formData.make_price
                                     ).toFixed(2)}

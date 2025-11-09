@@ -61,30 +61,16 @@ const menuSections: MenuSection[] = [
         title: "Operations",
         items: [
             { id: "menu", label: "Menu", icon: Utensils },
-            { id: "orders", label: "Orders", icon: FileText, badge: 12 },
-            { id: "reservations", label: "Reservations", icon: Calendar },
-            { id: "delivery", label: "Delivery", icon: Truck, badge: 3 },
+            // { id: "orders", label: "Orders", icon: FileText, badge: 12 },
+            // { id: "reservations", label: "Reservations", icon: Calendar },
+            // { id: "delivery", label: "Delivery", icon: Truck, badge: 3 },
         ],
     },
-    {
-        title: "Business",
-        items: [
-            { id: "payments", label: "Payments", icon: CreditCard },
-            { id: "invoice", label: "Invoice", icon: Receipt },
-            { id: "customer", label: "Customer", icon: User },
-            {
-                id: "testimonial",
-                label: "Testimonial",
-                icon: Star,
-                isNew: true,
-            },
-        ],
-    },
+
     {
         title: "System",
         items: [
             { id: "reports", label: "Reports", icon: BarChart3 },
-            { id: "users", label: "Users", icon: Users },
             { id: "settings", label: "Settings", icon: Settings },
         ],
     },

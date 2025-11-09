@@ -8,8 +8,9 @@ interface DeleteConfirmModalProps {
     isOpen: boolean;
     onClose: () => void;
     onConfirm: () => void;
-    item: MenuItem | null;
+    item: MenuItem | any | null;
     loading?: boolean;
+    itemType?: "item" | "combo";
 }
 
 export default function DeleteConfirmModal({
@@ -18,6 +19,7 @@ export default function DeleteConfirmModal({
     onConfirm,
     item,
     loading = false,
+    itemType = "item",
 }: DeleteConfirmModalProps) {
     if (!isOpen || !item) return null;
 
@@ -39,7 +41,7 @@ export default function DeleteConfirmModal({
                         </div>
                         <div>
                             <h2 className="text-lg font-semibold text-gray-900 dark:text-[#FAFAFA]">
-                                Delete Item
+                                Delete {itemType === "combo" ? "Combo" : "Item"}
                             </h2>
                             <p className="text-sm text-gray-500 dark:text-[#A1A1AA]">
                                 This action cannot be undone
@@ -97,7 +99,7 @@ export default function DeleteConfirmModal({
                                 Deleting...
                             </div>
                         ) : (
-                            "Delete Item"
+                            `Delete ${itemType === "combo" ? "Combo" : "Item"}`
                         )}
                     </button>
                 </div>

@@ -1,26 +1,156 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #ffffff;
+    --foreground: #171717;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+* {
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Allow overflow for scrollable elements */
+.overflow-y-auto,
+.overflow-x-auto,
+.overflow-auto {
+    overflow: visible !important;
+}
+
+.overflow-y-auto {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+.overflow-x-auto {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+}
+
+.overflow-auto {
+    overflow: auto !important;
+}
+
+/* Allow overflow for Sonner toast elements */
+[data-sonner-toaster],
+[data-sonner-toaster] * {
+    overflow: visible !important;
+}
+
+/* Custom Scrollbar Styles */
+.overflow-y-auto::-webkit-scrollbar,
+.overflow-x-auto::-webkit-scrollbar,
+.overflow-auto::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track,
+.overflow-x-auto::-webkit-scrollbar-track,
+.overflow-auto::-webkit-scrollbar-track {
+    background: rgb(243 244 246);
+    border-radius: 4px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb,
+.overflow-x-auto::-webkit-scrollbar-thumb,
+.overflow-auto::-webkit-scrollbar-thumb {
+    background: rgb(209 213 219);
+    border-radius: 4px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover,
+.overflow-x-auto::-webkit-scrollbar-thumb:hover,
+.overflow-auto::-webkit-scrollbar-thumb:hover {
+    background: rgb(156 163 175);
+}
+
+/* Dark mode scrollbar */
+.dark .overflow-y-auto::-webkit-scrollbar-track,
+.dark .overflow-x-auto::-webkit-scrollbar-track,
+.dark .overflow-auto::-webkit-scrollbar-track {
+    background: rgb(39 39 42);
+}
+
+.dark .overflow-y-auto::-webkit-scrollbar-thumb,
+.dark .overflow-x-auto::-webkit-scrollbar-thumb,
+.dark .overflow-auto::-webkit-scrollbar-thumb {
+    background: rgb(82 82 91);
+}
+
+.dark .overflow-y-auto::-webkit-scrollbar-thumb:hover,
+.dark .overflow-x-auto::-webkit-scrollbar-thumb:hover,
+.dark .overflow-auto::-webkit-scrollbar-thumb:hover {
+    background: rgb(113 113 122);
+}
+
+/* Modal scroll override */
+.modal-scroll {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+.modal-scroll::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-scroll::-webkit-scrollbar-track {
+    background: rgb(243 244 246);
+    border-radius: 4px;
+}
+
+.modal-scroll::-webkit-scrollbar-thumb {
+    background: rgb(209 213 219);
+    border-radius: 4px;
+}
+
+.modal-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgb(156 163 175);
+}
+
+.dark .modal-scroll::-webkit-scrollbar-track {
+    background: rgb(39 39 42);
+}
+
+.dark .modal-scroll::-webkit-scrollbar-thumb {
+    background: rgb(82 82 91);
+}
+
+.dark .modal-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgb(113 113 122);
+}
+
+/* Sonner Toast Styles */
+[data-sonner-toaster] {
+    z-index: 99999 !important;
+    position: fixed !important;
+}
+
+[data-sonner-toast] {
+    font-family: var(
+        --font-geist-sans,
+        system-ui,
+        -apple-system,
+        sans-serif
+    ) !important;
+}
+
+/* Ensure body and html allow overflow for toasts */
+body:has([data-sonner-toaster]),
+html:has([data-sonner-toaster]) {
+    overflow: visible !important;
 }

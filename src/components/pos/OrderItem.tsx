@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Minus, Plus, Trash2 } from "lucide-react";
 
 interface OrderItemProps {
@@ -20,6 +20,21 @@ export default function OrderItem({
     onUpdateQuantity,
     onRemove,
 }: OrderItemProps) {
+    const [currencySymbol, setCurrencySymbol] = useState("₹");
+
+    useEffect(() => {
+        const settingsStr = localStorage.getItem("settings");
+        if (settingsStr) {
+            try {
+                const settings = JSON.parse(settingsStr);
+                if (settings.currency_symbol?.value) {
+                    setCurrencySymbol(settings.currency_symbol.value);
+                }
+            } catch (error) {
+                console.error("Error parsing settings:", error);
+            }
+        }
+    }, []);
     const handleIncrement = () => {
         onUpdateQuantity(item.id, item.quantity + 1);
     };
@@ -44,7 +59,8 @@ export default function OrderItem({
                         {item.name}
                     </h3>
                     <p className="text-xs text-gray-500 dark:text-[#A1A1AA] mt-1">
-                        ₹{item.price.toFixed(2)} each
+                        {currencySymbol}
+                        {item.price.toFixed(2)} each
                     </p>
                 </div>
                 <button
@@ -77,7 +93,8 @@ export default function OrderItem({
                     </button>
                 </div>
                 <span className="text-sm font-semibold text-[#eb1700]">
-                    ₹{item.total.toFixed(2)}
+                    {currencySymbol}
+                    {item.total.toFixed(2)}
                 </span>
             </div>
         </div>

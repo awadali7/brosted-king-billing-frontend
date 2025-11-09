@@ -30,6 +30,20 @@ export default function LoginPage() {
                     JSON.stringify(response.data.user)
                 );
 
+                // Fetch and store settings
+                try {
+                    const settingsResponse = await api.get("/settings");
+                    if (settingsResponse.success && settingsResponse.data) {
+                        localStorage.setItem(
+                            "settings",
+                            JSON.stringify(settingsResponse.data)
+                        );
+                    }
+                } catch (settingsErr) {
+                    console.error("Error fetching settings:", settingsErr);
+                    // Continue to dashboard even if settings fetch fails
+                }
+
                 // Redirect to dashboard
                 router.push("/dashboard");
             } else {

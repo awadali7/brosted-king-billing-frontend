@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Edit, Trash2 } from "lucide-react";
 import { MenuItem } from "@/types/menu";
 
@@ -15,6 +15,21 @@ export default function MenuItemCard({
     onEdit,
     onDelete,
 }: MenuItemCardProps) {
+    const [currencySymbol, setCurrencySymbol] = useState("₹");
+
+    useEffect(() => {
+        const settingsStr = localStorage.getItem("settings");
+        if (settingsStr) {
+            try {
+                const settings = JSON.parse(settingsStr);
+                if (settings.currency_symbol?.value) {
+                    setCurrencySymbol(settings.currency_symbol.value);
+                }
+            } catch (error) {
+                console.error("Error parsing settings:", error);
+            }
+        }
+    }, []);
     return (
         <div className="group cursor-pointer bg-white dark:bg-[#18181B] rounded-lg border border-gray-200 dark:border-[#3F3F46] hover:border-[#eb1700]/30 dark:hover:border-[#eb1700]/30 hover:shadow-sm transition-all duration-200 overflow-hidden">
             {/* Compact image */}
@@ -79,7 +94,8 @@ export default function MenuItemCard({
                         {item.name}
                     </h3>
                     <span className="text-sm font-semibold text-[#eb1700] ml-2">
-                        ₹{item.price.toFixed(2)}
+                        {currencySymbol}
+                        {item.price.toFixed(2)}
                     </span>
                 </div>
                 {item.description && (
