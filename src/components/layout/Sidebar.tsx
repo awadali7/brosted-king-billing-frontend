@@ -58,12 +58,14 @@ const menuSections: MenuSection[] = [
         ],
     },
     {
-        title: "Operations",
+        title: "Menu",
         items: [
             { id: "menu", label: "Menu", icon: Utensils },
-            // { id: "orders", label: "Orders", icon: FileText, badge: 12 },
-            // { id: "reservations", label: "Reservations", icon: Calendar },
-            // { id: "delivery", label: "Delivery", icon: Truck, badge: 3 },
+            {
+                id: "menuCategories",
+                label: "Menu Categories",
+                icon: ClipboardList,
+            },
         ],
     },
 
@@ -72,6 +74,18 @@ const menuSections: MenuSection[] = [
         items: [
             { id: "reports", label: "Reports", icon: BarChart3 },
             { id: "settings", label: "Settings", icon: Settings },
+        ],
+    },
+    {
+        title: "Finance",
+        items: [
+            { id: "income", label: "Income", icon: CreditCard },
+            { id: "expanse", label: "Expanse", icon: Receipt },
+            {
+                id: "categories",
+                label: "Expanse Categories",
+                icon: ClipboardList,
+            },
         ],
     },
 ];
@@ -148,7 +162,10 @@ export default function Sidebar({
     onLogout,
 }: SidebarProps) {
     const [isCollapsed, setIsCollapsed] = useState(false);
-
+    const settings = localStorage?.getItem("settings");
+    const settingsData = settings ? JSON.parse(settings) : null;
+    const restaurantName = settingsData?.restaurant_name?.value;
+    console.log(restaurantName);
     return (
         <motion.div
             initial={false}
@@ -180,7 +197,9 @@ export default function Sidebar({
                                     className="flex-1 min-w-0"
                                 >
                                     <h1 className="text-lg font-bold text-gray-900 dark:text-[#FAFAFA] truncate">
-                                        RestroBit
+                                        {restaurantName
+                                            ? restaurantName
+                                            : "Billing System"}
                                     </h1>
                                     <p className="text-xs text-gray-500 dark:text-[#A1A1AA]">
                                         POS System

@@ -25,6 +25,8 @@ export default function Header({ user, onLogout }: HeaderProps) {
         dashboard: "Dashboard",
         pos: "Point of Sale",
         menu: "Menu Management",
+        income: "Income",
+        expanse: "Expenses",
         orders: "Orders",
         reservations: "Reservations",
         delivery: "Delivery",
@@ -53,6 +55,10 @@ export default function Header({ user, onLogout }: HeaderProps) {
                             "Select categories and manage orders"}
                         {activePage === "menu" &&
                             "Manage your menu items and categories"}
+                        {activePage === "income" &&
+                            "Track additional income and sources"}
+                        {activePage === "expanse" &&
+                            "Manage expenses, vendors and receipts"}
                         {activePage === "orders" &&
                             "View and manage all orders"}
                         {activePage === "reservations" &&

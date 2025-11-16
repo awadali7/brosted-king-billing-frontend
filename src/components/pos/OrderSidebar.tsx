@@ -53,7 +53,7 @@ export default function OrderSidebar({
     const total = subtotal + tax;
 
     return (
-        <div className="w-80 bg-white dark:bg-[#0F0F0F] border-l border-gray-200 dark:border-[#3F3F46] flex flex-col h-[calc(100vh-4rem)]">
+        <div className="w-full md:w-80 bg-white dark:bg-[#0F0F0F] md:border-l border-gray-200 dark:border-[#3F3F46] flex flex-col h-auto md:h-[calc(100vh-4rem)]">
             {/* Header */}
             <div className="p-4 border-b border-gray-200 dark:border-[#3F3F46]">
                 <div className="flex items-center justify-between">
@@ -77,7 +77,7 @@ export default function OrderSidebar({
             </div>
 
             {/* Order Items */}
-            <div className="modal-scroll flex-1 p-6">
+            <div className="modal-scroll flex-1 p-4 sm:p-6">
                 {items.length === 0 ? (
                     <div className="text-center py-12">
                         <div className="text-gray-400 dark:text-[#A1A1AA] text-4xl mb-3">
@@ -106,7 +106,7 @@ export default function OrderSidebar({
 
             {/* Order Summary */}
             {items.length > 0 && (
-                <div className="p-6 border-t border-gray-200 dark:border-[#3F3F46] bg-gray-50 dark:bg-[#18181B]">
+                <div className="p-4 sm:p-6 border-t border-gray-200 dark:border-[#3F3F46] bg-gray-50 dark:bg-[#18181B]">
                     <div className="space-y-2 mb-4">
                         <div className="flex justify-between text-sm">
                             <span className="text-gray-600 dark:text-[#A1A1AA]">

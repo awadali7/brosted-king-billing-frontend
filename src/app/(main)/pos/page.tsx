@@ -723,7 +723,7 @@ ${
                         {/* Tabs */}
                         <div className="mb-6">
                             <div className="border-b border-gray-200 dark:border-[#3F3F46]">
-                                <nav className="-mb-px flex gap-6">
+                                <nav className="-mb-px flex gap-6 overflow-x-auto no-scrollbar">
                                     <button
                                         onClick={() =>
                                             setActiveTab("categories")

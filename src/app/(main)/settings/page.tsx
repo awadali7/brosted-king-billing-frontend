@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import { api } from "@/utils/api";
 import { SettingsResponse, SettingsData } from "@/types/settings";
-import SettingsHeader from "@/components/settings/SettingsHeader";
 import RestaurantSettings from "@/components/settings/RestaurantSettings";
 import BillSettings from "@/components/settings/BillSettings";
 import SMTPSettings from "@/components/settings/SMTPSettings";
@@ -122,45 +121,31 @@ export default function SettingsPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-[#000000]">
-            {/* <SettingsHeader
-                onSave={handleSave}
-                onReset={handleReset}
-                hasChanges={hasChanges}
-                saving={saving}
-            /> */}
-
-            {/* Success Toast */}
-            {saveSuccess && (
-                <div className="fixed top-4 right-4 z-50">
-                    <div className="bg-green-500 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-2">
-                        <i className="bi bi-check-circle-fill text-xl"></i>
-                        <span>Settings saved successfully!</span>
+        <div className="min-h-screen bg-gray-50 dark:bg-[#0F0F0F]">
+            {/* Header */}
+            <div className="sticky top-0 z-10 bg-gray-50/80 dark:bg-[#0F0F0F]/80 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 dark:supports-[backdrop-filter]:bg-[#0F0F0F]/60 border-b border-gray-200 dark:border-[#3A3A3C]">
+                <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-3">
+                    <div>
+                        <h1 className="text-base font-semibold text-gray-900 dark:text-[#FAFAFA]">
+                            Settings
+                        </h1>
+                        <p className="text-xs text-gray-600 dark:text-[#A1A1AA]">
+                            Manage your restaurant, billing and email
+                            preferences
+                        </p>
                     </div>
-                </div>
-            )}
-
-            {loading && <LoadingState />}
-
-            {error && !loading && (
-                <ErrorState error={error} onRetry={fetchSettings} />
-            )}
-
-            {!loading && !error && settingsData && (
-                <div className="px-6 py-6">
-                    {/* Action Buttons */}
-                    <div className="flex justify-end gap-2 mb-6">
+                    <div className="flex items-center gap-2">
                         {isEditing ? (
                             <>
                                 <button
-                                    className="px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded hover:bg-gray-50 dark:hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                    className="px-3 py-1.5 text-sm border border-gray-300 dark:border-[#3A3A3C] text-gray-700 dark:text-[#A1A1AA] rounded-lg hover:bg-gray-100 dark:hover:bg-[#27272A] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                                     onClick={handleEditToggle}
                                     disabled={saving}
                                 >
                                     Cancel
                                 </button>
                                 <button
-                                    className="px-3 py-1.5 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-1"
+                                    className="px-3 py-1.5 text-sm bg-[#eb1700] text-white rounded-lg hover:bg-[#c41400] disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-1"
                                     onClick={handleSave}
                                     disabled={!hasChanges || saving}
                                 >
@@ -189,28 +174,43 @@ export default function SettingsPage() {
                                             Saving...
                                         </>
                                     ) : (
-                                        <>
-                                            <i className="bi bi-check2"></i>
-                                            Save Changes
-                                        </>
+                                        <>Save Changes</>
                                     )}
                                 </button>
                             </>
                         ) : (
                             <button
-                                className="px-3 py-1.5 text-sm border border-blue-600 text-blue-600 rounded hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors flex items-center gap-1"
+                                className="px-3 py-1.5 text-sm border border-[#eb1700] text-[#eb1700] rounded-lg hover:bg-[#eb1700]/10 transition-colors"
                                 onClick={handleEditToggle}
                             >
-                                <i className="bi bi-pencil"></i>
                                 Edit Settings
                             </button>
                         )}
                     </div>
+                </div>
+            </div>
 
+            {/* Success Toast */}
+            {saveSuccess && (
+                <div className="fixed top-20 right-4 z-40">
+                    <div className="bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg text-sm">
+                        Settings saved successfully
+                    </div>
+                </div>
+            )}
+
+            {loading && <LoadingState />}
+
+            {error && !loading && (
+                <ErrorState error={error} onRetry={fetchSettings} />
+            )}
+
+            {!loading && !error && settingsData && (
+                <div className="max-w-7xl mx-auto px-6 py-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
                         {/* Restaurant Information */}
-                        <div className="bg-white dark:bg-[#1C1C1E] rounded-lg border border-gray-200 dark:border-[#3A3A3C]">
-                            <div className="px-5 py-3 border-b border-gray-200 dark:border-[#3A3A3C]">
+                        <div className="bg-white dark:bg-[#18181B] rounded-xl border border-gray-200 dark:border-[#3A3A3C] shadow-sm">
+                            <div className="px-5 py-4 border-b border-gray-200 dark:border-[#3A3A3C]">
                                 <h3 className="text-sm font-semibold text-gray-900 dark:text-[#FAFAFA] mb-0">
                                     Restaurant Information
                                 </h3>
@@ -226,8 +226,8 @@ export default function SettingsPage() {
                         </div>
 
                         {/* Bill Settings */}
-                        <div className="bg-white dark:bg-[#1C1C1E] rounded-lg border border-gray-200 dark:border-[#3A3A3C]">
-                            <div className="px-5 py-3 border-b border-gray-200 dark:border-[#3A3A3C]">
+                        <div className="bg-white dark:bg-[#18181B] rounded-xl border border-gray-200 dark:border-[#3A3A3C] shadow-sm">
+                            <div className="px-5 py-4 border-b border-gray-200 dark:border-[#3A3A3C]">
                                 <h3 className="text-sm font-semibold text-gray-900 dark:text-[#FAFAFA] mb-0">
                                     Bill Settings
                                 </h3>
@@ -243,8 +243,8 @@ export default function SettingsPage() {
                         </div>
 
                         {/* Authentication */}
-                        <div className="bg-white dark:bg-[#1C1C1E] rounded-lg border border-gray-200 dark:border-[#3A3A3C]">
-                            <div className="px-5 py-3 border-b border-gray-200 dark:border-[#3A3A3C]">
+                        <div className="bg-white dark:bg-[#18181B] rounded-xl border border-gray-200 dark:border-[#3A3A3C] shadow-sm">
+                            <div className="px-5 py-4 border-b border-gray-200 dark:border-[#3A3A3C]">
                                 <h3 className="text-sm font-semibold text-gray-900 dark:text-[#FAFAFA] mb-0">
                                     Authentication
                                 </h3>
@@ -347,8 +347,8 @@ export default function SettingsPage() {
                         </div>
 
                         {/* Email Settings */}
-                        <div className="bg-white dark:bg-[#1C1C1E] rounded-lg border border-gray-200 dark:border-[#3A3A3C]">
-                            <div className="px-5 py-3 border-b border-gray-200 dark:border-[#3A3A3C]">
+                        <div className="bg-white dark:bg-[#18181B] rounded-xl border border-gray-200 dark:border-[#3A3A3C] shadow-sm">
+                            <div className="px-5 py-4 border-b border-gray-200 dark:border-[#3A3A3C]">
                                 <h3 className="text-sm font-semibold text-gray-900 dark:text-[#FAFAFA] mb-0">
                                     Email Settings
                                 </h3>

@@ -49,6 +49,8 @@ export default function MainLayout({ children }: MainLayoutProps) {
             dashboard: "/dashboard",
             pos: "/pos",
             menu: "/menu",
+            menuCategories: "/menu/categories",
+            categories: "/expanse/categories",
             tables: "/tables",
             reservations: "/reservations",
             orders: "/orders",
@@ -60,6 +62,8 @@ export default function MainLayout({ children }: MainLayoutProps) {
             users: "/users",
             reports: "/reports",
             settings: "/settings",
+            income: "/income",
+            expanse: "/expanse",
         };
 
         router.push(routes[page] || "/dashboard");
