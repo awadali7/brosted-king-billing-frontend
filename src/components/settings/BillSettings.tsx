@@ -30,7 +30,7 @@ export default function BillSettings({
                     disabled={!isEditing}
                 />
                 <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-1 block">
-                    {settings.bill_prefix.description}
+                    {settings?.bill_prefix?.description}
                 </small>
             </div>
 
@@ -51,7 +51,7 @@ export default function BillSettings({
                     disabled={!isEditing}
                 />
                 <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-1 block">
-                    {settings.currency_symbol.description}
+                    {settings?.currency_symbol?.description}
                 </small>
             </div>
 
@@ -63,7 +63,7 @@ export default function BillSettings({
                 <input
                     type="number"
                     className="w-full px-3 py-1.5 text-sm bg-white dark:bg-[#2C2C2E] text-gray-900 dark:text-[#FAFAFA] border border-gray-300 dark:border-[#3A3A3C] rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed"
-                    value={formValues.tax_percentage || 0}
+                    value={formValues?.tax_percentage || 0}
                     onChange={(e) =>
                         onChange("tax_percentage", Number(e.target.value))
                     }
@@ -74,7 +74,7 @@ export default function BillSettings({
                     disabled={!isEditing}
                 />
                 <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-1 block">
-                    {settings.tax_percentage.description}
+                    {settings?.tax_percentage?.description}
                 </small>
             </div>
 
@@ -89,7 +89,7 @@ export default function BillSettings({
                             type="checkbox"
                             className="sr-only peer"
                             id="enable_discount"
-                            checked={formValues.enable_discount || false}
+                            checked={formValues?.enable_discount || false}
                             onChange={(e) =>
                                 onChange("enable_discount", e.target.checked)
                             }
@@ -105,7 +105,7 @@ export default function BillSettings({
                     </label>
                 </div>
                 <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-1 block">
-                    {settings.enable_discount.description}
+                    {settings?.enable_discount?.description}
                 </small>
             </div>
         </>

@@ -59,7 +59,7 @@ export default function SMTPSettings({
                                 placeholder="smtp.gmail.com"
                             />
                             <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-2 d-block">
-                                {settings.smtp_host.description}
+                                {settings?.smtp_host?.description}
                             </small>
                         </div>
                     </div>
@@ -90,7 +90,7 @@ export default function SMTPSettings({
                                 max="65535"
                             />
                             <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-2 d-block">
-                                {settings.smtp_port.description}
+                                {settings?.smtp_port?.description}
                             </small>
                         </div>
                     </div>
@@ -116,7 +116,7 @@ export default function SMTPSettings({
                                 placeholder="user@example.com"
                             />
                             <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-2 d-block">
-                                {settings.smtp_user.description}
+                                {settings?.smtp_user?.description}
                             </small>
                         </div>
                     </div>
@@ -170,7 +170,7 @@ export default function SMTPSettings({
                                 </button>
                             </div>
                             <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-2 d-block">
-                                {settings.smtp_password.description}
+                                {settings?.smtp_password?.description}
                             </small>
                         </div>
                     </div>
@@ -204,7 +204,7 @@ export default function SMTPSettings({
                                 placeholder="My Restaurant"
                             />
                             <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-2 d-block">
-                                {settings.smtp_from_name.description}
+                                {settings?.smtp_from_name?.description}
                             </small>
                         </div>
                     </div>
@@ -230,7 +230,7 @@ export default function SMTPSettings({
                                 placeholder="noreply@restaurant.com"
                             />
                             <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-2 d-block">
-                                {settings.smtp_from_email.description}
+                                {settings?.smtp_from_email?.description}
                             </small>
                         </div>
                     </div>

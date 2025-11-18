@@ -84,7 +84,7 @@ export default function RestaurantSettings({
                 <textarea
                     className="w-full px-3 py-1.5 text-sm bg-white dark:bg-[#2C2C2E] text-gray-900 dark:text-[#FAFAFA] border border-gray-300 dark:border-[#3A3A3C] rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed"
                     rows={2}
-                    value={formValues.restaurant_address || ""}
+                    value={formValues?.restaurant_address || ""}
                     onChange={(e) =>
                         onChange("restaurant_address", e.target.value)
                     }
