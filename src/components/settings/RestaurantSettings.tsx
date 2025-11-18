@@ -32,7 +32,7 @@ export default function RestaurantSettings({
                     disabled={!isEditing}
                 />
                 <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-1 block">
-                    {settings.restaurant_name.description}
+                    {settings?.restaurant_name?.description}
                 </small>
             </div>
 
@@ -52,7 +52,7 @@ export default function RestaurantSettings({
                     disabled={!isEditing}
                 />
                 <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-1 block">
-                    {settings.restaurant_phone.description}
+                    {settings?.restaurant_phone?.description}
                 </small>
             </div>
 
@@ -72,7 +72,7 @@ export default function RestaurantSettings({
                     disabled={!isEditing}
                 />
                 <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-1 block">
-                    {settings.restaurant_email.description}
+                    {settings?.restaurant_email?.description}
                 </small>
             </div>
 
@@ -92,7 +92,7 @@ export default function RestaurantSettings({
                     disabled={!isEditing}
                 />
                 <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-1 block">
-                    {settings.restaurant_address.description}
+                    {settings?.restaurant_address?.description}
                 </small>
             </div>
 
@@ -110,7 +110,7 @@ export default function RestaurantSettings({
                     disabled={!isEditing}
                 />
                 <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-1 block">
-                    {settings.review_link.description}
+                    {settings?.review_link?.description}
                 </small>
             </div>
         </>
