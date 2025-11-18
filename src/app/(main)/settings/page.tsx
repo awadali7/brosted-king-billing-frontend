@@ -269,7 +269,8 @@ export default function SettingsPage() {
                                         disabled={!isEditing}
                                     />
                                     <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-1 block">
-                                        {settingsData.smtp_user.description}
+                                        {settingsData.smtp_user?.description ||
+                                            ""}
                                     </small>
                                 </div>
 
@@ -292,7 +293,8 @@ export default function SettingsPage() {
                                         disabled={!isEditing}
                                     />
                                     <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-1 block">
-                                        {settingsData.smtp_password.description}
+                                        {settingsData.smtp_password
+                                            ?.description || ""}
                                     </small>
                                 </div>
 
@@ -315,7 +317,8 @@ export default function SettingsPage() {
                                         disabled={!isEditing}
                                     />
                                     <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-1 block">
-                                        {settingsData.smtp_host.description}
+                                        {settingsData.smtp_host?.description ||
+                                            ""}
                                     </small>
                                 </div>
 
@@ -340,7 +343,8 @@ export default function SettingsPage() {
                                         disabled={!isEditing}
                                     />
                                     <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-1 block">
-                                        {settingsData.smtp_port.description}
+                                        {settingsData.smtp_port?.description ||
+                                            ""}
                                     </small>
                                 </div>
                             </div>
@@ -373,10 +377,8 @@ export default function SettingsPage() {
                                         disabled={!isEditing}
                                     />
                                     <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-1 block">
-                                        {
-                                            settingsData.smtp_from_name
-                                                .description
-                                        }
+                                        {settingsData.smtp_from_name
+                                            ?.description || ""}
                                     </small>
                                 </div>
 
@@ -399,10 +401,8 @@ export default function SettingsPage() {
                                         disabled={!isEditing}
                                     />
                                     <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-1 block">
-                                        {
-                                            settingsData.smtp_from_email
-                                                .description
-                                        }
+                                        {settingsData.smtp_from_email
+                                            ?.description || ""}
                                     </small>
                                 </div>
                             </div>
