@@ -198,7 +198,7 @@ export const api = {
             return api.get("/menu", params);
         },
         async getCategories() {
-            return api.get("/menu/categories");
+            return api.get("/categories");
         },
         async createItem(itemData: any) {
             return api.post("/items", itemData);
