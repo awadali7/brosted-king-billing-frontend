@@ -55,6 +55,14 @@ const handleResponse = async (response: Response) => {
         return null;
     }
 
+    // Handle 304 Not Modified - no body, return null or throw error
+    // In practice, we should prevent 304 by using cache: 'no-store'
+    if (response.status === 304) {
+        throw new ApiError(304, "Not Modified", {
+            detail: "Resource not modified. Please refresh or clear cache.",
+        });
+    }
+
     return response.json();
 };
 
@@ -81,6 +89,7 @@ export const api = {
         const response = await fetch(url.toString(), {
             method: "GET",
             headers: getAuthHeaders(),
+            cache: "no-store", // Prevent caching to avoid 304 responses
         });
 
         return handleResponse(response);
@@ -274,7 +283,13 @@ export const api = {
          * Get all settings
          */
         async getSettings() {
-            return api.get("/settings");
+            // Use cache: 'no-store' to ensure fresh data and prevent 304 responses
+            const response = await fetch(`${API_URL}/settings`, {
+                method: "GET",
+                headers: getAuthHeaders(),
+                cache: "no-store", // Always fetch fresh settings
+            });
+            return handleResponse(response);
         },
         /**
          * Update a specific setting
