@@ -24,6 +24,12 @@ export default function SettingsPage() {
             setLoading(true);
             setError(null);
             const response: SettingsResponse = await api.settings.getSettings();
+
+            // Safety check: ensure response.data exists
+            if (!response || !response.data) {
+                throw new Error("Invalid settings response from server");
+            }
+
             setSettingsData(response.data);
 
             // Update localStorage with latest settings
@@ -32,8 +38,11 @@ export default function SettingsPage() {
             // Initialize form values from settings
             const initialValues: Record<string, any> = {};
             Object.keys(response.data).forEach((key) => {
-                initialValues[key] =
-                    response.data[key as keyof SettingsData].value;
+                const setting = response.data[key as keyof SettingsData];
+                // Safety check: ensure setting exists and has a value
+                if (setting && setting.value !== undefined) {
+                    initialValues[key] = setting.value;
+                }
             });
             setFormValues(initialValues);
             setHasChanges(false);
@@ -68,8 +77,16 @@ export default function SettingsPage() {
             // Find which settings have changed and update them
             const updatePromises: Promise<any>[] = [];
             Object.keys(formValues).forEach((key) => {
-                const originalValue =
-                    settingsData[key as keyof SettingsData].value;
+                // Safety check: ensure the key exists in settingsData
+                const setting = settingsData[key as keyof SettingsData];
+                if (!setting || setting.value === undefined) {
+                    console.warn(
+                        `Setting key "${key}" not found in settingsData`
+                    );
+                    return;
+                }
+
+                const originalValue = setting.value;
                 const newValue = formValues[key];
 
                 if (originalValue !== newValue) {
@@ -103,7 +120,11 @@ export default function SettingsPage() {
         // Reset form values to original settings
         const resetValues: Record<string, any> = {};
         Object.keys(settingsData).forEach((key) => {
-            resetValues[key] = settingsData[key as keyof SettingsData].value;
+            const setting = settingsData[key as keyof SettingsData];
+            // Safety check: ensure setting exists and has a value
+            if (setting && setting.value !== undefined) {
+                resetValues[key] = setting.value;
+            }
         });
         setFormValues(resetValues);
         setHasChanges(false);
