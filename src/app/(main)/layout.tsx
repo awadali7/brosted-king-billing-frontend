@@ -36,7 +36,16 @@ export default function MainLayout({ children }: MainLayoutProps) {
         if (typeof pathname !== "string") return "dashboard";
         try {
             const parts = pathname.split("/").filter(Boolean);
-            return parts.length > 0 ? parts[parts.length - 1] : "dashboard";
+            if (parts.length === 0) return "dashboard";
+            
+            // Handle nested routes like /menu/categories and /expanse/categories
+            if (parts.length === 2 && parts[1] === "categories") {
+                if (parts[0] === "menu") return "menuCategories";
+                if (parts[0] === "expanse") return "categories";
+            }
+            
+            // For single-level routes, return the last part
+            return parts[parts.length - 1];
         } catch (error) {
             console.error("Error parsing pathname:", error);
             return "dashboard";

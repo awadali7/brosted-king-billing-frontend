@@ -5,6 +5,15 @@ import { X, Receipt, Calendar } from "lucide-react";
 import { toast } from "sonner";
 import { api } from "@/utils/api";
 
+type ExpenseCategory = {
+    id: number;
+    name: string;
+    description?: string;
+    color?: string;
+    icon?: string;
+    is_active?: boolean;
+};
+
 interface AddExpenseModalProps {
     isOpen: boolean;
     onClose: () => void;
@@ -40,6 +49,37 @@ export default function AddExpenseModal({
     });
     const [loading, setLoading] = useState(false);
     const [errors, setErrors] = useState<Record<string, string>>({});
+    const [categories, setCategories] = useState<ExpenseCategory[]>([]);
+    const [categoriesLoading, setCategoriesLoading] = useState(false);
+
+    // Fetch categories when modal opens
+    useEffect(() => {
+        if (isOpen) {
+            fetchCategories();
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isOpen]);
+
+    const fetchCategories = async () => {
+        try {
+            setCategoriesLoading(true);
+            const res = await api.get<{
+                success: boolean;
+                message: string;
+                data: ExpenseCategory[];
+                count: number;
+            }>("/expenses/categories");
+            if (res.success && res.data) {
+                // Filter only active categories
+                setCategories(res.data.filter((cat) => cat.is_active));
+            }
+        } catch (err: any) {
+            console.error("Failed to fetch categories:", err);
+            toast.error("Failed to load categories");
+        } finally {
+            setCategoriesLoading(false);
+        }
+    };
 
     useEffect(() => {
         if (!isOpen) {
@@ -231,18 +271,23 @@ export default function AddExpenseModal({
                                 name="category_id"
                                 value={formData.category_id}
                                 onChange={handleInputChange}
+                                disabled={categoriesLoading}
                                 className={`w-full px-3 py-2 rounded-lg border transition-all focus:outline-none ${
                                     errors.category_id
                                         ? "border-red-300 dark:border-red-600"
                                         : "border-gray-300 dark:border-[#3F3F46]"
-                                } bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA]`}
+                                } bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA] disabled:opacity-50`}
                             >
-                                <option value="">Select category</option>
-                                <option value="1">Utilities</option>
-                                <option value="2">Rent</option>
-                                <option value="3">Supplies</option>
-                                <option value="4">Maintenance</option>
-                                <option value="5">Other</option>
+                                <option value="">
+                                    {categoriesLoading
+                                        ? "Loading..."
+                                        : "Select category"}
+                                </option>
+                                {categories.map((cat) => (
+                                    <option key={cat.id} value={cat.id}>
+                                        {cat.name}
+                                    </option>
+                                ))}
                             </select>
                             {errors.category_id && (
                                 <p className="mt-1 text-sm text-red-500">

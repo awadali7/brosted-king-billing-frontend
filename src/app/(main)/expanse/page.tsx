@@ -49,6 +49,15 @@ type ExpenseApiResponse = {
     };
 };
 
+type ExpenseCategory = {
+    id: number;
+    name: string;
+    description?: string;
+    color?: string;
+    icon?: string;
+    is_active?: boolean;
+};
+
 export default function ExpansePage() {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -56,6 +65,7 @@ export default function ExpansePage() {
     const [currencySymbol, setCurrencySymbol] = useState("₹");
     const [page, setPage] = useState(1);
     const [limit] = useState(20);
+    const [categories, setCategories] = useState<ExpenseCategory[]>([]);
 
     // Filters
     const [selectedDate, setSelectedDate] = useState<string>(() => {
@@ -101,6 +111,27 @@ export default function ExpansePage() {
             // ignore
         }
     }, []);
+
+    const fetchCategories = useCallback(async () => {
+        try {
+            const res = await api.get<{
+                success: boolean;
+                message: string;
+                data: ExpenseCategory[];
+                count: number;
+            }>("/expenses/categories");
+            if (res.success && res.data) {
+                // Filter only active categories
+                setCategories(res.data.filter((cat) => cat.is_active));
+            }
+        } catch (err: any) {
+            console.error("Failed to fetch categories:", err);
+        }
+    }, []);
+
+    useEffect(() => {
+        fetchCategories();
+    }, [fetchCategories]);
 
     const fetchExpenses = useCallback(async () => {
         try {
@@ -296,11 +327,11 @@ export default function ExpansePage() {
                                     className="w-full px-3 py-2 text-sm border border-gray-300 dark:border-[#3F3F46] rounded-lg bg-white dark:bg-[#18181B] text-gray-900 dark:text-[#FAFAFA]"
                                 >
                                     <option value="">All categories</option>
-                                    <option value="1">Utilities</option>
-                                    <option value="2">Rent</option>
-                                    <option value="3">Supplies</option>
-                                    <option value="4">Maintenance</option>
-                                    <option value="5">Other</option>
+                                    {categories.map((cat) => (
+                                        <option key={cat.id} value={cat.id}>
+                                            {cat.name}
+                                        </option>
+                                    ))}
                                 </select>
                             </div>
                             <div>
