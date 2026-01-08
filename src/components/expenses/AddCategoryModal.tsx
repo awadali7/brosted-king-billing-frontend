@@ -28,8 +28,6 @@ export default function AddCategoryModal({
     const [formData, setFormData] = useState({
         name: "",
         description: "",
-        color: "#FF6B6B",
-        icon: "bolt",
         is_active: true,
     });
     const [loading, setLoading] = useState(false);
@@ -40,8 +38,6 @@ export default function AddCategoryModal({
             setFormData({
                 name: "",
                 description: "",
-                color: "#FF6B6B",
-                icon: "bolt",
                 is_active: true,
             });
             setErrors({});
@@ -49,8 +45,6 @@ export default function AddCategoryModal({
             setFormData({
                 name: editCategory.name || "",
                 description: editCategory.description || "",
-                color: editCategory.color || "#FF6B6B",
-                icon: editCategory.icon || "bolt",
                 is_active:
                     editCategory.is_active === undefined
                         ? true
@@ -74,9 +68,6 @@ export default function AddCategoryModal({
     const validateForm = () => {
         const newErrors: Record<string, string> = {};
         if (!formData.name.trim()) newErrors.name = "Name is required";
-        if (!/^#([0-9A-F]{3}){1,2}$/i.test(formData.color))
-            newErrors.color = "Enter a valid hex color";
-        if (!formData.icon.trim()) newErrors.icon = "Icon is required";
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
@@ -89,8 +80,6 @@ export default function AddCategoryModal({
             const payload = {
                 name: formData.name.trim(),
                 description: formData.description.trim(),
-                color: formData.color,
-                icon: formData.icon.trim(),
                 is_active: Boolean(formData.is_active),
             };
             let response;
@@ -202,53 +191,6 @@ export default function AddCategoryModal({
                             rows={2}
                             className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-[#3F3F46] bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA] placeholder-gray-500 dark:placeholder-[#A1A1AA] focus:outline-none resize-none"
                         />
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-3">
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1">
-                                Color (hex) *
-                            </label>
-                            <input
-                                type="text"
-                                name="color"
-                                value={formData.color}
-                                onChange={handleInputChange}
-                                placeholder="#FF6B6B"
-                                className={`w-full px-3 py-2 rounded-lg border transition-all focus:outline-none ${
-                                    errors.color
-                                        ? "border-red-300 dark:border-red-600"
-                                        : "border-gray-300 dark:border-[#3F3F46]"
-                                } bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA]`}
-                            />
-                            {errors.color && (
-                                <p className="mt-1 text-sm text-red-500">
-                                    {errors.color}
-                                </p>
-                            )}
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1">
-                                Icon *
-                            </label>
-                            <input
-                                type="text"
-                                name="icon"
-                                value={formData.icon}
-                                onChange={handleInputChange}
-                                placeholder="bolt"
-                                className={`w-full px-3 py-2 rounded-lg border transition-all focus:outline-none ${
-                                    errors.icon
-                                        ? "border-red-300 dark:border-red-600"
-                                        : "border-gray-300 dark:border-[#3F3F46]"
-                                } bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA]`}
-                            />
-                            {errors.icon && (
-                                <p className="mt-1 text-sm text-red-500">
-                                    {errors.icon}
-                                </p>
-                            )}
-                        </div>
                     </div>
 
                     <div className="flex items-center gap-2">
