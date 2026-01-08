@@ -19,6 +19,7 @@ import {
 import DeleteConfirmModal from "@/components/menu/DeleteConfirmModal";
 import AddExpenseModal from "@/components/expenses/AddExpenseModal";
 import AddCategoryModal from "@/components/expenses/AddCategoryModal";
+import ViewExpenseModal from "@/components/expenses/ViewExpenseModal";
 
 type ExpenseRecord = {
     id: number;
@@ -98,6 +99,8 @@ export default function ExpansePage() {
         null
     );
     const [isAddCategoryOpen, setIsAddCategoryOpen] = useState(false);
+    const [isViewOpen, setIsViewOpen] = useState(false);
+    const [viewExpense, setViewExpense] = useState<ExpenseRecord | null>(null);
 
     useEffect(() => {
         const settingsStr = localStorage.getItem("settings");
@@ -195,7 +198,9 @@ export default function ExpansePage() {
         setIsAddCategoryOpen(true);
     };
     const handleView = (id: number) => {
-        toast.info(`View expense #${id}`);
+        const rec = records.find((r) => r.id === id) || null;
+        setViewExpense(rec);
+        setIsViewOpen(true);
     };
     const handleEdit = (id: number) => {
         const rec = records.find((r) => r.id === id) || null;
@@ -503,7 +508,12 @@ export default function ExpansePage() {
                                                     </span>
                                                 </td>
                                                 <td className="py-3 pr-4 text-gray-700 dark:text-[#A1A1AA]">
-                                                    {r.description}
+                                                    <span
+                                                        className="block max-w-[200px] truncate"
+                                                        title={r.description}
+                                                    >
+                                                        {r.description}
+                                                    </span>
                                                 </td>
                                                 <td className="py-3 pr-4 text-gray-700 dark:text-[#A1A1AA]">
                                                     {r.vendor_name || "-"}
@@ -647,6 +657,15 @@ export default function ExpansePage() {
                     // Optionally refetch categories if later made dynamic
                     toast.success("Category list will reflect on next fetch");
                 }}
+            />
+            {/* View Expense Modal */}
+            <ViewExpenseModal
+                isOpen={isViewOpen}
+                onClose={() => {
+                    setIsViewOpen(false);
+                    setViewExpense(null);
+                }}
+                expense={viewExpense}
             />
         </div>
     );

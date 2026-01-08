@@ -152,42 +152,27 @@ export default function CategoriesPage() {
                         <table className="min-w-full text-sm">
                             <thead>
                                 <tr className="text-left text-gray-600 dark:text-[#A1A1AA] border-b border-gray-200 dark:border-[#3F3F46]">
+                                    <th className="py-2 pr-4">Sl No</th>
                                     <th className="py-2 pr-4">Name</th>
                                     <th className="py-2 pr-4">Description</th>
-                                    <th className="py-2 pr-4">Color</th>
-                                    <th className="py-2 pr-4">Icon</th>
                                     <th className="py-2 pr-4">Status</th>
                                     <th className="py-2 pr-4">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {categories.map((cat) => (
+                                {categories.map((cat, index) => (
                                     <tr
                                         key={cat.id}
                                         className="border-b border-gray-100 dark:border-[#27272A]"
                                     >
+                                        <td className="py-3 pr-4 text-gray-600 dark:text-[#A1A1AA]">
+                                            {index + 1}
+                                        </td>
                                         <td className="py-3 pr-4 text-gray-900 dark:text-[#FAFAFA]">
                                             {cat.name}
                                         </td>
                                         <td className="py-3 pr-4 text-gray-700 dark:text-[#A1A1AA]">
                                             {cat.description || "-"}
-                                        </td>
-                                        <td className="py-3 pr-4">
-                                            <span className="inline-flex items-center gap-2">
-                                                <span
-                                                    className="inline-block w-4 h-4 rounded"
-                                                    style={{
-                                                        background:
-                                                            cat.color || "#ccc",
-                                                    }}
-                                                />
-                                                <span className="text-gray-700 dark:text-[#A1A1AA]">
-                                                    {cat.color || "-"}
-                                                </span>
-                                            </span>
-                                        </td>
-                                        <td className="py-3 pr-4 text-gray-700 dark:text-[#A1A1AA]">
-                                            {cat.icon || "-"}
                                         </td>
                                         <td className="py-3 pr-4">
                                             <span
