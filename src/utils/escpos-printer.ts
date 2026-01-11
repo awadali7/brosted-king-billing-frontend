@@ -210,12 +210,14 @@ export class ESCPOSPrinter {
     // Print via network printer
     async printNetwork(ip: string, port: number = 9100): Promise<void> {
         try {
+            const buffer = this.getBuffer();
+            const blob = new Blob([buffer as BlobPart], { type: 'application/octet-stream' });
             const response = await fetch(`http://${ip}:${port}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/octet-stream',
                 },
-                body: this.getBuffer(),
+                body: blob,
             });
 
             if (!response.ok) {
@@ -229,7 +231,7 @@ export class ESCPOSPrinter {
 
     // Download as file (for testing)
     downloadAsFile(filename: string = 'receipt.bin'): void {
-        const blob = new Blob([this.getBuffer()], {
+        const blob = new Blob([this.getBuffer() as BlobPart], {
             type: 'application/octet-stream',
         });
         const url = URL.createObjectURL(blob);
