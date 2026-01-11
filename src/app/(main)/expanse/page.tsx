@@ -441,6 +441,7 @@ export default function ExpansePage() {
                         <table className="min-w-full text-sm">
                             <thead>
                                 <tr className="text-left text-gray-600 dark:text-[#A1A1AA] border-b border-gray-200 dark:border-[#3F3F46]">
+                                    <th className="py-2 pr-4">Sl No</th>
                                     <th className="py-2 pr-4">Date</th>
                                     <th className="py-2 pr-4">Amount</th>
                                     <th className="py-2 pr-4">Category</th>
@@ -456,14 +457,14 @@ export default function ExpansePage() {
                                 {records.length === 0 ? (
                                     <tr>
                                         <td
-                                            colSpan={9}
+                                            colSpan={10}
                                             className="py-6 text-center text-gray-500 dark:text-[#71717A]"
                                         >
                                             No records found
                                         </td>
                                     </tr>
                                 ) : (
-                                    records.map((r) => {
+                                    records.map((r, index) => {
                                         const date = new Date(r.date);
                                         const displayDate =
                                             date.toLocaleDateString("en-US", {
@@ -476,6 +477,11 @@ export default function ExpansePage() {
                                                 key={r.id}
                                                 className="border-b border-gray-100 dark:border-[#27272A]"
                                             >
+                                                <td className="py-3 pr-4 text-gray-600 dark:text-[#A1A1AA]">
+                                                    {(page - 1) * limit +
+                                                        index +
+                                                        1}
+                                                </td>
                                                 <td className="py-3 pr-4 text-gray-900 dark:text-[#FAFAFA]">
                                                     {displayDate}
                                                 </td>
