@@ -6,6 +6,7 @@ import { SettingsResponse, SettingsData } from "@/types/settings";
 import RestaurantSettings from "@/components/settings/RestaurantSettings";
 import BillSettings from "@/components/settings/BillSettings";
 import SMTPSettings from "@/components/settings/SMTPSettings";
+import PrinterSettings from "@/components/settings/PrinterSettings";
 import LoadingState from "@/components/settings/LoadingState";
 import ErrorState from "@/components/settings/ErrorState";
 
@@ -428,6 +429,11 @@ export default function SettingsPage() {
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    {/* Printer Configuration - Full Width */}
+                    <div className="mt-6">
+                        <PrinterSettings />
                     </div>
                 </div>
             )}

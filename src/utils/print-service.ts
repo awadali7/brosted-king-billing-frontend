@@ -298,6 +298,16 @@ export class PrintService {
                             : ''
                     }
                 </div>
+                <script>
+                    window.onload = function() {
+                        // Auto print when page loads
+                        window.print();
+                        // Close window after printing (or cancel)
+                        window.onafterprint = function() {
+                            window.close();
+                        };
+                    };
+                </script>
             </body>
             </html>
         `;
@@ -306,13 +316,6 @@ export class PrintService {
         if (printWindow) {
             printWindow.document.write(printContent);
             printWindow.document.close();
-            printWindow.onload = () => {
-                printWindow.focus();
-                printWindow.print();
-                setTimeout(() => {
-                    printWindow.close();
-                }, 500);
-            };
         } else {
             throw new Error('Failed to open print window. Check popup blocker.');
         }
