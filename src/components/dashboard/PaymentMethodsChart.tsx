@@ -112,7 +112,7 @@ export default function PaymentMethodsChart({
                         <div className="flex items-center justify-between mb-3">
                             <div className="flex items-center gap-3">
                                 <div
-                                    className={`p-2 rounded-lg ${colors.text} bg-white}
+                                    className={`p-2 rounded-lg ${colors.text} bg-white`}
                                 >
                                     <Icon className="w-5 h-5" />
                                 </div>
