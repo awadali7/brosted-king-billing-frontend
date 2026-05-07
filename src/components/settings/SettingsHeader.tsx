@@ -14,21 +14,21 @@ export default function SettingsHeader({
     saving,
 }: SettingsHeaderProps) {
     return (
-        <div className="bg-white dark:bg-[#1C1C1E] border-b border-gray-200 dark:border-[#3A3A3C] shadow-sm sticky top-0 z-10">
+        <div className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-10">
             <div className="px-6 py-4">
                 <div className="flex items-center justify-between">
                     <div>
-                        <h2 className="text-xl font-semibold text-gray-900 dark:text-[#FAFAFA] mb-1 flex items-center">
+                        <h2 className="text-xl font-semibold text-gray-900 mb-1 flex items-center">
                             <i className="bi bi-gear-fill mr-2"></i>
                             Settings
                         </h2>
-                        <p className="text-sm text-gray-600 dark:text-[#A1A1AA] mb-0">
+                        <p className="text-sm text-gray-600 mb-0">
                             Manage your restaurant settings
                         </p>
                     </div>
                     <div className="flex gap-2">
                         <button
-                            className="px-3 py-1.5 text-sm border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 bg-white dark:bg-[#2C2C2E] rounded hover:bg-gray-50 dark:hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-1"
+                            className="px-3 py-1.5 text-sm border border-gray-300 text-gray-700 bg-white rounded hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-1"
                             onClick={onReset}
                             disabled={!hasChanges || saving}
                         >

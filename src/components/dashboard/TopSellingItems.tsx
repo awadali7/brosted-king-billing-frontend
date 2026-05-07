@@ -33,13 +33,13 @@ export default function TopSellingItems({ items }: TopSellingItemsProps) {
     if (items.length === 0) {
         return (
             <div className="text-center py-8">
-                <div className="text-gray-400 dark:text-[#A1A1AA] text-4xl mb-3">
+                <div className="text-gray-400 text-4xl mb-3">
                     📊
                 </div>
-                <h3 className="text-sm font-medium text-gray-900 dark:text-[#FAFAFA] mb-1">
+                <h3 className="text-sm font-medium text-gray-900 mb-1">
                     No Sales Data
                 </h3>
-                <p className="text-xs text-gray-500 dark:text-[#A1A1AA]">
+                <p className="text-xs text-gray-500">
                     Start selling to see top items
                 </p>
             </div>
@@ -65,10 +65,10 @@ export default function TopSellingItems({ items }: TopSellingItemsProps) {
                                     {index + 1}
                                 </span>
                                 <div className="flex-1 min-w-0">
-                                    <h4 className="text-sm font-medium text-gray-900 dark:text-[#FAFAFA] truncate">
+                                    <h4 className="text-sm font-medium text-gray-900 truncate">
                                         {item.item_name}
                                     </h4>
-                                    <p className="text-xs text-gray-500 dark:text-[#A1A1AA]">
+                                    <p className="text-xs text-gray-500">
                                         {quantity} sold
                                     </p>
                                 </div>
@@ -78,7 +78,7 @@ export default function TopSellingItems({ items }: TopSellingItemsProps) {
                                 {parseFloat(item.revenue).toFixed(2)}
                             </span>
                         </div>
-                        <div className="w-full bg-gray-100 dark:bg-[#27272A] rounded-full h-2 overflow-hidden">
+                        <div className="w-full bg-gray-100 rounded-full h-2 overflow-hidden">
                             <div
                                 className="bg-gradient-to-r from-[#eb1700] to-[#c41400] h-full rounded-full transition-all duration-500"
                                 style={{ width: `${percentage}%` }}

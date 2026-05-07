@@ -69,6 +69,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
             invoice: "/invoice",
             testimonial: "/testimonial",
             users: "/users",
+            bills: "/bills",
             reports: "/reports",
             settings: "/settings",
             income: "/income",
@@ -97,7 +98,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
     }
 
     return (
-        <div className="flex min-h-screen bg-[#F9FAFB] dark:bg-[#0F0F0F]">
+        <div className="flex min-h-screen bg-[#F9FAFB]">
             {/* Sidebar */}
             <Sidebar
                 activePage={activePage}
@@ -111,7 +112,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
                 <Header user={user} onLogout={handleLogout} />
 
                 {/* Page Content */}
-                <main className="flex-1 overflow-auto bg-white dark:bg-[#0F0F0F]">
+                <main className="flex-1 overflow-auto bg-white">
                     <div>{children}</div>
                 </main>
             </div>

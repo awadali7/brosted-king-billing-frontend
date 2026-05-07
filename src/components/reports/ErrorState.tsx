@@ -9,7 +9,7 @@ export default function ErrorState({ error, onRetry }: ErrorStateProps) {
     return (
         <div className="text-center py-12">
             <div className="text-6xl mb-4">⚠️</div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-[#FAFAFA] mb-2">
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 {error || "No data available"}
             </h3>
             <button

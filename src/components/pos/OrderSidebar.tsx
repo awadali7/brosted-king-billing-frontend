@@ -53,11 +53,11 @@ export default function OrderSidebar({
     const total = subtotal + tax;
 
     return (
-        <div className="w-full md:w-80 bg-white dark:bg-[#0F0F0F] md:border-l border-gray-200 dark:border-[#3F3F46] flex flex-col h-auto md:h-[calc(100vh-4rem)]">
+        <div className="w-full md:w-80 bg-white md:border-l border-gray-200 flex flex-col h-auto md:h-[calc(100vh-4rem)]">
             {/* Header */}
-            <div className="p-4 border-b border-gray-200 dark:border-[#3F3F46]">
+            <div className="p-4 border-b border-gray-200">
                 <div className="flex items-center justify-between">
-                    <h2 className="text-base font-semibold text-gray-900 dark:text-[#FAFAFA] flex items-center gap-2">
+                    <h2 className="text-base font-semibold text-gray-900 flex items-center gap-2">
                         <ShoppingCart className="w-4 h-4 text-[#eb1700]" />
                         Current Order
                     </h2>
@@ -71,7 +71,7 @@ export default function OrderSidebar({
                         </button>
                     )}
                 </div>
-                <p className="text-xs text-gray-500 dark:text-[#A1A1AA] mt-0.5">
+                <p className="text-xs text-gray-500 mt-0.5">
                     {items.length} item{items.length !== 1 ? "s" : ""} in order
                 </p>
             </div>
@@ -80,13 +80,13 @@ export default function OrderSidebar({
             <div className="modal-scroll flex-1 p-4 sm:p-6">
                 {items.length === 0 ? (
                     <div className="text-center py-12">
-                        <div className="text-gray-400 dark:text-[#A1A1AA] text-4xl mb-3">
+                        <div className="text-gray-400 text-4xl mb-3">
                             🛒
                         </div>
-                        <h3 className="text-sm font-medium text-gray-900 dark:text-[#FAFAFA] mb-1">
+                        <h3 className="text-sm font-medium text-gray-900 mb-1">
                             No items in order
                         </h3>
-                        <p className="text-xs text-gray-500 dark:text-[#A1A1AA]">
+                        <p className="text-xs text-gray-500">
                             Add items from the menu to get started
                         </p>
                     </div>
@@ -106,31 +106,31 @@ export default function OrderSidebar({
 
             {/* Order Summary */}
             {items.length > 0 && (
-                <div className="p-4 sm:p-6 border-t border-gray-200 dark:border-[#3F3F46] bg-gray-50 dark:bg-[#18181B]">
+                <div className="p-4 sm:p-6 border-t border-gray-200 bg-gray-50">
                     <div className="space-y-2 mb-4">
                         <div className="flex justify-between text-sm">
-                            <span className="text-gray-600 dark:text-[#A1A1AA]">
+                            <span className="text-gray-600">
                                 Subtotal
                             </span>
-                            <span className="text-gray-900 dark:text-[#FAFAFA]">
+                            <span className="text-gray-900">
                                 {currencySymbol}
                                 {subtotal.toFixed(2)}
                             </span>
                         </div>
                         {taxPercentage > 0 && (
                             <div className="flex justify-between text-sm">
-                                <span className="text-gray-600 dark:text-[#A1A1AA]">
+                                <span className="text-gray-600">
                                     Tax ({taxPercentage}%)
                                 </span>
-                                <span className="text-gray-900 dark:text-[#FAFAFA]">
+                                <span className="text-gray-900">
                                     {currencySymbol}
                                     {tax.toFixed(2)}
                                 </span>
                             </div>
                         )}
-                        <div className="border-t border-gray-200 dark:border-[#3F3F46] pt-2">
+                        <div className="border-t border-gray-200 pt-2">
                             <div className="flex justify-between text-base font-semibold">
-                                <span className="text-gray-900 dark:text-[#FAFAFA]">
+                                <span className="text-gray-900">
                                     Total
                                 </span>
                                 <span className="text-[#eb1700]">

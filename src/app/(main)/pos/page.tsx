@@ -479,7 +479,7 @@ ${
                     <div>
                         {/* Tabs */}
                         <div className="mb-6">
-                            <div className="border-b border-gray-200 dark:border-[#3F3F46]">
+                            <div className="border-b border-gray-200">
                                 <nav className="-mb-px flex gap-6 overflow-x-auto no-scrollbar">
                                     <button
                                         onClick={() =>
@@ -490,7 +490,7 @@ ${
                                         ${
                                             activeTab === "categories"
                                                 ? "border-[#eb1700] text-[#eb1700]"
-                                                : "border-transparent text-gray-600 dark:text-[#A1A1AA] hover:text-gray-900 dark:hover:text-[#FAFAFA] hover:border-gray-300 dark:hover:border-[#52525B]"
+                                                : "border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300"
                                         }
                                     `}
                                     >
@@ -498,7 +498,7 @@ ${
                                             <span>📂</span>
                                             <span>Categories</span>
                                             {categories.length > 0 && (
-                                                <span className="ml-1 rounded-full bg-gray-100 dark:bg-[#27272A] px-2 py-0.5 text-xs">
+                                                <span className="ml-1 rounded-full bg-gray-100 px-2 py-0.5 text-xs">
                                                     {categories.length}
                                                 </span>
                                             )}
@@ -511,7 +511,7 @@ ${
                                         ${
                                             activeTab === "combos"
                                                 ? "border-[#eb1700] text-[#eb1700]"
-                                                : "border-transparent text-gray-600 dark:text-[#A1A1AA] hover:text-gray-900 dark:hover:text-[#FAFAFA] hover:border-gray-300 dark:hover:border-[#52525B]"
+                                                : "border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300"
                                         }
                                     `}
                                     >
@@ -519,7 +519,7 @@ ${
                                             <span>🎁</span>
                                             <span>Combo Deals</span>
                                             {combos.length > 0 && (
-                                                <span className="ml-1 rounded-full bg-gray-100 dark:bg-[#27272A] px-2 py-0.5 text-xs">
+                                                <span className="ml-1 rounded-full bg-gray-100 px-2 py-0.5 text-xs">
                                                     {combos.length}
                                                 </span>
                                             )}
@@ -570,7 +570,7 @@ ${
                                 </svg>
                                 Back
                             </button>
-                            <h1 className="text-xl font-bold text-gray-900 dark:text-[#FAFAFA] mt-2">
+                            <h1 className="text-xl font-bold text-gray-900 mt-2">
                                 {selectedCategory.name}
                             </h1>
                         </div>
@@ -580,7 +580,7 @@ ${
                             <div className="flex items-center justify-center py-12">
                                 <div className="text-center">
                                     <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#eb1700] mx-auto mb-4"></div>
-                                    <p className="text-gray-600 dark:text-[#A1A1AA]">
+                                    <p className="text-gray-600">
                                         Loading items...
                                     </p>
                                 </div>
@@ -593,10 +593,10 @@ ${
                                 <div className="text-red-500 text-6xl mb-4">
                                     ⚠️
                                 </div>
-                                <h3 className="text-xl font-semibold text-gray-900 dark:text-[#FAFAFA] mb-2">
+                                <h3 className="text-xl font-semibold text-gray-900 mb-2">
                                     Error Loading Items
                                 </h3>
-                                <p className="text-gray-600 dark:text-[#A1A1AA] mb-4">
+                                <p className="text-gray-600 mb-4">
                                     {itemsError}
                                 </p>
                                 <button

@@ -203,20 +203,20 @@ export default function AddItemModal({
             />
 
             {/* Modal */}
-            <div className="relative bg-white dark:bg-[#18181B] rounded-xl shadow-xl w-full max-w-lg mx-4 max-h-[85vh] overflow-hidden">
+            <div className="relative bg-white rounded-xl shadow-xl w-full max-w-lg mx-4 max-h-[85vh] overflow-hidden">
                 {/* Header */}
-                <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-[#3F3F46]">
+                <div className="flex items-center justify-between p-4 border-b border-gray-200">
                     <div className="flex items-center gap-2">
                         <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#eb1700] to-[#c41400] flex items-center justify-center">
                             <Plus className="w-4 h-4 text-white" />
                         </div>
-                        <h2 className="text-lg font-semibold text-gray-900 dark:text-[#FAFAFA]">
+                        <h2 className="text-lg font-semibold text-gray-900">
                             {editItem ? "Edit Menu Item" : "Add Menu Item"}
                         </h2>
                     </div>
                     <button
                         onClick={handleClose}
-                        className="p-1.5 rounded-lg text-gray-400 hover:text-gray-600 dark:hover:text-[#FAFAFA] hover:bg-gray-100 dark:hover:bg-[#27272A] transition-colors"
+                        className="p-1.5 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors"
                     >
                         <X className="w-4 h-4" />
                     </button>
@@ -229,7 +229,7 @@ export default function AddItemModal({
                 >
                     {/* Item Name */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1">
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
                             Item Name *
                         </label>
                         <input
@@ -240,9 +240,9 @@ export default function AddItemModal({
                             placeholder="Enter item name"
                             className={`w-full px-3 py-2 rounded-lg border transition-all focus:outline-none focus:ring-2 focus:ring-[#eb1700] focus:border-transparent ${
                                 errors.name
-                                    ? "border-red-300 dark:border-red-600"
-                                    : "border-gray-300 dark:border-[#3F3F46]"
-                            } bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA] placeholder-gray-500 dark:placeholder-[#A1A1AA]`}
+                                    ? "border-red-300"
+                                    : "border-gray-300"
+                            } bg-white text-gray-900 placeholder-gray-500`}
                         />
                         {errors.name && (
                             <p className="mt-1 text-sm text-red-500">
@@ -253,7 +253,7 @@ export default function AddItemModal({
 
                     {/* Description */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1">
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
                             Description *
                         </label>
                         <textarea
@@ -264,9 +264,9 @@ export default function AddItemModal({
                             rows={2}
                             className={`w-full px-3 py-2 rounded-lg border transition-all focus:outline-none focus:ring-2 focus:ring-[#eb1700] focus:border-transparent resize-none ${
                                 errors.description
-                                    ? "border-red-300 dark:border-red-600"
-                                    : "border-gray-300 dark:border-[#3F3F46]"
-                            } bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA] placeholder-gray-500 dark:placeholder-[#A1A1AA]`}
+                                    ? "border-red-300"
+                                    : "border-gray-300"
+                            } bg-white text-gray-900 placeholder-gray-500`}
                         />
                         {errors.description && (
                             <p className="mt-1 text-sm text-red-500">
@@ -277,11 +277,11 @@ export default function AddItemModal({
 
                     {/* Category */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1">
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
                             Category *
                         </label>
                         {categoriesLoading ? (
-                            <div className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-[#3F3F46] bg-gray-50 dark:bg-[#27272A] animate-pulse">
+                            <div className="w-full px-3 py-2 rounded-lg border border-gray-300 bg-gray-50 animate-pulse">
                                 Loading...
                             </div>
                         ) : (
@@ -291,9 +291,9 @@ export default function AddItemModal({
                                 onChange={handleInputChange}
                                 className={`w-full px-3 py-2 rounded-lg border transition-all focus:outline-none focus:ring-2 focus:ring-[#eb1700] focus:border-transparent ${
                                     errors.category_id
-                                        ? "border-red-300 dark:border-red-600"
-                                        : "border-gray-300 dark:border-[#3F3F46]"
-                                } bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA]`}
+                                        ? "border-red-300"
+                                        : "border-gray-300"
+                                } bg-white text-gray-900`}
                             >
                                 <option value={0}>Select a category</option>
                                 {categories.map((category) => (
@@ -316,7 +316,7 @@ export default function AddItemModal({
                     {/* Pricing */}
                     <div className="grid grid-cols-2 gap-3">
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1">
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
                                 Cost ({currencySymbol}) *
                             </label>
                             <input
@@ -329,9 +329,9 @@ export default function AddItemModal({
                                 step="0.01"
                                 className={`w-full px-3 py-2 rounded-lg border transition-all focus:outline-none focus:ring-2 focus:ring-[#eb1700] focus:border-transparent ${
                                     errors.make_price
-                                        ? "border-red-300 dark:border-red-600"
-                                        : "border-gray-300 dark:border-[#3F3F46]"
-                                } bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA] placeholder-gray-500 dark:placeholder-[#A1A1AA]`}
+                                        ? "border-red-300"
+                                        : "border-gray-300"
+                                } bg-white text-gray-900 placeholder-gray-500`}
                             />
                             {errors.make_price && (
                                 <p className="mt-1 text-xs text-red-500">
@@ -341,7 +341,7 @@ export default function AddItemModal({
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1">
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
                                 Price ({currencySymbol}) *
                             </label>
                             <input
@@ -354,9 +354,9 @@ export default function AddItemModal({
                                 step="0.01"
                                 className={`w-full px-3 py-2 rounded-lg border transition-all focus:outline-none focus:ring-2 focus:ring-[#eb1700] focus:border-transparent ${
                                     errors.price
-                                        ? "border-red-300 dark:border-red-600"
-                                        : "border-gray-300 dark:border-[#3F3F46]"
-                                } bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA] placeholder-gray-500 dark:placeholder-[#A1A1AA]`}
+                                        ? "border-red-300"
+                                        : "border-gray-300"
+                                } bg-white text-gray-900 placeholder-gray-500`}
                             />
                             {errors.price && (
                                 <p className="mt-1 text-xs text-red-500">
@@ -368,12 +368,12 @@ export default function AddItemModal({
 
                     {/* Profit Display */}
                     {formData.make_price > 0 && formData.price > 0 && (
-                        <div className="p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
+                        <div className="p-3 bg-green-50 border border-green-200 rounded-lg">
                             <div className="flex items-center justify-between">
-                                <span className="text-sm font-medium text-green-800 dark:text-green-200">
+                                <span className="text-sm font-medium text-green-800">
                                     Profit:
                                 </span>
-                                <span className="text-sm font-bold text-green-900 dark:text-green-100">
+                                <span className="text-sm font-bold text-green-900">
                                     {currencySymbol}
                                     {(
                                         formData.price - formData.make_price
@@ -385,7 +385,7 @@ export default function AddItemModal({
 
                     {/* Image URL */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1">
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
                             Image URL
                         </label>
                         <div className="relative">
@@ -398,7 +398,7 @@ export default function AddItemModal({
                                 value={formData.image_url || ""}
                                 onChange={handleInputChange}
                                 placeholder="https://example.com/image.jpg"
-                                className="w-full pl-10 pr-3 py-2 rounded-lg border border-gray-300 dark:border-[#3F3F46] bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA] placeholder-gray-500 dark:placeholder-[#A1A1AA] focus:outline-none focus:ring-2 focus:ring-[#eb1700] focus:border-transparent transition-all"
+                                className="w-full pl-10 pr-3 py-2 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#eb1700] focus:border-transparent transition-all"
                             />
                         </div>
                         {formData.image_url && (
@@ -406,7 +406,7 @@ export default function AddItemModal({
                                 <img
                                     src={formData.image_url}
                                     alt="Preview"
-                                    className="w-full h-24 object-cover rounded-lg border border-gray-300 dark:border-[#3F3F46]"
+                                    className="w-full h-24 object-cover rounded-lg border border-gray-300"
                                     onError={(e) => {
                                         e.currentTarget.style.display = "none";
                                     }}
@@ -417,11 +417,11 @@ export default function AddItemModal({
                 </form>
 
                 {/* Footer */}
-                <div className="flex items-center justify-end gap-2 p-4 border-t border-gray-200 dark:border-[#3F3F46] bg-gray-50 dark:bg-[#27272A]">
+                <div className="flex items-center justify-end gap-2 p-4 border-t border-gray-200 bg-gray-50">
                     <button
                         type="button"
                         onClick={handleClose}
-                        className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-[#A1A1AA] bg-white dark:bg-[#18181B] border border-gray-300 dark:border-[#3F3F46] rounded-lg hover:bg-gray-50 dark:hover:bg-[#27272A] transition-colors"
+                        className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
                     >
                         Cancel
                     </button>
@@ -429,7 +429,7 @@ export default function AddItemModal({
                         type="submit"
                         onClick={handleSubmit}
                         disabled={loading}
-                        className="px-4 py-2 text-sm font-medium text-white bg-[#eb1700] hover:bg-[#c41400] disabled:bg-gray-400 disabled:cursor-not-allowed rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#eb1700]/25 focus:outline-none focus:ring-2 focus:ring-[#eb1700] focus:ring-offset-2 dark:focus:ring-offset-[#18181B]"
+                        className="px-4 py-2 text-sm font-medium text-white bg-[#eb1700] hover:bg-[#c41400] disabled:bg-gray-400 disabled:cursor-not-allowed rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#eb1700]/25 focus:outline-none focus:ring-2 focus:ring-[#eb1700] focus:ring-offset-2"
                     >
                         {loading ? (
                             <div className="flex items-center gap-1">

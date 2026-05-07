@@ -37,16 +37,16 @@ export default function PrinterSettings() {
     };
 
     return (
-        <div className="bg-white dark:bg-[#18181B] rounded-xl border border-gray-200 dark:border-[#3F3F46] p-6">
+        <div className="bg-white rounded-xl border border-gray-200 p-6">
             <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#eb1700] to-[#c41400] flex items-center justify-center">
                     <Printer className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-[#FAFAFA]">
+                    <h3 className="text-lg font-semibold text-gray-900">
                         Printer Configuration
                     </h3>
-                    <p className="text-sm text-gray-500 dark:text-[#A1A1AA]">
+                    <p className="text-sm text-gray-500">
                         Choose how to print receipts
                     </p>
                 </div>
@@ -54,7 +54,7 @@ export default function PrinterSettings() {
 
             {/* Printer Type Selection */}
             <div className="space-y-4">
-                <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA]">
+                <label className="block text-sm font-medium text-gray-700">
                     Printer Type
                 </label>
 
@@ -65,8 +65,8 @@ export default function PrinterSettings() {
                     }
                     className={`flex items-start gap-4 p-4 rounded-lg border-2 transition-all cursor-pointer ${
                         printerType === "usb-serial"
-                            ? "border-[#eb1700] bg-red-50 dark:bg-red-900/10"
-                            : "border-gray-200 dark:border-[#3F3F46] hover:border-gray-300"
+                            ? "border-[#eb1700] bg-red-50"
+                            : "border-gray-200 hover:border-gray-300"
                     } ${!isSerialSupported ? "opacity-50 cursor-not-allowed" : ""}`}
                 >
                     <input
@@ -83,16 +83,16 @@ export default function PrinterSettings() {
                     <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
                             <Usb className="w-4 h-4 text-[#eb1700]" />
-                            <span className="font-medium text-gray-900 dark:text-[#FAFAFA]">
+                            <span className="font-medium text-gray-900">
                                 USB Serial (Recommended)
                             </span>
                         </div>
-                        <p className="text-sm text-gray-600 dark:text-[#A1A1AA]">
+                        <p className="text-sm text-gray-600">
                             Direct ESC/POS printing via USB. No paper waste, fast
                             printing.
                         </p>
                         {!isSerialSupported && (
-                            <div className="mt-2 flex items-center gap-2 text-xs text-amber-600 dark:text-amber-400">
+                            <div className="mt-2 flex items-center gap-2 text-xs text-amber-600">
                                 <AlertCircle className="w-3 h-3" />
                                 <span>
                                     Requires Chrome or Edge browser
@@ -107,8 +107,8 @@ export default function PrinterSettings() {
                     onClick={() => setPrinterType("network")}
                     className={`flex items-start gap-4 p-4 rounded-lg border-2 transition-all cursor-pointer ${
                         printerType === "network"
-                            ? "border-[#eb1700] bg-red-50 dark:bg-red-900/10"
-                            : "border-gray-200 dark:border-[#3F3F46] hover:border-gray-300"
+                            ? "border-[#eb1700] bg-red-50"
+                            : "border-gray-200 hover:border-gray-300"
                     }`}
                 >
                     <input
@@ -124,18 +124,18 @@ export default function PrinterSettings() {
                     <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
                             <Network className="w-4 h-4 text-[#eb1700]" />
-                            <span className="font-medium text-gray-900 dark:text-[#FAFAFA]">
+                            <span className="font-medium text-gray-900">
                                 Network Printer
                             </span>
                         </div>
-                        <p className="text-sm text-gray-600 dark:text-[#A1A1AA] mb-3">
+                        <p className="text-sm text-gray-600 mb-3">
                             Print via network IP address. Shared printer support.
                         </p>
 
                         {printerType === "network" && (
                             <div className="grid grid-cols-2 gap-3">
                                 <div>
-                                    <label className="block text-xs font-medium text-gray-600 dark:text-[#A1A1AA] mb-1">
+                                    <label className="block text-xs font-medium text-gray-600 mb-1">
                                         IP Address *
                                     </label>
                                     <input
@@ -145,12 +145,12 @@ export default function PrinterSettings() {
                                             setNetworkIp(e.target.value)
                                         }
                                         placeholder="192.168.1.100"
-                                        className="w-full px-3 py-2 text-sm rounded-lg border border-gray-300 dark:border-[#3F3F46] bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA] focus:ring-2 focus:ring-[#eb1700] focus:border-transparent"
+                                        className="w-full px-3 py-2 text-sm rounded-lg border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-[#eb1700] focus:border-transparent"
                                         onClick={(e) => e.stopPropagation()}
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-xs font-medium text-gray-600 dark:text-[#A1A1AA] mb-1">
+                                    <label className="block text-xs font-medium text-gray-600 mb-1">
                                         Port
                                     </label>
                                     <input
@@ -160,7 +160,7 @@ export default function PrinterSettings() {
                                             setNetworkPort(e.target.value)
                                         }
                                         placeholder="9100"
-                                        className="w-full px-3 py-2 text-sm rounded-lg border border-gray-300 dark:border-[#3F3F46] bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA] focus:ring-2 focus:ring-[#eb1700] focus:border-transparent"
+                                        className="w-full px-3 py-2 text-sm rounded-lg border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-[#eb1700] focus:border-transparent"
                                         onClick={(e) => e.stopPropagation()}
                                     />
                                 </div>
@@ -174,8 +174,8 @@ export default function PrinterSettings() {
                     onClick={() => setPrinterType("browser")}
                     className={`flex items-start gap-4 p-4 rounded-lg border-2 transition-all cursor-pointer ${
                         printerType === "browser"
-                            ? "border-[#eb1700] bg-red-50 dark:bg-red-900/10"
-                            : "border-gray-200 dark:border-[#3F3F46] hover:border-gray-300"
+                            ? "border-[#eb1700] bg-red-50"
+                            : "border-gray-200 hover:border-gray-300"
                     }`}
                 >
                     <input
@@ -191,15 +191,15 @@ export default function PrinterSettings() {
                     <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
                             <Globe className="w-4 h-4 text-[#eb1700]" />
-                            <span className="font-medium text-gray-900 dark:text-[#FAFAFA]">
+                            <span className="font-medium text-gray-900">
                                 Browser Print (Fallback)
                             </span>
                         </div>
-                        <p className="text-sm text-gray-600 dark:text-[#A1A1AA]">
+                        <p className="text-sm text-gray-600">
                             Traditional browser print dialog. May waste paper on thermal
                             printers.
                         </p>
-                        <div className="mt-2 flex items-center gap-2 text-xs text-amber-600 dark:text-amber-400">
+                        <div className="mt-2 flex items-center gap-2 text-xs text-amber-600">
                             <AlertCircle className="w-3 h-3" />
                             <span>
                                 Not recommended for thermal printers (wastes 50-60cm
@@ -222,12 +222,12 @@ export default function PrinterSettings() {
             </div>
 
             {/* Help Text */}
-            <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-900/30 rounded-lg">
-                <h4 className="font-medium text-blue-900 dark:text-blue-400 mb-2 flex items-center gap-2">
+            <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                <h4 className="font-medium text-blue-900 mb-2 flex items-center gap-2">
                     <AlertCircle className="w-4 h-4" />
                     Setup Instructions
                 </h4>
-                <ul className="text-sm text-blue-800 dark:text-blue-300 space-y-1 ml-6 list-disc">
+                <ul className="text-sm text-blue-800 space-y-1 ml-6 list-disc">
                     <li>
                         <strong>USB Serial:</strong> Connect printer via USB, click
                         Print, and select your printer in the browser dialog

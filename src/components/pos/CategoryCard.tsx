@@ -18,11 +18,11 @@ export default function CategoryCard({
         <div
             onClick={() => onSelect(category)}
             className={`
-                bg-white dark:bg-[#18181B] rounded-lg border p-6 cursor-pointer transition-all duration-200 hover:shadow-lg hover:scale-105
+                bg-white rounded-lg border p-6 cursor-pointer transition-all duration-200 hover:shadow-lg hover:scale-105
                 ${
                     isSelected
-                        ? "border-[#eb1700] bg-[#FEF2F2] dark:bg-[#2D1A1A] shadow-lg"
-                        : "border-gray-200 dark:border-[#3F3F46] hover:border-[#eb1700]/30 dark:hover:border-[#eb1700]/30"
+                        ? "border-[#eb1700] bg-[#FEF2F2] shadow-lg"
+                        : "border-gray-200 hover:border-[#eb1700]/30"
                 }
             `}
         >
@@ -33,16 +33,16 @@ export default function CategoryCard({
                         ${
                             isSelected
                                 ? "bg-[#eb1700] text-white"
-                                : "bg-gray-100 dark:bg-[#27272A] text-gray-600 dark:text-[#A1A1AA]"
+                                : "bg-gray-100 text-gray-600"
                         }
                     `}
                 >
                     🍽️
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-[#FAFAFA] mb-2">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
                     {category.name}
                 </h3>
-                <p className="text-sm text-gray-600 dark:text-[#A1A1AA] mb-4 line-clamp-2">
+                <p className="text-sm text-gray-600 mb-4 line-clamp-2">
                     {category.description}
                 </p>
                 <div
@@ -50,8 +50,8 @@ export default function CategoryCard({
                         text-xs px-3 py-1 rounded-full font-medium
                         ${
                             isSelected
-                                ? "bg-[#eb1700]/10 text-[#eb1700] dark:bg-[#eb1700]/20 dark:text-[#eb1700]"
-                                : "bg-gray-100 dark:bg-[#27272A] text-gray-600 dark:text-[#A1A1AA]"
+                                ? "bg-[#eb1700]/10 text-[#eb1700]"
+                                : "bg-gray-100 text-gray-600"
                         }
                     `}
                 >

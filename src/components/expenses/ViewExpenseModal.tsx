@@ -61,19 +61,19 @@ export default function ViewExpenseModal({
                 className="absolute inset-0 bg-black/50 backdrop-blur-sm"
                 onClick={onClose}
             />
-            <div className="relative bg-white dark:bg-[#18181B] rounded-xl shadow-xl w-full max-w-lg mx-4 max-h-[90vh] overflow-y-auto modal-scroll">
-                <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-[#3F3F46] sticky top-0 bg-white dark:bg-[#18181B] z-10">
+            <div className="relative bg-white rounded-xl shadow-xl w-full max-w-lg mx-4 max-h-[90vh] overflow-y-auto modal-scroll">
+                <div className="flex items-center justify-between p-4 border-b border-gray-200 sticky top-0 bg-white z-10">
                     <div className="flex items-center gap-2">
                         <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#eb1700] to-[#c41400] flex items-center justify-center">
                             <Receipt className="w-4 h-4 text-white" />
                         </div>
-                        <h2 className="text-lg font-semibold text-gray-900 dark:text-[#FAFAFA]">
+                        <h2 className="text-lg font-semibold text-gray-900">
                             Expense Details
                         </h2>
                     </div>
                     <button
                         onClick={onClose}
-                        className="p-1.5 rounded-lg text-gray-400 hover:text-gray-600 dark:hover:text-[#FAFAFA] hover:bg-gray-100 dark:hover:bg-[#27272A] transition-colors"
+                        className="p-1.5 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors"
                     >
                         <X className="w-4 h-4" />
                     </button>
@@ -81,27 +81,27 @@ export default function ViewExpenseModal({
 
                 <div className="p-4 space-y-3">
                     <div className="grid grid-cols-3 gap-y-3 gap-x-2 text-sm">
-                        <div className="text-gray-600 dark:text-[#A1A1AA] font-medium">
+                        <div className="text-gray-600 font-medium">
                             Amount
                         </div>
-                        <div className="col-span-2 text-gray-900 dark:text-[#FAFAFA] font-semibold text-lg">
+                        <div className="col-span-2 text-gray-900 font-semibold text-lg">
                             {currencySymbol}
                             {Number(expense.amount).toFixed(2)}
                         </div>
 
-                        <div className="text-gray-600 dark:text-[#A1A1AA] font-medium">
+                        <div className="text-gray-600 font-medium">
                             Date
                         </div>
-                        <div className="col-span-2 text-gray-900 dark:text-[#FAFAFA]">
+                        <div className="col-span-2 text-gray-900">
                             {displayDate}
                         </div>
 
-                        <div className="text-gray-600 dark:text-[#A1A1AA] font-medium">
+                        <div className="text-gray-600 font-medium">
                             Category
                         </div>
                         <div className="col-span-2">
                             <span
-                                className="inline-block px-2 py-1 rounded text-gray-900 dark:text-[#FAFAFA]"
+                                className="inline-block px-2 py-1 rounded text-gray-900"
                                 style={{
                                     background:
                                         expense.category_color || "#F3F4F6",
@@ -111,66 +111,66 @@ export default function ViewExpenseModal({
                             </span>
                         </div>
 
-                        <div className="text-gray-600 dark:text-[#A1A1AA] font-medium">
+                        <div className="text-gray-600 font-medium">
                             Payment Method
                         </div>
                         <div className="col-span-2">
-                            <span className="inline-block px-2 py-1 rounded bg-gray-100 dark:bg-[#27272A] text-gray-700 dark:text-[#A1A1AA] uppercase text-xs">
+                            <span className="inline-block px-2 py-1 rounded bg-gray-100 text-gray-700 uppercase text-xs">
                                 {expense.payment_method}
                             </span>
                         </div>
 
-                        <div className="text-gray-600 dark:text-[#A1A1AA] font-medium">
+                        <div className="text-gray-600 font-medium">
                             Description
                         </div>
-                        <div className="col-span-2 text-gray-900 dark:text-[#FAFAFA] whitespace-pre-wrap">
+                        <div className="col-span-2 text-gray-900 whitespace-pre-wrap">
                             {expense.description}
                         </div>
 
-                        <div className="text-gray-600 dark:text-[#A1A1AA] font-medium">
+                        <div className="text-gray-600 font-medium">
                             Vendor
                         </div>
-                        <div className="col-span-2 text-gray-900 dark:text-[#FAFAFA]">
+                        <div className="col-span-2 text-gray-900">
                             {expense.vendor_name || "-"}
                         </div>
 
-                        <div className="text-gray-600 dark:text-[#A1A1AA] font-medium">
+                        <div className="text-gray-600 font-medium">
                             Receipt #
                         </div>
-                        <div className="col-span-2 text-gray-900 dark:text-[#FAFAFA]">
+                        <div className="col-span-2 text-gray-900">
                             {expense.receipt_number || "-"}
                         </div>
 
-                        <div className="text-gray-600 dark:text-[#A1A1AA] font-medium">
+                        <div className="text-gray-600 font-medium">
                             Notes
                         </div>
-                        <div className="col-span-2 text-gray-900 dark:text-[#FAFAFA] whitespace-pre-wrap">
+                        <div className="col-span-2 text-gray-900 whitespace-pre-wrap">
                             {expense.notes || "-"}
                         </div>
 
-                        <div className="col-span-3 border-t border-gray-200 dark:border-[#3F3F46] my-2"></div>
+                        <div className="col-span-3 border-t border-gray-200 my-2"></div>
 
-                        <div className="text-gray-600 dark:text-[#A1A1AA] font-medium">
+                        <div className="text-gray-600 font-medium">
                             Created
                         </div>
-                        <div className="col-span-2 text-gray-700 dark:text-[#A1A1AA] text-xs">
+                        <div className="col-span-2 text-gray-700 text-xs">
                             {created}
                         </div>
 
-                        <div className="text-gray-600 dark:text-[#A1A1AA] font-medium">
+                        <div className="text-gray-600 font-medium">
                             Updated
                         </div>
-                        <div className="col-span-2 text-gray-700 dark:text-[#A1A1AA] text-xs">
+                        <div className="col-span-2 text-gray-700 text-xs">
                             {updated}
                         </div>
                     </div>
                 </div>
 
-                <div className="flex items-center justify-end gap-2 p-4 border-t border-gray-200 dark:border-[#3F3F46] bg-gray-50 dark:bg-[#27272A] sticky bottom-0">
+                <div className="flex items-center justify-end gap-2 p-4 border-t border-gray-200 bg-gray-50 sticky bottom-0">
                     <button
                         type="button"
                         onClick={onClose}
-                        className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-[#A1A1AA] bg-white dark:bg-[#18181B] border border-gray-300 dark:border-[#3F3F46] rounded-lg hover:bg-gray-50 dark:hover:bg-[#27272A] transition-colors"
+                        className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
                     >
                         Close
                     </button>

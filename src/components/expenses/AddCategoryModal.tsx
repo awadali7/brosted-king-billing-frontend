@@ -132,20 +132,20 @@ export default function AddCategoryModal({
                 className="absolute inset-0 bg-black/50 backdrop-blur-sm"
                 onClick={onClose}
             />
-            <div className="relative bg-white dark:bg-[#18181B] rounded-xl shadow-xl w-full max-w-md mx-4 max-h-[90vh] flex flex-col">
+            <div className="relative bg-white rounded-xl shadow-xl w-full max-w-md mx-4 max-h-[90vh] flex flex-col">
                 {/* Header */}
-                <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-[#3F3F46]">
+                <div className="flex items-center justify-between p-4 border-b border-gray-200">
                     <div className="flex items-center gap-2">
                         <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#eb1700] to-[#c41400] flex items-center justify-center">
                             <Tag className="w-4 h-4 text-white" />
                         </div>
-                        <h2 className="text-lg font-semibold text-gray-900 dark:text-[#FAFAFA]">
+                        <h2 className="text-lg font-semibold text-gray-900">
                             Add Expense Category
                         </h2>
                     </div>
                     <button
                         onClick={onClose}
-                        className="p-1.5 rounded-lg text-gray-400 hover:text-gray-600 dark:hover:text-[#FAFAFA] hover:bg-gray-100 dark:hover:bg-[#27272A] transition-colors"
+                        className="p-1.5 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors"
                     >
                         <X className="w-4 h-4" />
                     </button>
@@ -157,7 +157,7 @@ export default function AddCategoryModal({
                     className="modal-scroll flex-1 p-4 space-y-4"
                 >
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1">
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
                             Name *
                         </label>
                         <input
@@ -168,9 +168,9 @@ export default function AddCategoryModal({
                             placeholder="Utilities"
                             className={`w-full px-3 py-2 rounded-lg border transition-all focus:outline-none ${
                                 errors.name
-                                    ? "border-red-300 dark:border-red-600"
-                                    : "border-gray-300 dark:border-[#3F3F46]"
-                            } bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA]`}
+                                    ? "border-red-300"
+                                    : "border-gray-300"
+                            } bg-white text-gray-900`}
                         />
                         {errors.name && (
                             <p className="mt-1 text-sm text-red-500">
@@ -180,7 +180,7 @@ export default function AddCategoryModal({
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1">
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
                             Description
                         </label>
                         <textarea
@@ -189,7 +189,7 @@ export default function AddCategoryModal({
                             onChange={handleInputChange}
                             placeholder="Electricity, water, gas bills"
                             rows={2}
-                            className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-[#3F3F46] bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA] placeholder-gray-500 dark:placeholder-[#A1A1AA] focus:outline-none resize-none"
+                            className="w-full px-3 py-2 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:outline-none resize-none"
                         />
                     </div>
 
@@ -205,19 +205,19 @@ export default function AddCategoryModal({
                                     is_active: e.target.checked,
                                 }))
                             }
-                            className="h-4 w-4 rounded border-gray-300 dark:border-[#3F3F46] text-[#eb1700] focus:ring-[#eb1700]"
+                            className="h-4 w-4 rounded border-gray-300 text-[#eb1700] focus:ring-[#eb1700]"
                         />
                         <label
                             htmlFor="is_active"
-                            className="text-sm text-gray-700 dark:text-[#A1A1AA]"
+                            className="text-sm text-gray-700"
                         >
                             Active
                         </label>
                     </div>
 
                     {errors.submit && (
-                        <div className="p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900/30 rounded-lg">
-                            <p className="text-sm text-red-600 dark:text-red-400">
+                        <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+                            <p className="text-sm text-red-600">
                                 {errors.submit}
                             </p>
                         </div>
@@ -225,12 +225,12 @@ export default function AddCategoryModal({
                 </form>
 
                 {/* Footer */}
-                <div className="flex items-center justify-end gap-2 p-4 border-t border-gray-200 dark:border-[#3F3F46] bg-gray-50 dark:bg-[#27272A]">
+                <div className="flex items-center justify-end gap-2 p-4 border-t border-gray-200 bg-gray-50">
                     <button
                         type="button"
                         onClick={onClose}
                         disabled={loading}
-                        className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-[#A1A1AA] bg-white dark:bg-[#18181B] border border-gray-300 dark:border-[#3F3F46] rounded-lg hover:bg-gray-50 dark:hover:bg-[#27272A] transition-colors disabled:opacity-50"
+                        className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50"
                     >
                         Cancel
                     </button>
@@ -238,7 +238,7 @@ export default function AddCategoryModal({
                         type="submit"
                         onClick={handleSubmit}
                         disabled={loading}
-                        className="px-4 py-2 text-sm font-medium text-white bg-[#eb1700] hover:bg-[#c41400] disabled:bg-gray-400 disabled:cursor-not-allowed rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#eb1700]/25 focus:outline-none focus:ring-2 focus:ring-[#eb1700] focus:ring-offset-2 dark:focus:ring-offset-[#18181B]"
+                        className="px-4 py-2 text-sm font-medium text-white bg-[#eb1700] hover:bg-[#c41400] disabled:bg-gray-400 disabled:cursor-not-allowed rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#eb1700]/25 focus:outline-none focus:ring-2 focus:ring-[#eb1700] focus:ring-offset-2"
                     >
                         {loading ? "Saving..." : "Save Category"}
                     </button>

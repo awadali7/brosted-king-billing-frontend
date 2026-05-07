@@ -261,14 +261,14 @@ export default function AddComboModal({
             />
 
             {/* Modal */}
-            <div className="relative bg-white dark:bg-[#18181B] rounded-xl shadow-xl w-full max-w-3xl mx-4 max-h-[90vh] flex flex-col">
+            <div className="relative bg-white rounded-xl shadow-xl w-full max-w-3xl mx-4 max-h-[90vh] flex flex-col">
                 {/* Header */}
-                <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-[#3F3F46]">
+                <div className="flex items-center justify-between p-4 border-b border-gray-200">
                     <div className="flex items-center gap-2">
                         <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#eb1700] to-[#c41400] flex items-center justify-center">
                             <Package className="w-4 h-4 text-white" />
                         </div>
-                        <h2 className="text-lg font-semibold text-gray-900 dark:text-[#FAFAFA]">
+                        <h2 className="text-lg font-semibold text-gray-900">
                             {editCombo
                                 ? "Edit Combo Deal"
                                 : "Create Combo Deal"}
@@ -276,7 +276,7 @@ export default function AddComboModal({
                     </div>
                     <button
                         onClick={onClose}
-                        className="p-1.5 rounded-lg text-gray-400 hover:text-gray-600 dark:hover:text-[#FAFAFA] hover:bg-gray-100 dark:hover:bg-[#27272A] transition-colors"
+                        className="p-1.5 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors"
                     >
                         <X className="w-4 h-4" />
                     </button>
@@ -289,7 +289,7 @@ export default function AddComboModal({
                 >
                     {/* Combo Name */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1">
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
                             Combo Name *
                         </label>
                         <input
@@ -300,9 +300,9 @@ export default function AddComboModal({
                             placeholder="e.g., Family Meal Deal"
                             className={`w-full px-3 py-2 rounded-lg border transition-all focus:outline-none ${
                                 errors.name
-                                    ? "border-red-300 dark:border-red-600"
-                                    : "border-gray-300 dark:border-[#3F3F46]"
-                            } bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA] placeholder-gray-500 dark:placeholder-[#A1A1AA]`}
+                                    ? "border-red-300"
+                                    : "border-gray-300"
+                            } bg-white text-gray-900 placeholder-gray-500`}
                         />
                         {errors.name && (
                             <p className="mt-1 text-sm text-red-500">
@@ -313,7 +313,7 @@ export default function AddComboModal({
 
                     {/* Description */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1">
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
                             Description
                         </label>
                         <textarea
@@ -322,14 +322,14 @@ export default function AddComboModal({
                             onChange={handleInputChange}
                             placeholder="Perfect combo for 4 people"
                             rows={2}
-                            className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-[#3F3F46] bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA] placeholder-gray-500 dark:placeholder-[#A1A1AA] focus:outline-none resize-none"
+                            className="w-full px-3 py-2 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:outline-none resize-none"
                         />
                     </div>
 
                     {/* Items Selection */}
                     <div>
                         <div className="flex items-center justify-between mb-2">
-                            <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA]">
+                            <label className="block text-sm font-medium text-gray-700">
                                 Items in Combo *
                             </label>
                             <button
@@ -343,7 +343,7 @@ export default function AddComboModal({
                         </div>
 
                         {loadingItems ? (
-                            <div className="text-center py-4 text-gray-500 dark:text-[#A1A1AA]">
+                            <div className="text-center py-4 text-gray-500">
                                 Loading items...
                             </div>
                         ) : (
@@ -355,7 +355,7 @@ export default function AddComboModal({
                                     return (
                                         <div
                                             key={index}
-                                            className="flex gap-2 items-start p-3 bg-gray-50 dark:bg-[#0F0F0F] rounded-lg"
+                                            className="flex gap-2 items-start p-3 bg-gray-50 rounded-lg"
                                         >
                                             {/* Item Select */}
                                             <div className="flex-1">
@@ -370,7 +370,7 @@ export default function AddComboModal({
                                                             )
                                                         )
                                                     }
-                                                    className="w-full px-3 py-2 text-sm rounded-lg border border-gray-300 dark:border-[#3F3F46] bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA] focus:outline-none"
+                                                    className="w-full px-3 py-2 text-sm rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none"
                                                 >
                                                     <option value={0}>
                                                         Select an item...
@@ -390,7 +390,7 @@ export default function AddComboModal({
                                                     )}
                                                 </select>
                                                 {selectedItem && (
-                                                    <div className="mt-1 text-xs text-gray-500 dark:text-[#A1A1AA]">
+                                                    <div className="mt-1 text-xs text-gray-500">
                                                         {
                                                             selectedItem.category_name
                                                         }{" "}
@@ -417,7 +417,7 @@ export default function AddComboModal({
                                                             ) || 1
                                                         )
                                                     }
-                                                    className="w-full px-3 py-2 text-sm rounded-lg border border-gray-300 dark:border-[#3F3F46] bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA] focus:outline-none"
+                                                    className="w-full px-3 py-2 text-sm rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none"
                                                     placeholder="Qty"
                                                 />
                                             </div>
@@ -428,7 +428,7 @@ export default function AddComboModal({
                                                 onClick={() =>
                                                     handleRemoveItem(index)
                                                 }
-                                                className="p-2 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                                                className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                                                 title="Remove item"
                                             >
                                                 <Trash2 className="w-4 h-4" />
@@ -438,7 +438,7 @@ export default function AddComboModal({
                                 })}
 
                                 {comboItems.length === 0 && (
-                                    <div className="text-center py-8 text-gray-500 dark:text-[#A1A1AA]">
+                                    <div className="text-center py-8 text-gray-500">
                                         No items added. Click "Add Item" to
                                         start
                                     </div>
@@ -457,7 +457,7 @@ export default function AddComboModal({
                     <div className="grid grid-cols-2 gap-4">
                         {/* Make Price */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1">
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
                                 Make Price (Cost)
                             </label>
                             <input
@@ -468,16 +468,16 @@ export default function AddComboModal({
                                 placeholder="0.00"
                                 step="0.01"
                                 min="0"
-                                className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-[#3F3F46] bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA] placeholder-gray-500 dark:placeholder-[#A1A1AA] focus:outline-none"
+                                className="w-full px-3 py-2 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:outline-none"
                             />
-                            <p className="mt-1 text-xs text-gray-500 dark:text-[#A1A1AA]">
+                            <p className="mt-1 text-xs text-gray-500">
                                 Auto calculated: ₹{totalMakePrice.toFixed(2)}
                             </p>
                         </div>
 
                         {/* Selling Price */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1">
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
                                 Selling Price *
                             </label>
                             <input
@@ -490,9 +490,9 @@ export default function AddComboModal({
                                 min="0"
                                 className={`w-full px-3 py-2 rounded-lg border transition-all focus:outline-none ${
                                     errors.price
-                                        ? "border-red-300 dark:border-red-600"
-                                        : "border-gray-300 dark:border-[#3F3F46]"
-                                } bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA] placeholder-gray-500 dark:placeholder-[#A1A1AA]`}
+                                        ? "border-red-300"
+                                        : "border-gray-300"
+                                } bg-white text-gray-900 placeholder-gray-500`}
                             />
                             {errors.price && (
                                 <p className="mt-1 text-sm text-red-500">
@@ -504,33 +504,33 @@ export default function AddComboModal({
 
                     {/* Profit Display */}
                     {comboItems.length > 0 && formData.price && (
-                        <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/10 dark:to-emerald-900/10 rounded-lg p-4 border border-green-200 dark:border-green-900/30">
+                        <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-4 border border-green-200">
                             <div className="grid grid-cols-3 gap-4 text-sm">
                                 <div>
-                                    <div className="text-gray-600 dark:text-[#A1A1AA] text-xs mb-1">
+                                    <div className="text-gray-600 text-xs mb-1">
                                         Total Make Price
                                     </div>
-                                    <div className="font-semibold text-gray-900 dark:text-[#FAFAFA]">
+                                    <div className="font-semibold text-gray-900">
                                         ₹{totalMakePrice.toFixed(2)}
                                     </div>
                                 </div>
                                 <div>
-                                    <div className="text-gray-600 dark:text-[#A1A1AA] text-xs mb-1">
+                                    <div className="text-gray-600 text-xs mb-1">
                                         Regular Price
                                     </div>
-                                    <div className="font-semibold text-gray-500 dark:text-[#A1A1AA] line-through">
+                                    <div className="font-semibold text-gray-500 line-through">
                                         ₹{totalRegularPrice.toFixed(2)}
                                     </div>
                                 </div>
                                 <div>
-                                    <div className="text-gray-600 dark:text-[#A1A1AA] text-xs mb-1">
+                                    <div className="text-gray-600 text-xs mb-1">
                                         Profit
                                     </div>
                                     <div
                                         className={`font-bold ${
                                             profit >= 0
-                                                ? "text-green-600 dark:text-green-400"
-                                                : "text-red-600 dark:text-red-400"
+                                                ? "text-green-600"
+                                                : "text-red-600"
                                         }`}
                                     >
                                         ₹{profit.toFixed(2)} (
@@ -544,7 +544,7 @@ export default function AddComboModal({
                     {/* Image URL and Availability */}
                     <div className="grid grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1">
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
                                 Image URL (Optional)
                             </label>
                             <input
@@ -553,13 +553,13 @@ export default function AddComboModal({
                                 value={formData.image_url}
                                 onChange={handleInputChange}
                                 placeholder="https://example.com/image.jpg"
-                                className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-[#3F3F46] bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA] placeholder-gray-500 dark:placeholder-[#A1A1AA] focus:outline-none"
+                                className="w-full px-3 py-2 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:outline-none"
                             />
                         </div>
 
                         {/* Availability Toggle */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1">
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
                                 Availability
                             </label>
                             <div className="flex items-center h-10">
@@ -574,7 +574,7 @@ export default function AddComboModal({
                                     className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
                                         formData.is_available
                                             ? "bg-green-600"
-                                            : "bg-gray-300 dark:bg-gray-600"
+                                            : "bg-gray-300"
                                     }`}
                                 >
                                     <span
@@ -585,7 +585,7 @@ export default function AddComboModal({
                                         }`}
                                     />
                                 </button>
-                                <span className="ml-3 text-sm text-gray-700 dark:text-[#FAFAFA]">
+                                <span className="ml-3 text-sm text-gray-700">
                                     {formData.is_available
                                         ? "Available"
                                         : "Unavailable"}
@@ -596,8 +596,8 @@ export default function AddComboModal({
 
                     {/* Error Message */}
                     {errors.submit && (
-                        <div className="p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900/30 rounded-lg">
-                            <p className="text-sm text-red-600 dark:text-red-400">
+                        <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+                            <p className="text-sm text-red-600">
                                 {errors.submit}
                             </p>
                         </div>
@@ -605,12 +605,12 @@ export default function AddComboModal({
                 </form>
 
                 {/* Footer */}
-                <div className="flex items-center justify-end gap-2 p-4 border-t border-gray-200 dark:border-[#3F3F46] bg-gray-50 dark:bg-[#27272A]">
+                <div className="flex items-center justify-end gap-2 p-4 border-t border-gray-200 bg-gray-50">
                     <button
                         type="button"
                         onClick={onClose}
                         disabled={loading}
-                        className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-[#A1A1AA] bg-white dark:bg-[#18181B] border border-gray-300 dark:border-[#3F3F46] rounded-lg hover:bg-gray-50 dark:hover:bg-[#27272A] transition-colors disabled:opacity-50"
+                        className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50"
                     >
                         Cancel
                     </button>
@@ -618,7 +618,7 @@ export default function AddComboModal({
                         type="submit"
                         onClick={handleSubmit}
                         disabled={loading}
-                        className="px-4 py-2 text-sm font-medium text-white bg-[#eb1700] hover:bg-[#c41400] disabled:bg-gray-400 disabled:cursor-not-allowed rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#eb1700]/25 focus:outline-none focus:ring-2 focus:ring-[#eb1700] focus:ring-offset-2 dark:focus:ring-offset-[#18181B]"
+                        className="px-4 py-2 text-sm font-medium text-white bg-[#eb1700] hover:bg-[#c41400] disabled:bg-gray-400 disabled:cursor-not-allowed rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#eb1700]/25 focus:outline-none focus:ring-2 focus:ring-[#eb1700] focus:ring-offset-2"
                     >
                         {loading ? (
                             <div className="flex items-center gap-2">

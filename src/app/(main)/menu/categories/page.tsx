@@ -110,10 +110,10 @@ export default function MenuCategoriesPage() {
 
     if (isLoading) {
         return (
-            <div className="min-h-screen bg-white dark:bg-[#0F0F0F] flex items-center justify-center">
+            <div className="min-h-screen bg-white flex items-center justify-center">
                 <div className="text-center">
                     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#eb1700] mx-auto mb-4"></div>
-                    <p className="text-gray-600 dark:text-[#A1A1AA]">
+                    <p className="text-gray-600">
                         Loading menu categories...
                     </p>
                 </div>
@@ -123,13 +123,13 @@ export default function MenuCategoriesPage() {
 
     if (error) {
         return (
-            <div className="min-h-screen bg-white dark:bg-[#0F0F0F] flex items-center justify-center">
+            <div className="min-h-screen bg-white flex items-center justify-center">
                 <div className="text-center">
                     <div className="text-red-500 text-6xl mb-4">⚠️</div>
-                    <h2 className="text-2xl font-bold text-gray-900 dark:text-[#FAFAFA] mb-2">
+                    <h2 className="text-2xl font-bold text-gray-900 mb-2">
                         Error Loading Categories
                     </h2>
-                    <p className="text-gray-600 dark:text-[#A1A1AA] mb-4">
+                    <p className="text-gray-600 mb-4">
                         {error}
                     </p>
                     <button
@@ -145,16 +145,16 @@ export default function MenuCategoriesPage() {
 
     return (
         <>
-            <div className="h-screen bg-gray-50 dark:bg-[#0F0F0F] overflow-y-auto scroll-smooth">
+            <div className="h-screen bg-gray-50 overflow-y-auto scroll-smooth">
                 <div className="max-w-6xl mx-auto p-4 sm:p-6 space-y-4">
                     {/* Header actions - mirrors Expanse style */}
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sticky top-0 bg-gray-50 dark:bg-[#0F0F0F] z-10 pb-4">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sticky top-0 bg-gray-50 z-10 pb-4">
                         <div className="flex items-center gap-2">
                             <div className="relative">
                                 <input
                                     type="text"
                                     placeholder="Search categories..."
-                                    className="pl-3 pr-4 py-2 text-sm border border-gray-300 dark:border-[#3F3F46] rounded-lg bg-white dark:bg-[#18181B] text-gray-900 dark:text-[#FAFAFA] focus:ring-2 focus:ring-[#eb1700] focus:border-transparent transition-colors"
+                                    className="pl-3 pr-4 py-2 text-sm border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-[#eb1700] focus:border-transparent transition-colors"
                                     onChange={(e) => {
                                         const q = e.target.value.toLowerCase();
                                         if (!q) {
@@ -181,7 +181,7 @@ export default function MenuCategoriesPage() {
                         <div className="flex items-center gap-2">
                             <button
                                 onClick={fetchCategories}
-                                className="flex items-center gap-2 border border-gray-300 dark:border-[#3F3F46] text-gray-700 dark:text-[#A1A1AA] px-4 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-gray-100 dark:hover:bg-[#27272A]"
+                                className="flex items-center gap-2 border border-gray-300 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-gray-100"
                                 title="Refresh"
                             >
                                 <RefreshCcw className="w-4 h-4" />
@@ -202,19 +202,19 @@ export default function MenuCategoriesPage() {
                     </div>
 
                     {/* Categories table - styled like Expanse */}
-                    <div className="bg-white dark:bg-[#18181B] rounded-lg border border-gray-200 dark:border-[#3F3F46] p-5">
+                    <div className="bg-white rounded-lg border border-gray-200 p-5">
                         <div className="flex items-center justify-between mb-4">
-                            <h3 className="text-sm font-semibold text-gray-900 dark:text-[#FAFAFA]">
+                            <h3 className="text-sm font-semibold text-gray-900">
                                 Menu Categories
                             </h3>
-                            <span className="text-xs text-gray-500 dark:text-[#71717A]">
+                            <span className="text-xs text-gray-500">
                                 {categories.length} total
                             </span>
                         </div>
                         <div className="overflow-x-auto">
                             <table className="min-w-full text-sm">
                                 <thead>
-                                    <tr className="text-left text-gray-600 dark:text-[#A1A1AA] border-b border-gray-200 dark:border-[#3F3F46]">
+                                    <tr className="text-left text-gray-600 border-b border-gray-200">
                                         <th className="py-2 pr-4">ID</th>
                                         <th className="py-2 pr-4">Name</th>
                                         <th className="py-2 pr-4">
@@ -229,7 +229,7 @@ export default function MenuCategoriesPage() {
                                         <tr>
                                             <td
                                                 colSpan={4}
-                                                className="py-6 text-center text-gray-500 dark:text-[#71717A]"
+                                                className="py-6 text-center text-gray-500"
                                             >
                                                 No categories found
                                             </td>
@@ -251,18 +251,18 @@ export default function MenuCategoriesPage() {
                                             return (
                                                 <tr
                                                     key={c.id}
-                                                    className="border-b border-gray-100 dark:border-[#27272A]"
+                                                    className="border-b border-gray-100"
                                                 >
-                                                    <td className="py-3 pr-4 text-gray-900 dark:text-[#FAFAFA]">
+                                                    <td className="py-3 pr-4 text-gray-900">
                                                         {c.id}
                                                     </td>
-                                                    <td className="py-3 pr-4 font-semibold text-gray-900 dark:text-[#FAFAFA]">
+                                                    <td className="py-3 pr-4 font-semibold text-gray-900">
                                                         {c.name}
                                                     </td>
-                                                    <td className="py-3 pr-4 text-gray-700 dark:text-[#A1A1AA]">
+                                                    <td className="py-3 pr-4 text-gray-700">
                                                         {c.description || "-"}
                                                     </td>
-                                                    <td className="py-3 pr-4 text-gray-700 dark:text-[#A1A1AA]">
+                                                    <td className="py-3 pr-4 text-gray-700">
                                                         {created}
                                                     </td>
                                                     <td className="py-3 pr-4">
@@ -273,7 +273,7 @@ export default function MenuCategoriesPage() {
                                                                         c
                                                                     )
                                                                 }
-                                                                className="px-2 py-1 rounded border border-gray-300 dark:border-[#3F3F46] text-gray-700 dark:text-[#A1A1AA] hover:bg-gray-100 dark:hover:bg-[#27272A] transition-colors"
+                                                                className="px-2 py-1 rounded border border-gray-300 text-gray-700 hover:bg-gray-100 transition-colors"
                                                                 title="View"
                                                             >
                                                                 <Eye className="w-4 h-4" />
@@ -284,7 +284,7 @@ export default function MenuCategoriesPage() {
                                                                         c
                                                                     )
                                                                 }
-                                                                className="px-2 py-1 rounded border border-gray-300 dark:border-[#3F3F46] text-gray-700 dark:text-[#A1A1AA] hover:bg-gray-100 dark:hover:bg-[#27272A] transition-colors"
+                                                                className="px-2 py-1 rounded border border-gray-300 text-gray-700 hover:bg-gray-100 transition-colors"
                                                                 title="Edit"
                                                             >
                                                                 <Pencil className="w-4 h-4" />
@@ -295,7 +295,7 @@ export default function MenuCategoriesPage() {
                                                                         c
                                                                     )
                                                                 }
-                                                                className="px-2 py-1 rounded border border-red-300 text-red-600 hover:bg-red-50 dark:hover:bg-[#3F1D1D] transition-colors"
+                                                                className="px-2 py-1 rounded border border-red-300 text-red-600 hover:bg-red-50 transition-colors"
                                                                 title="Delete"
                                                             >
                                                                 <Trash2 className="w-4 h-4" />
@@ -316,14 +316,14 @@ export default function MenuCategoriesPage() {
                                 onClick={() => canPrev && setPage((p) => p - 1)}
                                 className={`flex items-center gap-2 px-3 py-2 text-sm rounded-lg border transition-colors ${
                                     canPrev
-                                        ? "border-gray-300 dark:border-[#3F3F46] text-gray-700 dark:text-[#A1A1AA] hover:bg-gray-100 dark:hover:bg-[#27272A]"
-                                        : "border-gray-200 dark:border-[#27272A] text-gray-400 cursor-not-allowed"
+                                        ? "border-gray-300 text-gray-700 hover:bg-gray-100"
+                                        : "border-gray-200 text-gray-400 cursor-not-allowed"
                                 }`}
                             >
                                 <ChevronLeft className="w-4 h-4" />
                                 Previous
                             </button>
-                            <div className="text-xs text-gray-500 dark:text-[#71717A]">
+                            <div className="text-xs text-gray-500">
                                 Page {page} of {totalPages}
                             </div>
                             <button
@@ -331,8 +331,8 @@ export default function MenuCategoriesPage() {
                                 onClick={() => canNext && setPage((p) => p + 1)}
                                 className={`flex items-center gap-2 px-3 py-2 text-sm rounded-lg border transition-colors ${
                                     canNext
-                                        ? "border-gray-300 dark:border-[#3F3F46] text-gray-700 dark:text-[#A1A1AA] hover:bg-gray-100 dark:hover:bg-[#27272A]"
-                                        : "border-gray-200 dark:border-[#27272A] text-gray-400 cursor-not-allowed"
+                                        ? "border-gray-300 text-gray-700 hover:bg-gray-100"
+                                        : "border-gray-200 text-gray-400 cursor-not-allowed"
                                 }`}
                             >
                                 Next

@@ -42,13 +42,13 @@ export default function Header({ user, onLogout }: HeaderProps) {
     const currentPageName = pageDisplayNames[activePage] || "Dashboard";
 
     return (
-        <header className="h-16 bg-white dark:bg-[#0F0F0F] border-b border-gray-200 dark:border-[#3F3F46] px-6">
+        <header className="h-16 bg-white border-b border-gray-200 px-6">
             <div className="h-full flex justify-between items-center">
                 <div>
-                    <h1 className="text-2xl font-bold text-gray-900 dark:text-[#FAFAFA]">
+                    <h1 className="text-2xl font-bold text-gray-900">
                         {currentPageName}
                     </h1>
-                    <p className="text-sm text-gray-500 dark:text-[#A1A1AA] mt-1">
+                    <p className="text-sm text-gray-500 mt-1">
                         {activePage === "dashboard" &&
                             "Overview of your restaurant"}
                         {activePage === "pos" &&
@@ -85,7 +85,7 @@ export default function Header({ user, onLogout }: HeaderProps) {
                     {/* Notifications */}
                     <button
                         aria-label="Notifications"
-                        className="p-2 rounded-lg text-gray-500 hover:text-gray-700 dark:text-[#A1A1AA] dark:hover:text-white hover:bg-gray-100 dark:hover:bg-[#27272A] transition-colors"
+                        className="p-2 rounded-lg text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors"
                     >
                         <svg
                             className="w-6 h-6"
@@ -114,10 +114,10 @@ export default function Header({ user, onLogout }: HeaderProps) {
                             </span>
                         </div>
                         <div className="text-right">
-                            <p className="text-sm font-medium text-gray-900 dark:text-[#FAFAFA]">
+                            <p className="text-sm font-medium text-gray-900">
                                 {user?.full_name || user?.username}
                             </p>
-                            <p className="text-xs text-gray-500 dark:text-[#A1A1AA] capitalize">
+                            <p className="text-xs text-gray-500 capitalize">
                                 {user?.role}
                             </p>
                         </div>

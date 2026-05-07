@@ -132,12 +132,12 @@ export default function ProfitLossReport() {
 
     return (
         <div className="space-y-6">
-            <div className="bg-white dark:bg-[#18181B] rounded-xl border border-gray-200 dark:border-[#3F3F46] p-4 flex items-center justify-between">
+            <div className="bg-white rounded-xl border border-gray-200 p-4 flex items-center justify-between">
                 <div>
-                    <h3 className="text-sm font-medium text-gray-500 dark:text-[#A1A1AA]">
+                    <h3 className="text-sm font-medium text-gray-500">
                         Report Period
                     </h3>
-                    <p className="text-lg font-semibold text-gray-900 dark:text-[#FAFAFA] mt-1">
+                    <p className="text-lg font-semibold text-gray-900 mt-1">
                         {formatDate(data.period.start_date)} -{" "}
                         {formatDate(data.period.end_date)}
                     </p>
@@ -164,7 +164,7 @@ export default function ProfitLossReport() {
                     </button>
                     <button
                         onClick={fetchReport}
-                        className="p-2 text-gray-600 dark:text-[#A1A1AA] hover:text-[#eb1700] transition-colors"
+                        className="p-2 text-gray-600 hover:text-[#eb1700] transition-colors"
                         title="Refresh"
                     >
                         <svg
@@ -248,36 +248,36 @@ export default function ProfitLossReport() {
             />
 
             {/* Daily Averages */}
-            <div className="bg-white dark:bg-[#18181B] rounded-xl border border-gray-200 dark:border-[#3F3F46] p-6">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-[#FAFAFA] mb-4 flex items-center gap-2">
+            <div className="bg-white rounded-xl border border-gray-200 p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                     <span>📅</span>Daily Averages
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                        <p className="text-sm text-gray-600 dark:text-[#A1A1AA] mb-1">
+                    <div className="p-4 bg-blue-50 rounded-lg">
+                        <p className="text-sm text-gray-600 mb-1">
                             Avg Daily Revenue
                         </p>
-                        <p className="text-xl font-bold text-blue-600 dark:text-blue-400">
+                        <p className="text-xl font-bold text-blue-600">
                             {formatCurrency(
                                 data.analysis.averages.daily_revenue
                             )}
                         </p>
                     </div>
-                    <div className="p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
-                        <p className="text-sm text-gray-600 dark:text-[#A1A1AA] mb-1">
+                    <div className="p-4 bg-orange-50 rounded-lg">
+                        <p className="text-sm text-gray-600 mb-1">
                             Avg Daily Expenses
                         </p>
-                        <p className="text-xl font-bold text-orange-600 dark:text-orange-400">
+                        <p className="text-xl font-bold text-orange-600">
                             {formatCurrency(
                                 data.analysis.averages.daily_expenses
                             )}
                         </p>
                     </div>
-                    <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                        <p className="text-sm text-gray-600 dark:text-[#A1A1AA] mb-1">
+                    <div className="p-4 bg-green-50 rounded-lg">
+                        <p className="text-sm text-gray-600 mb-1">
                             Avg Daily Profit
                         </p>
-                        <p className="text-xl font-bold text-green-600 dark:text-green-400">
+                        <p className="text-xl font-bold text-green-600">
                             {formatCurrency(
                                 data.analysis.averages.daily_profit
                             )}

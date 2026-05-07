@@ -143,15 +143,15 @@ export default function SettingsPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-[#0F0F0F]">
+        <div className="min-h-screen bg-gray-50">
             {/* Header */}
-            <div className="sticky top-0 z-10 bg-gray-50/80 dark:bg-[#0F0F0F]/80 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 dark:supports-[backdrop-filter]:bg-[#0F0F0F]/60 border-b border-gray-200 dark:border-[#3A3A3C]">
+            <div className="sticky top-0 z-10 bg-gray-50/80 backdrop-blur supports-[backdrop-filter]:bg-gray-50/60 border-b border-gray-200">
                 <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-3">
                     <div>
-                        <h1 className="text-base font-semibold text-gray-900 dark:text-[#FAFAFA]">
+                        <h1 className="text-base font-semibold text-gray-900">
                             Settings
                         </h1>
-                        <p className="text-xs text-gray-600 dark:text-[#A1A1AA]">
+                        <p className="text-xs text-gray-600">
                             Manage your restaurant, billing and email
                             preferences
                         </p>
@@ -160,7 +160,7 @@ export default function SettingsPage() {
                         {isEditing ? (
                             <>
                                 <button
-                                    className="px-3 py-1.5 text-sm border border-gray-300 dark:border-[#3A3A3C] text-gray-700 dark:text-[#A1A1AA] rounded-lg hover:bg-gray-100 dark:hover:bg-[#27272A] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                    className="px-3 py-1.5 text-sm border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                                     onClick={handleEditToggle}
                                     disabled={saving}
                                 >
@@ -231,9 +231,9 @@ export default function SettingsPage() {
                 <div className="max-w-7xl mx-auto px-6 py-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
                         {/* Restaurant Information */}
-                        <div className="bg-white dark:bg-[#18181B] rounded-xl border border-gray-200 dark:border-[#3A3A3C] shadow-sm">
-                            <div className="px-5 py-4 border-b border-gray-200 dark:border-[#3A3A3C]">
-                                <h3 className="text-sm font-semibold text-gray-900 dark:text-[#FAFAFA] mb-0">
+                        <div className="bg-white rounded-xl border border-gray-200 shadow-sm">
+                            <div className="px-5 py-4 border-b border-gray-200">
+                                <h3 className="text-sm font-semibold text-gray-900 mb-0">
                                     Restaurant Information
                                 </h3>
                             </div>
@@ -248,9 +248,9 @@ export default function SettingsPage() {
                         </div>
 
                         {/* Bill Settings */}
-                        <div className="bg-white dark:bg-[#18181B] rounded-xl border border-gray-200 dark:border-[#3A3A3C] shadow-sm">
-                            <div className="px-5 py-4 border-b border-gray-200 dark:border-[#3A3A3C]">
-                                <h3 className="text-sm font-semibold text-gray-900 dark:text-[#FAFAFA] mb-0">
+                        <div className="bg-white rounded-xl border border-gray-200 shadow-sm">
+                            <div className="px-5 py-4 border-b border-gray-200">
+                                <h3 className="text-sm font-semibold text-gray-900 mb-0">
                                     Bill Settings
                                 </h3>
                             </div>
@@ -265,21 +265,21 @@ export default function SettingsPage() {
                         </div>
 
                         {/* Authentication */}
-                        <div className="bg-white dark:bg-[#18181B] rounded-xl border border-gray-200 dark:border-[#3A3A3C] shadow-sm">
-                            <div className="px-5 py-4 border-b border-gray-200 dark:border-[#3A3A3C]">
-                                <h3 className="text-sm font-semibold text-gray-900 dark:text-[#FAFAFA] mb-0">
+                        <div className="bg-white rounded-xl border border-gray-200 shadow-sm">
+                            <div className="px-5 py-4 border-b border-gray-200">
+                                <h3 className="text-sm font-semibold text-gray-900 mb-0">
                                     Authentication
                                 </h3>
                             </div>
                             <div className="p-5 space-y-4">
                                 {/* SMTP Username */}
                                 <div>
-                                    <label className="block text-xs font-medium text-gray-700 dark:text-[#A1A1AA] mb-2">
+                                    <label className="block text-xs font-medium text-gray-700 mb-2">
                                         SMTP Username
                                     </label>
                                     <input
                                         type="text"
-                                        className="w-full px-3 py-1.5 text-sm bg-white dark:bg-[#2C2C2E] text-gray-900 dark:text-[#FAFAFA] border border-gray-300 dark:border-[#3A3A3C] rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed"
+                                        className="w-full px-3 py-1.5 text-sm bg-white text-gray-900 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed"
                                         value={formValues.smtp_user || ""}
                                         onChange={(e) =>
                                             handleChange(
@@ -290,7 +290,7 @@ export default function SettingsPage() {
                                         placeholder="user@example.com"
                                         disabled={!isEditing}
                                     />
-                                    <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-1 block">
+                                    <small className="text-gray-600 text-xs mt-1 block">
                                         {settingsData.smtp_user?.description ||
                                             ""}
                                     </small>
@@ -298,12 +298,12 @@ export default function SettingsPage() {
 
                                 {/* SMTP Password */}
                                 <div>
-                                    <label className="block text-xs font-medium text-gray-700 dark:text-[#A1A1AA] mb-2">
+                                    <label className="block text-xs font-medium text-gray-700 mb-2">
                                         SMTP Password
                                     </label>
                                     <input
                                         type="password"
-                                        className="w-full px-3 py-1.5 text-sm bg-white dark:bg-[#2C2C2E] text-gray-900 dark:text-[#FAFAFA] border border-gray-300 dark:border-[#3A3A3C] rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed"
+                                        className="w-full px-3 py-1.5 text-sm bg-white text-gray-900 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed"
                                         value={formValues.smtp_password || ""}
                                         onChange={(e) =>
                                             handleChange(
@@ -314,7 +314,7 @@ export default function SettingsPage() {
                                         placeholder="••••••••"
                                         disabled={!isEditing}
                                     />
-                                    <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-1 block">
+                                    <small className="text-gray-600 text-xs mt-1 block">
                                         {settingsData.smtp_password
                                             ?.description || ""}
                                     </small>
@@ -322,12 +322,12 @@ export default function SettingsPage() {
 
                                 {/* SMTP Host */}
                                 <div>
-                                    <label className="block text-xs font-medium text-gray-700 dark:text-[#A1A1AA] mb-2">
+                                    <label className="block text-xs font-medium text-gray-700 mb-2">
                                         SMTP Host
                                     </label>
                                     <input
                                         type="text"
-                                        className="w-full px-3 py-1.5 text-sm bg-white dark:bg-[#2C2C2E] text-gray-900 dark:text-[#FAFAFA] border border-gray-300 dark:border-[#3A3A3C] rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed"
+                                        className="w-full px-3 py-1.5 text-sm bg-white text-gray-900 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed"
                                         value={formValues.smtp_host || ""}
                                         onChange={(e) =>
                                             handleChange(
@@ -338,7 +338,7 @@ export default function SettingsPage() {
                                         placeholder="smtp.gmail.com"
                                         disabled={!isEditing}
                                     />
-                                    <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-1 block">
+                                    <small className="text-gray-600 text-xs mt-1 block">
                                         {settingsData.smtp_host?.description ||
                                             ""}
                                     </small>
@@ -346,12 +346,12 @@ export default function SettingsPage() {
 
                                 {/* SMTP Port */}
                                 <div>
-                                    <label className="block text-xs font-medium text-gray-700 dark:text-[#A1A1AA] mb-2">
+                                    <label className="block text-xs font-medium text-gray-700 mb-2">
                                         SMTP Port
                                     </label>
                                     <input
                                         type="number"
-                                        className="w-full px-3 py-1.5 text-sm bg-white dark:bg-[#2C2C2E] text-gray-900 dark:text-[#FAFAFA] border border-gray-300 dark:border-[#3A3A3C] rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed"
+                                        className="w-full px-3 py-1.5 text-sm bg-white text-gray-900 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed"
                                         value={formValues.smtp_port || 587}
                                         onChange={(e) =>
                                             handleChange(
@@ -364,7 +364,7 @@ export default function SettingsPage() {
                                         max="65535"
                                         disabled={!isEditing}
                                     />
-                                    <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-1 block">
+                                    <small className="text-gray-600 text-xs mt-1 block">
                                         {settingsData.smtp_port?.description ||
                                             ""}
                                     </small>
@@ -373,21 +373,21 @@ export default function SettingsPage() {
                         </div>
 
                         {/* Email Settings */}
-                        <div className="bg-white dark:bg-[#18181B] rounded-xl border border-gray-200 dark:border-[#3A3A3C] shadow-sm">
-                            <div className="px-5 py-4 border-b border-gray-200 dark:border-[#3A3A3C]">
-                                <h3 className="text-sm font-semibold text-gray-900 dark:text-[#FAFAFA] mb-0">
+                        <div className="bg-white rounded-xl border border-gray-200 shadow-sm">
+                            <div className="px-5 py-4 border-b border-gray-200">
+                                <h3 className="text-sm font-semibold text-gray-900 mb-0">
                                     Email Settings
                                 </h3>
                             </div>
                             <div className="p-5 space-y-4">
                                 {/* From Name */}
                                 <div>
-                                    <label className="block text-xs font-medium text-gray-700 dark:text-[#A1A1AA] mb-2">
+                                    <label className="block text-xs font-medium text-gray-700 mb-2">
                                         From Name
                                     </label>
                                     <input
                                         type="text"
-                                        className="w-full px-3 py-1.5 text-sm bg-white dark:bg-[#2C2C2E] text-gray-900 dark:text-[#FAFAFA] border border-gray-300 dark:border-[#3A3A3C] rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed"
+                                        className="w-full px-3 py-1.5 text-sm bg-white text-gray-900 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed"
                                         value={formValues.smtp_from_name || ""}
                                         onChange={(e) =>
                                             handleChange(
@@ -398,7 +398,7 @@ export default function SettingsPage() {
                                         placeholder="My Restaurant"
                                         disabled={!isEditing}
                                     />
-                                    <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-1 block">
+                                    <small className="text-gray-600 text-xs mt-1 block">
                                         {settingsData.smtp_from_name
                                             ?.description || ""}
                                     </small>
@@ -406,12 +406,12 @@ export default function SettingsPage() {
 
                                 {/* From Email */}
                                 <div>
-                                    <label className="block text-xs font-medium text-gray-700 dark:text-[#A1A1AA] mb-2">
+                                    <label className="block text-xs font-medium text-gray-700 mb-2">
                                         From Email
                                     </label>
                                     <input
                                         type="email"
-                                        className="w-full px-3 py-1.5 text-sm bg-white dark:bg-[#2C2C2E] text-gray-900 dark:text-[#FAFAFA] border border-gray-300 dark:border-[#3A3A3C] rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed"
+                                        className="w-full px-3 py-1.5 text-sm bg-white text-gray-900 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed"
                                         value={formValues.smtp_from_email || ""}
                                         onChange={(e) =>
                                             handleChange(
@@ -422,7 +422,7 @@ export default function SettingsPage() {
                                         placeholder="noreply@restaurant.com"
                                         disabled={!isEditing}
                                     />
-                                    <small className="text-gray-600 dark:text-[#A1A1AA] text-xs mt-1 block">
+                                    <small className="text-gray-600 text-xs mt-1 block">
                                         {settingsData.smtp_from_email
                                             ?.description || ""}
                                     </small>

@@ -12,37 +12,8 @@
     --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #0a0a0a;
-        --foreground: #ededed;
-    }
-}
-
 * {
     box-sizing: border-box;
-    overflow: hidden;
-}
-
-/* Allow overflow for scrollable elements */
-.overflow-y-auto,
-.overflow-x-auto,
-.overflow-auto {
-    overflow: visible !important;
-}
-
-.overflow-y-auto {
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-}
-
-.overflow-x-auto {
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-}
-
-.overflow-auto {
-    overflow: auto !important;
 }
 
 /* Allow overflow for Sonner toast elements */
@@ -79,25 +50,6 @@
     background: rgb(156 163 175);
 }
 
-/* Dark mode scrollbar */
-.dark .overflow-y-auto::-webkit-scrollbar-track,
-.dark .overflow-x-auto::-webkit-scrollbar-track,
-.dark .overflow-auto::-webkit-scrollbar-track {
-    background: rgb(39 39 42);
-}
-
-.dark .overflow-y-auto::-webkit-scrollbar-thumb,
-.dark .overflow-x-auto::-webkit-scrollbar-thumb,
-.dark .overflow-auto::-webkit-scrollbar-thumb {
-    background: rgb(82 82 91);
-}
-
-.dark .overflow-y-auto::-webkit-scrollbar-thumb:hover,
-.dark .overflow-x-auto::-webkit-scrollbar-thumb:hover,
-.dark .overflow-auto::-webkit-scrollbar-thumb:hover {
-    background: rgb(113 113 122);
-}
-
 /* Modal scroll override */
 .modal-scroll {
     overflow-y: auto !important;
@@ -120,18 +72,6 @@
 
 .modal-scroll::-webkit-scrollbar-thumb:hover {
     background: rgb(156 163 175);
-}
-
-.dark .modal-scroll::-webkit-scrollbar-track {
-    background: rgb(39 39 42);
-}
-
-.dark .modal-scroll::-webkit-scrollbar-thumb {
-    background: rgb(82 82 91);
-}
-
-.dark .modal-scroll::-webkit-scrollbar-thumb:hover {
-    background: rgb(113 113 122);
 }
 
 /* Sonner Toast Styles */

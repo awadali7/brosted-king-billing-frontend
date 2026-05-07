@@ -21,7 +21,7 @@ export default function MenuGrid({
 }: MenuGridProps) {
     if (allItems.length === 0) {
         return (
-            <div className="text-center py-16 text-gray-400 dark:text-[#A1A1AA] text-sm">
+            <div className="text-center py-16 text-gray-400 text-sm">
                 No menu items found
             </div>
         );
@@ -59,7 +59,7 @@ export default function MenuGrid({
 
                             return (
                                 <div key={category.category_id}>
-                                    <h2 className="text-lg font-medium text-gray-900 dark:text-[#FAFAFA] mb-4">
+                                    <h2 className="text-lg font-medium text-gray-900 mb-4">
                                         {category.category_name}
                                     </h2>
                                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">

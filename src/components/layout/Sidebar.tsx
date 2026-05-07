@@ -70,6 +70,12 @@ const menuSections: MenuSection[] = [
     },
 
     {
+        title: "Billing",
+        items: [
+            { id: "bills", label: "Bills", icon: Receipt },
+        ],
+    },
+    {
         title: "System",
         items: [
             { id: "reports", label: "Reports", icon: BarChart3 },
@@ -172,7 +178,7 @@ export default function Sidebar({
             animate={isCollapsed ? "collapsed" : "expanded"}
             variants={sidebarVariants}
             transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-            className="bg-white dark:bg-[#0F0F0F] border-r border-gray-200 dark:border-[#3F3F46] min-h-screen sticky top-0 flex flex-col overflow-hidden"
+            className="bg-white border-r border-gray-200 min-h-screen sticky top-0 flex flex-col overflow-hidden"
         >
             <div className="flex-1 flex flex-col overflow-hidden">
                 {/* Header */}
@@ -183,7 +189,7 @@ export default function Sidebar({
                             variants={logoVariants}
                             initial="rest"
                             whileHover="hover"
-                            className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#eb1700] to-[#c41400] flex items-center justify-center shadow-lg shadow-red-200 dark:shadow-red-900/30"
+                            className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#eb1700] to-[#c41400] flex items-center justify-center shadow-lg shadow-red-200"
                         >
                             <BookOpen className="w-5 h-5 text-white" />
                         </motion.div>
@@ -196,12 +202,12 @@ export default function Sidebar({
                                     transition={{ duration: 0.2 }}
                                     className="flex-1 min-w-0"
                                 >
-                                    <h1 className="text-lg font-bold text-gray-900 dark:text-[#FAFAFA] truncate">
+                                    <h1 className="text-lg font-bold text-gray-900 truncate">
                                         {restaurantName
                                             ? restaurantName
                                             : "Billing System"}
                                     </h1>
-                                    <p className="text-xs text-gray-500 dark:text-[#A1A1AA]">
+                                    <p className="text-xs text-gray-500">
                                         POS System
                                     </p>
                                 </motion.div>
@@ -220,7 +226,7 @@ export default function Sidebar({
                         >
                             {/* Animated background on hover */}
                             <motion.div
-                                className="absolute inset-0 bg-gradient-to-r from-[#eb1700]/10 to-[#c41400]/10 dark:from-[#eb1700]/20 dark:to-[#c41400]/20 rounded-lg"
+                                className="absolute inset-0 bg-gradient-to-r from-[#eb1700]/10 to-[#c41400]/10 rounded-lg"
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 whileHover={{ opacity: 1, scale: 1 }}
                                 transition={{
@@ -264,7 +270,7 @@ export default function Sidebar({
                                         damping: 10,
                                     }}
                                 >
-                                    <ChevronLeft className="w-4 h-4 text-gray-600 dark:text-[#A1A1AA] group-hover:text-[#eb1700] dark:group-hover:text-[#eb1700] transition-colors duration-200" />
+                                    <ChevronLeft className="w-4 h-4 text-gray-600 group-hover:text-[#eb1700] transition-colors duration-200" />
                                 </motion.div>
                             </motion.div>
                         </motion.button>
@@ -276,7 +282,7 @@ export default function Sidebar({
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    className="flex-1 overflow-y-auto px-3 pb-4 space-y-6 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent"
+                    className="flex-1 overflow-y-auto px-3 pb-4 space-y-6 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent"
                 >
                     {menuSections.map((section, sectionIndex) => (
                         <motion.div
@@ -295,7 +301,7 @@ export default function Sidebar({
                                             duration: 0.2,
                                             delay: sectionIndex * 0.05,
                                         }}
-                                        className="px-3 mb-2 text-xs font-semibold text-gray-500 dark:text-[#71717A] uppercase tracking-wider"
+                                        className="px-3 mb-2 text-xs font-semibold text-gray-500 uppercase tracking-wider"
                                     >
                                         {section.title}
                                     </motion.h3>
@@ -305,7 +311,7 @@ export default function Sidebar({
                                 <motion.div
                                     initial={{ scaleX: 0 }}
                                     animate={{ scaleX: 1 }}
-                                    className="border-t border-gray-200 dark:border-[#3F3F46] my-2"
+                                    className="border-t border-gray-200 my-2"
                                 />
                             )}
 
@@ -328,8 +334,8 @@ export default function Sidebar({
                                             onClick={() => onNavigate(item.id)}
                                             className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left transition-all duration-200 relative overflow-hidden ${
                                                 isActive
-                                                    ? "bg-[#FEF2F2] dark:bg-[#2D1A1A] text-[#eb1700] shadow-sm font-semibold"
-                                                    : "text-gray-700 dark:text-[#A1A1AA] hover:bg-gray-50 dark:hover:bg-[#27272A] hover:text-gray-900 dark:hover:text-[#FAFAFA] hover:shadow-sm"
+                                                    ? "bg-[#FEF2F2] text-[#eb1700] shadow-sm font-semibold"
+                                                    : "text-gray-700 hover:bg-gray-50 hover:text-gray-900 hover:shadow-sm"
                                             }`}
                                             title={
                                                 isCollapsed
@@ -486,7 +492,7 @@ export default function Sidebar({
                                                     scale: 1,
                                                 }}
                                                 transition={{ duration: 0.2 }}
-                                                className="absolute left-full ml-2 px-3 py-2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-sm rounded-lg opacity-0 group-hover:opacity-100 whitespace-nowrap z-50 shadow-lg pointer-events-none"
+                                                className="absolute left-full ml-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 whitespace-nowrap z-50 shadow-lg pointer-events-none"
                                             >
                                                 {item.label}
                                                 {item.badge && (
@@ -501,7 +507,7 @@ export default function Sidebar({
                                                         {item.badge}
                                                     </motion.span>
                                                 )}
-                                                <div className="absolute top-1/2 -left-1 -translate-y-1/2 w-2 h-2 bg-gray-900 dark:bg-gray-100 rotate-45" />
+                                                <div className="absolute top-1/2 -left-1 -translate-y-1/2 w-2 h-2 bg-gray-900 rotate-45" />
                                             </motion.div>
                                         )}
                                     </motion.div>
@@ -516,7 +522,7 @@ export default function Sidebar({
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="p-4 border-t border-gray-200 dark:border-[#3F3F46] bg-gray-50 dark:bg-[#18181B]/50"
+                    className="p-4 border-t border-gray-200 bg-gray-50"
                 >
                     <motion.button
                         variants={buttonVariants}
@@ -524,7 +530,7 @@ export default function Sidebar({
                         whileHover="hover"
                         whileTap="tap"
                         onClick={onLogout}
-                        className="w-full flex items-center gap-3 px-3 py-2.5 text-[#EF4444] hover:bg-red-50 dark:hover:bg-[#7F1D1D] rounded-lg transition-colors hover:text-[#DC2626] dark:hover:text-[#F87171] hover:shadow-sm group"
+                        className="w-full flex items-center gap-3 px-3 py-2.5 text-[#EF4444] hover:bg-red-50 rounded-lg transition-colors hover:text-[#DC2626] hover:shadow-sm group"
                         title={isCollapsed ? "Log out" : undefined}
                     >
                         <motion.div

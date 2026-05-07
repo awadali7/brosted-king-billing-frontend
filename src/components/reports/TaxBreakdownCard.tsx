@@ -14,22 +14,22 @@ export default function TaxBreakdownCard({
     formatCurrency,
 }: TaxBreakdownCardProps) {
     return (
-        <div className="bg-white dark:bg-[#18181B] rounded-xl border border-gray-200 dark:border-[#3F3F46] p-6">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-[#FAFAFA] mb-4 flex items-center gap-2">
+        <div className="bg-white rounded-xl border border-gray-200 p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <span>📊</span>Tax Rate Breakdown
             </h3>
             <div className="space-y-3">
                 {byTaxRate.map((rate, i) => (
                     <div
                         key={i}
-                        className="p-4 bg-gray-50 dark:bg-[#27272A] rounded-lg"
+                        className="p-4 bg-gray-50 rounded-lg"
                     >
                         <div className="flex items-center justify-between mb-3">
                             <div>
-                                <p className="text-sm font-semibold text-gray-900 dark:text-[#FAFAFA]">
+                                <p className="text-sm font-semibold text-gray-900">
                                     {rate.tax_percentage}% Tax Rate
                                 </p>
-                                <p className="text-xs text-gray-500 dark:text-[#A1A1AA]">
+                                <p className="text-xs text-gray-500">
                                     {rate.bill_count} bills
                                 </p>
                             </div>
@@ -39,18 +39,18 @@ export default function TaxBreakdownCard({
                         </div>
                         <div className="grid grid-cols-2 gap-2 text-xs">
                             <div>
-                                <p className="text-gray-500 dark:text-[#A1A1AA]">
+                                <p className="text-gray-500">
                                     Taxable Amount
                                 </p>
-                                <p className="font-semibold text-gray-900 dark:text-[#FAFAFA]">
+                                <p className="font-semibold text-gray-900">
                                     {formatCurrency(rate.taxable_amount)}
                                 </p>
                             </div>
                             <div className="text-right">
-                                <p className="text-gray-500 dark:text-[#A1A1AA]">
+                                <p className="text-gray-500">
                                     With Tax
                                 </p>
-                                <p className="font-semibold text-gray-900 dark:text-[#FAFAFA]">
+                                <p className="font-semibold text-gray-900">
                                     {formatCurrency(rate.total_amount)}
                                 </p>
                             </div>

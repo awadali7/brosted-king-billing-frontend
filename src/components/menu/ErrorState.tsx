@@ -9,7 +9,7 @@ interface ErrorStateProps {
 export default function ErrorState({ error }: ErrorStateProps) {
     return (
         <div className="  mx-auto px-4 py-8">
-            <div className="text-center text-red-500 dark:text-red-400 text-sm">
+            <div className="text-center text-red-500 text-sm">
                 {error}
             </div>
         </div>

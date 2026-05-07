@@ -114,12 +114,12 @@ export default function SalesReport() {
 
     return (
         <div className="space-y-6">
-            <div className="bg-white dark:bg-[#18181B] rounded-xl border border-gray-200 dark:border-[#3F3F46] p-4 flex items-center justify-between">
+            <div className="bg-white rounded-xl border border-gray-200 p-4 flex items-center justify-between">
                 <div>
-                    <h3 className="text-sm font-medium text-gray-500 dark:text-[#A1A1AA]">
+                    <h3 className="text-sm font-medium text-gray-500">
                         Report Period
                     </h3>
-                    <p className="text-lg font-semibold text-gray-900 dark:text-[#FAFAFA] mt-1">
+                    <p className="text-lg font-semibold text-gray-900 mt-1">
                         {formatDate(data.period.start_date)} -{" "}
                         {formatDate(data.period.end_date)}
                     </p>
@@ -146,7 +146,7 @@ export default function SalesReport() {
                     </button>
                     <button
                         onClick={fetchReport}
-                        className="p-2 text-gray-600 dark:text-[#A1A1AA] hover:text-[#eb1700] transition-colors"
+                        className="p-2 text-gray-600 hover:text-[#eb1700] transition-colors"
                         title="Refresh"
                     >
                         <svg

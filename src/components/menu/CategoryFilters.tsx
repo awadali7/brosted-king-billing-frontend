@@ -39,7 +39,7 @@ export default function CategoryFilters({
         return (
             <div className="mx-auto px-4 py-2">
                 <div className="flex gap-1 overflow-x-auto pb-2">
-                    <div className="px-4 py-2 text-sm font-medium rounded-full bg-gray-100 dark:bg-[#27272A] text-gray-400 dark:text-[#A1A1AA] animate-pulse">
+                    <div className="px-4 py-2 text-sm font-medium rounded-full bg-gray-100 text-gray-400 animate-pulse">
                         Loading categories...
                     </div>
                 </div>
@@ -50,7 +50,7 @@ export default function CategoryFilters({
     if (error) {
         return (
             <div className="mx-auto px-4 py-2">
-                <div className="text-center text-red-500 dark:text-red-400 text-sm">
+                <div className="text-center text-red-500 text-sm">
                     {error}
                 </div>
             </div>
@@ -65,7 +65,7 @@ export default function CategoryFilters({
                     className={`px-4 py-2 text-sm font-medium rounded-full whitespace-nowrap transition-colors ${
                         selectedCategory === undefined
                             ? "bg-[#eb1700] text-white shadow-sm"
-                            : "bg-gray-100 dark:bg-[#27272A] text-gray-600 dark:text-[#A1A1AA] hover:bg-gray-200 dark:hover:bg-[#3F3F46]"
+                            : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                     }`}
                 >
                     All
@@ -77,7 +77,7 @@ export default function CategoryFilters({
                         className={`px-4 py-2 text-sm font-medium rounded-full whitespace-nowrap transition-colors ${
                             selectedCategory === category.id
                                 ? "bg-[#eb1700] text-white shadow-sm"
-                                : "bg-gray-100 dark:bg-[#27272A] text-gray-600 dark:text-[#A1A1AA] hover:bg-gray-200 dark:hover:bg-[#3F3F46]"
+                                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                         }`}
                         title={category.description}
                     >

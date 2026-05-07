@@ -25,7 +25,7 @@ export default function MenuHeader({
     combosCount = 0,
 }: MenuHeaderProps) {
     return (
-        <div className="sticky top-0 z-10 bg-white/95 dark:bg-[#0F0F0F]/95 backdrop-blur-sm border-b border-gray-200 dark:border-[#3F3F46]">
+        <div className="sticky top-0 z-10 bg-white/95 backdrop-blur-sm border-b border-gray-200">
             <div className=" mx-auto px-4 py-3">
                 {/* Desktop Layout */}
                 <div className="hidden md:flex items-center justify-between">
@@ -38,7 +38,7 @@ export default function MenuHeader({
                                 ${
                                     activeTab === "items"
                                         ? "border-[#eb1700] text-[#eb1700]"
-                                        : "border-transparent text-gray-600 dark:text-[#A1A1AA] hover:text-gray-900 dark:hover:text-[#FAFAFA] hover:border-gray-300 dark:hover:border-[#52525B]"
+                                        : "border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300"
                                 }
                             `}
                         >
@@ -46,7 +46,7 @@ export default function MenuHeader({
                                 <span>📂</span>
                                 <span>Menu Items</span>
                                 {itemsCount > 0 && (
-                                    <span className="ml-1 rounded-full bg-gray-100 dark:bg-[#27272A] px-2 py-0.5 text-xs">
+                                    <span className="ml-1 rounded-full bg-gray-100 px-2 py-0.5 text-xs">
                                         {itemsCount}
                                     </span>
                                 )}
@@ -59,7 +59,7 @@ export default function MenuHeader({
                                 ${
                                     activeTab === "combos"
                                         ? "border-[#eb1700] text-[#eb1700]"
-                                        : "border-transparent text-gray-600 dark:text-[#A1A1AA] hover:text-gray-900 dark:hover:text-[#FAFAFA] hover:border-gray-300 dark:hover:border-[#52525B]"
+                                        : "border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300"
                                 }
                             `}
                         >
@@ -67,7 +67,7 @@ export default function MenuHeader({
                                 <span>🎁</span>
                                 <span>Combo Deals</span>
                                 {combosCount > 0 && (
-                                    <span className="ml-1 rounded-full bg-gray-100 dark:bg-[#27272A] px-2 py-0.5 text-xs">
+                                    <span className="ml-1 rounded-full bg-gray-100 px-2 py-0.5 text-xs">
                                         {combosCount}
                                     </span>
                                 )}
@@ -83,19 +83,19 @@ export default function MenuHeader({
                                 placeholder="Search menu..."
                                 value={searchQuery}
                                 onChange={onSearchChange}
-                                className="w-full px-3 py-2 text-sm bg-gray-50 dark:bg-[#18181B] border border-gray-200 dark:border-[#3F3F46] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#eb1700] focus:border-transparent transition-all text-gray-900 dark:text-[#FAFAFA] placeholder-gray-500 dark:placeholder-[#A1A1AA]"
+                                className="w-full px-3 py-2 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#eb1700] focus:border-transparent transition-all text-gray-900 placeholder-gray-500"
                             />
                         </div>
                         <button
                             onClick={onCreateComboClick}
-                            className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-[#0F0F0F] border-2 border-[#eb1700] text-[#eb1700] hover:bg-[#eb1700] hover:text-white text-sm font-medium rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#eb1700]/25  dark:focus:ring-offset-[#0F0F0F]"
+                            className="flex items-center gap-2 px-4 py-2 bg-white border-2 border-[#eb1700] text-[#eb1700] hover:bg-[#eb1700] hover:text-white text-sm font-medium rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#eb1700]/25 "
                         >
                             <Package className="w-4 h-4" />
                             Add Combo
                         </button>
                         <button
                             onClick={onCreateClick}
-                            className="flex items-center gap-2 px-4 py-2 bg-[#eb1700] hover:bg-[#c41400] text-white text-sm font-medium rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#eb1700]/25  dark:focus:ring-offset-[#0F0F0F]"
+                            className="flex items-center gap-2 px-4 py-2 bg-[#eb1700] hover:bg-[#c41400] text-white text-sm font-medium rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#eb1700]/25 "
                         >
                             <Plus className="w-4 h-4" />
                             Add Item
@@ -106,7 +106,7 @@ export default function MenuHeader({
                 {/* Mobile Layout */}
                 <div className="md:hidden space-y-3">
                     {/* Tab Switch */}
-                    <div className="flex items-center gap-4 border-b border-gray-200 dark:border-[#3F3F46]">
+                    <div className="flex items-center gap-4 border-b border-gray-200">
                         <button
                             onClick={() => onTabChange?.("items")}
                             className={`
@@ -114,7 +114,7 @@ export default function MenuHeader({
                                 ${
                                     activeTab === "items"
                                         ? "border-[#eb1700] text-[#eb1700]"
-                                        : "border-transparent text-gray-600 dark:text-[#A1A1AA]"
+                                        : "border-transparent text-gray-600"
                                 }
                             `}
                         >
@@ -122,7 +122,7 @@ export default function MenuHeader({
                                 <span>📂</span>
                                 <span>Items</span>
                                 {itemsCount > 0 && (
-                                    <span className="rounded-full bg-gray-100 dark:bg-[#27272A] px-2 py-0.5 text-xs">
+                                    <span className="rounded-full bg-gray-100 px-2 py-0.5 text-xs">
                                         {itemsCount}
                                     </span>
                                 )}
@@ -135,7 +135,7 @@ export default function MenuHeader({
                                 ${
                                     activeTab === "combos"
                                         ? "border-[#eb1700] text-[#eb1700]"
-                                        : "border-transparent text-gray-600 dark:text-[#A1A1AA]"
+                                        : "border-transparent text-gray-600"
                                 }
                             `}
                         >
@@ -143,7 +143,7 @@ export default function MenuHeader({
                                 <span>🎁</span>
                                 <span>Combos</span>
                                 {combosCount > 0 && (
-                                    <span className="rounded-full bg-gray-100 dark:bg-[#27272A] px-2 py-0.5 text-xs">
+                                    <span className="rounded-full bg-gray-100 px-2 py-0.5 text-xs">
                                         {combosCount}
                                     </span>
                                 )}
@@ -155,14 +155,14 @@ export default function MenuHeader({
                         <div className="flex items-center gap-2">
                             <button
                                 onClick={onCreateComboClick}
-                                className="flex items-center gap-1 px-3 py-2 bg-white dark:bg-[#0F0F0F] border-2 border-[#eb1700] text-[#eb1700] hover:bg-[#eb1700] hover:text-white text-sm font-medium rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#eb1700]/25  dark:focus:ring-offset-[#0F0F0F]"
+                                className="flex items-center gap-1 px-3 py-2 bg-white border-2 border-[#eb1700] text-[#eb1700] hover:bg-[#eb1700] hover:text-white text-sm font-medium rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#eb1700]/25 "
                             >
                                 <Package className="w-4 h-4" />
                                 <span className="hidden sm:inline">Combo</span>
                             </button>
                             <button
                                 onClick={onCreateClick}
-                                className="flex items-center gap-1 px-3 py-2 bg-[#eb1700] hover:bg-[#c41400] text-white text-sm font-medium rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#eb1700]/25  dark:focus:ring-offset-[#0F0F0F]"
+                                className="flex items-center gap-1 px-3 py-2 bg-[#eb1700] hover:bg-[#c41400] text-white text-sm font-medium rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#eb1700]/25 "
                             >
                                 <Plus className="w-4 h-4" />
                                 <span className="hidden sm:inline">Item</span>
@@ -175,7 +175,7 @@ export default function MenuHeader({
                             placeholder="Search menu..."
                             value={searchQuery}
                             onChange={onSearchChange}
-                            className="w-full px-3 py-2 text-sm bg-gray-50 dark:bg-[#18181B] border border-gray-200 dark:border-[#3F3F46] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#eb1700] focus:border-transparent transition-all text-gray-900 dark:text-[#FAFAFA] placeholder-gray-500 dark:placeholder-[#A1A1AA]"
+                            className="w-full px-3 py-2 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#eb1700] focus:border-transparent transition-all text-gray-900 placeholder-gray-500"
                         />
                     </div>
                 </div>

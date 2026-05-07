@@ -32,10 +32,10 @@ export default function SalesPieChart({ items }: SalesPieChartProps) {
     if (items.length === 0) {
         return (
             <div className="text-center py-8">
-                <div className="text-gray-400 dark:text-[#A1A1AA] text-4xl mb-3">
+                <div className="text-gray-400 text-4xl mb-3">
                     📊
                 </div>
-                <p className="text-xs text-gray-500 dark:text-[#A1A1AA]">
+                <p className="text-xs text-gray-500">
                     No sales data available
                 </p>
             </div>
@@ -100,11 +100,11 @@ export default function SalesPieChart({ items }: SalesPieChartProps) {
                 >
                     {/* Center circle for donut effect */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-28 h-28 rounded-full bg-white dark:bg-[#18181B] flex flex-col items-center justify-center shadow-inner">
-                            <p className="text-xs text-gray-500 dark:text-[#A1A1AA]">
+                        <div className="w-28 h-28 rounded-full bg-white flex flex-col items-center justify-center shadow-inner">
+                            <p className="text-xs text-gray-500">
                                 Total
                             </p>
-                            <p className="text-lg font-bold text-gray-900 dark:text-[#FAFAFA]">
+                            <p className="text-lg font-bold text-gray-900">
                                 {currencySymbol}
                                 {totalRevenue.toFixed(0)}
                             </p>
@@ -118,7 +118,7 @@ export default function SalesPieChart({ items }: SalesPieChartProps) {
                 {itemsWithAngles.map((item, index) => (
                     <div
                         key={index}
-                        className="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-[#27272A] transition-colors"
+                        className="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50 transition-colors"
                     >
                         <div className="flex items-center gap-3 flex-1 min-w-0">
                             <div
@@ -126,19 +126,19 @@ export default function SalesPieChart({ items }: SalesPieChartProps) {
                                 style={{ backgroundColor: item.color }}
                             />
                             <div className="flex-1 min-w-0">
-                                <p className="text-sm font-medium text-gray-900 dark:text-[#FAFAFA] truncate">
+                                <p className="text-sm font-medium text-gray-900 truncate">
                                     {item.item_name}
                                 </p>
-                                <p className="text-xs text-gray-500 dark:text-[#A1A1AA]">
+                                <p className="text-xs text-gray-500">
                                     {item.quantity_sold} sold
                                 </p>
                             </div>
                         </div>
                         <div className="text-right ml-2">
-                            <p className="text-sm font-semibold text-gray-900 dark:text-[#FAFAFA]">
+                            <p className="text-sm font-semibold text-gray-900">
                                 {item.percentage.toFixed(1)}%
                             </p>
-                            <p className="text-xs text-gray-500 dark:text-[#A1A1AA]">
+                            <p className="text-xs text-gray-500">
                                 {currencySymbol}
                                 {parseFloat(item.revenue).toFixed(0)}
                             </p>

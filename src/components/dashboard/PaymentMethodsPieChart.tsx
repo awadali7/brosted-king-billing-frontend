@@ -35,10 +35,10 @@ export default function PaymentMethodsPieChart({
     if (data.length === 0) {
         return (
             <div className="text-center py-8">
-                <div className="text-gray-400 dark:text-[#A1A1AA] text-4xl mb-3">
+                <div className="text-gray-400 text-4xl mb-3">
                     💳
                 </div>
-                <p className="text-xs text-gray-500 dark:text-[#A1A1AA]">
+                <p className="text-xs text-gray-500">
                     No payment data available
                 </p>
             </div>
@@ -126,14 +126,14 @@ export default function PaymentMethodsPieChart({
                 >
                     {/* Center circle for donut effect */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-24 h-24 rounded-full bg-white dark:bg-[#18181B] flex flex-col items-center justify-center shadow-inner">
-                            <p className="text-xs text-gray-500 dark:text-[#A1A1AA]">
+                        <div className="w-24 h-24 rounded-full bg-white flex flex-col items-center justify-center shadow-inner">
+                            <p className="text-xs text-gray-500">
                                 Total
                             </p>
-                            <p className="text-base font-bold text-gray-900 dark:text-[#FAFAFA]">
+                            <p className="text-base font-bold text-gray-900">
                                 {totalTransactions}
                             </p>
-                            <p className="text-xs text-gray-500 dark:text-[#A1A1AA]">
+                            <p className="text-xs text-gray-500">
                                 bills
                             </p>
                         </div>
@@ -148,7 +148,7 @@ export default function PaymentMethodsPieChart({
                     return (
                         <div
                             key={index}
-                            className="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-[#27272A] transition-colors"
+                            className="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50 transition-colors"
                         >
                             <div className="flex items-center gap-2 flex-1 min-w-0">
                                 <div
@@ -160,10 +160,10 @@ export default function PaymentMethodsPieChart({
                                     style={{ color: method.color }}
                                 />
                                 <div className="flex-1 min-w-0">
-                                    <p className="text-xs font-medium text-gray-900 dark:text-[#FAFAFA] capitalize truncate">
+                                    <p className="text-xs font-medium text-gray-900 capitalize truncate">
                                         {method.payment_method}
                                     </p>
-                                    <p className="text-xs text-gray-500 dark:text-[#A1A1AA]">
+                                    <p className="text-xs text-gray-500">
                                         {method.count} bill
                                         {parseInt(method.count) !== 1
                                             ? "s"
@@ -172,10 +172,10 @@ export default function PaymentMethodsPieChart({
                                 </div>
                             </div>
                             <div className="text-right ml-2">
-                                <p className="text-xs font-semibold text-gray-900 dark:text-[#FAFAFA]">
+                                <p className="text-xs font-semibold text-gray-900">
                                     {method.percentage.toFixed(1)}%
                                 </p>
-                                <p className="text-xs text-gray-500 dark:text-[#A1A1AA]">
+                                <p className="text-xs text-gray-500">
                                     {currencySymbol}
                                     {parseFloat(method.total).toFixed(0)}
                                 </p>

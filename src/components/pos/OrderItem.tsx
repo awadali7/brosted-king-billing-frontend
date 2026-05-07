@@ -52,13 +52,13 @@ export default function OrderItem({
     };
 
     return (
-        <div className="bg-white dark:bg-[#18181B] rounded-lg border border-gray-200 dark:border-[#3F3F46] p-4">
+        <div className="bg-white rounded-lg border border-gray-200 p-4">
             <div className="flex items-start justify-between mb-3">
                 <div className="flex-1 min-w-0">
-                    <h3 className="text-sm font-medium text-gray-900 dark:text-[#FAFAFA] line-clamp-2">
+                    <h3 className="text-sm font-medium text-gray-900 line-clamp-2">
                         {item.name}
                     </h3>
-                    <p className="text-xs text-gray-500 dark:text-[#A1A1AA] mt-1">
+                    <p className="text-xs text-gray-500 mt-1">
                         {currencySymbol}
                         {item.price.toFixed(2)} each
                     </p>
@@ -76,20 +76,20 @@ export default function OrderItem({
                 <div className="flex items-center gap-2">
                     <button
                         onClick={handleDecrement}
-                        className="p-1 rounded-full bg-gray-100 dark:bg-[#27272A] hover:bg-gray-200 dark:hover:bg-[#3F3F46] transition-colors"
+                        className="p-1 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
                         title="Decrease quantity"
                     >
-                        <Minus className="w-3 h-3 text-gray-600 dark:text-[#A1A1AA]" />
+                        <Minus className="w-3 h-3 text-gray-600" />
                     </button>
-                    <span className="text-sm font-medium text-gray-900 dark:text-[#FAFAFA] min-w-[2rem] text-center">
+                    <span className="text-sm font-medium text-gray-900 min-w-[2rem] text-center">
                         {item.quantity}
                     </span>
                     <button
                         onClick={handleIncrement}
-                        className="p-1 rounded-full bg-gray-100 dark:bg-[#27272A] hover:bg-gray-200 dark:hover:bg-[#3F3F46] transition-colors"
+                        className="p-1 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
                         title="Increase quantity"
                     >
-                        <Plus className="w-3 h-3 text-gray-600 dark:text-[#A1A1AA]" />
+                        <Plus className="w-3 h-3 text-gray-600" />
                     </button>
                 </div>
                 <span className="text-sm font-semibold text-[#eb1700]">

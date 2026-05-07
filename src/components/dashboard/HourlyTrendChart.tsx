@@ -16,13 +16,13 @@ export default function HourlyTrendChart({ data }: HourlyTrendChartProps) {
     if (data.length === 0) {
         return (
             <div className="text-center py-8">
-                <div className="text-gray-400 dark:text-[#A1A1AA] text-4xl mb-3">
+                <div className="text-gray-400 text-4xl mb-3">
                     📈
                 </div>
-                <h3 className="text-sm font-medium text-gray-900 dark:text-[#FAFAFA] mb-1">
+                <h3 className="text-sm font-medium text-gray-900 mb-1">
                     No Data Available
                 </h3>
-                <p className="text-xs text-gray-500 dark:text-[#A1A1AA]">
+                <p className="text-xs text-gray-500">
                     Sales data will appear here
                 </p>
             </div>
@@ -56,11 +56,11 @@ export default function HourlyTrendChart({ data }: HourlyTrendChartProps) {
                             <div className="relative w-full flex items-end justify-center h-full group">
                                 {/* Tooltip */}
                                 <div className="absolute bottom-full mb-2 hidden group-hover:block z-10">
-                                    <div className="bg-gray-900 dark:bg-[#0F0F0F] text-white text-xs rounded-lg py-2 px-3 shadow-lg whitespace-nowrap">
+                                    <div className="bg-gray-900 text-white text-xs rounded-lg py-2 px-3 shadow-lg whitespace-nowrap">
                                         <p className="font-semibold">
                                             {formatHour(item.hour)}
                                         </p>
-                                        <p className="text-gray-300 dark:text-[#A1A1AA]">
+                                        <p className="text-gray-300">
                                             {billCount} bill
                                             {billCount !== 1 ? "s" : ""}
                                         </p>
@@ -70,7 +70,7 @@ export default function HourlyTrendChart({ data }: HourlyTrendChartProps) {
                                                 2
                                             )}
                                         </p>
-                                        <div className="absolute left-1/2 -translate-x-1/2 -bottom-1 w-2 h-2 bg-gray-900 dark:bg-[#0F0F0F] rotate-45" />
+                                        <div className="absolute left-1/2 -translate-x-1/2 -bottom-1 w-2 h-2 bg-gray-900 rotate-45" />
                                     </div>
                                 </div>
 
@@ -84,7 +84,7 @@ export default function HourlyTrendChart({ data }: HourlyTrendChartProps) {
                             </div>
 
                             {/* Label */}
-                            <span className="text-xs text-gray-600 dark:text-[#A1A1AA] font-medium">
+                            <span className="text-xs text-gray-600 font-medium">
                                 {formatHour(item.hour)}
                             </span>
                         </div>
@@ -93,15 +93,15 @@ export default function HourlyTrendChart({ data }: HourlyTrendChartProps) {
             </div>
 
             {/* Legend */}
-            <div className="flex items-center justify-center gap-6 pt-4 border-t border-gray-200 dark:border-[#3F3F46]">
+            <div className="flex items-center justify-center gap-6 pt-4 border-t border-gray-200">
                 <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded bg-gradient-to-t from-[#eb1700] to-[#ff5c4d]" />
-                    <span className="text-xs text-gray-600 dark:text-[#A1A1AA]">
+                    <span className="text-xs text-gray-600">
                         Revenue
                     </span>
                 </div>
                 <div className="flex items-center gap-2">
-                    <span className="text-xs text-gray-600 dark:text-[#A1A1AA]">
+                    <span className="text-xs text-gray-600">
                         Hover for details
                     </span>
                 </div>

@@ -233,6 +233,15 @@ export const api = {
         async createBill(billData: any) {
             return api.post("/bills", billData);
         },
+        async getBills(params?: {
+            page?: number;
+            limit?: number;
+            payment_status?: string;
+            start_date?: string;
+            end_date?: string;
+        }) {
+            return api.get("/bills", params);
+        },
         async getTodayBills() {
             return api.get("/bills/today");
         },
@@ -244,6 +253,9 @@ export const api = {
         },
         async updateBill(billId: number, billData: any) {
             return api.put(`/bills/${billId}`, billData);
+        },
+        async deleteBill(billId: number) {
+            return api.delete(`/bills/${billId}`);
         },
         async printBill(billId: number) {
             return api.get(`/bills/${billId}/print`);

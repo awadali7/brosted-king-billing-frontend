@@ -27,7 +27,7 @@ export default function ComboCard({ combo, onAddToOrder }: ComboCardProps) {
     return (
         <div
             className={`
-                bg-white dark:bg-[#18181B] rounded-lg border border-gray-200 dark:border-[#3F3F46] p-4 transition-all duration-200 hover:shadow-lg hover:scale-105 hover:border-[#eb1700]/30 dark:hover:border-[#eb1700]/30 cursor-pointer
+                bg-white rounded-lg border border-gray-200 p-4 transition-all duration-200 hover:shadow-lg hover:scale-105 hover:border-[#eb1700]/30 cursor-pointer
                 ${!combo.is_available ? "opacity-50" : ""}
             `}
             onClick={() => combo.is_available && onAddToOrder?.(combo)}
@@ -40,7 +40,7 @@ export default function ComboCard({ combo, onAddToOrder }: ComboCardProps) {
                             🎁
                         </div>
                         {!combo.is_available && (
-                            <span className="text-xs px-2 py-0.5 rounded-full bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 font-medium">
+                            <span className="text-xs px-2 py-0.5 rounded-full bg-red-100 text-red-600 font-medium">
                                 Unavailable
                             </span>
                         )}
@@ -48,19 +48,19 @@ export default function ComboCard({ combo, onAddToOrder }: ComboCardProps) {
                 </div>
 
                 {/* Combo Name */}
-                <h3 className="text-base font-semibold text-gray-900 dark:text-[#FAFAFA] mb-1 line-clamp-1">
+                <h3 className="text-base font-semibold text-gray-900 mb-1 line-clamp-1">
                     {combo.name}
                 </h3>
 
                 {/* Description */}
-                <p className="text-xs text-gray-600 dark:text-[#A1A1AA] mb-3 line-clamp-2 min-h-[2rem]">
+                <p className="text-xs text-gray-600 mb-3 line-clamp-2 min-h-[2rem]">
                     {combo.description}
                 </p>
             </div>
 
             {/* Items Count */}
-            <div className="mb-3 pb-3 border-b border-gray-100 dark:border-[#27272A]">
-                <div className="flex items-center gap-1 text-xs text-gray-600 dark:text-[#A1A1AA]">
+            <div className="mb-3 pb-3 border-b border-gray-100">
+                <div className="flex items-center gap-1 text-xs text-gray-600">
                     <span>📦</span>
                     <span>
                         {combo.items.length} item
@@ -72,7 +72,7 @@ export default function ComboCard({ combo, onAddToOrder }: ComboCardProps) {
                     {combo.items.slice(0, 2).map((item, index) => (
                         <div
                             key={index}
-                            className="text-xs text-gray-500 dark:text-[#71717A] flex items-center gap-1"
+                            className="text-xs text-gray-500 flex items-center gap-1"
                         >
                             <span className="text-[#eb1700]">•</span>
                             <span>
@@ -81,7 +81,7 @@ export default function ComboCard({ combo, onAddToOrder }: ComboCardProps) {
                         </div>
                     ))}
                     {combo.items.length > 2 && (
-                        <div className="text-xs text-gray-400 dark:text-[#52525B]">
+                        <div className="text-xs text-gray-400">
                             +{combo.items.length - 2} more...
                         </div>
                     )}
@@ -97,7 +97,7 @@ export default function ComboCard({ combo, onAddToOrder }: ComboCardProps) {
                             ? combo.price.toFixed(2)
                             : parseFloat(combo.price).toFixed(2)}
                     </div>
-                    <div className="text-xs text-green-600 dark:text-green-400">
+                    <div className="text-xs text-green-600">
                         Save{" "}
                         {typeof combo.profit_percentage === "number"
                             ? combo.profit_percentage.toFixed(0)

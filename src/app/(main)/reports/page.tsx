@@ -76,9 +76,9 @@ export default function ReportsPage() {
     };
 
     return (
-        <div className="h-screen overflow-y-auto bg-white dark:bg-[#0F0F0F]">
+        <div className="h-screen overflow-y-auto bg-white">
             {/* Tab Navigation - Fixed */}
-            <div className="sticky top-0 z-10 bg-white dark:bg-[#0F0F0F] border-b border-gray-200 dark:border-[#3F3F46] pt-6">
+            <div className="sticky top-0 z-10 bg-white border-b border-gray-200 pt-6">
                 <div className="px-6">
                     <nav className="-mb-px flex gap-6 overflow-x-auto">
                         {tabs.map((tab) => (
@@ -90,7 +90,7 @@ export default function ReportsPage() {
                                     ${
                                         activeTab === tab.id
                                             ? "border-[#eb1700] text-[#eb1700]"
-                                            : "border-transparent text-gray-600 dark:text-[#A1A1AA] hover:text-gray-900 dark:hover:text-[#FAFAFA] hover:border-gray-300 dark:hover:border-[#52525B]"
+                                            : "border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300"
                                     }
                                 `}
                             >

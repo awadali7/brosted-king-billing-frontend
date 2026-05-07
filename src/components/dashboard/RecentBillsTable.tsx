@@ -47,24 +47,24 @@ export default function RecentBillsTable({ bills }: RecentBillsTableProps) {
     const getPaymentStatusColor = (status: string) => {
         switch (status.toLowerCase()) {
             case "paid":
-                return "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400";
+                return "bg-green-100 text-green-800";
             case "pending":
-                return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400";
+                return "bg-yellow-100 text-yellow-800";
             default:
-                return "bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400";
+                return "bg-gray-100 text-gray-800";
         }
     };
 
     if (bills.length === 0) {
         return (
             <div className="text-center py-8">
-                <div className="text-gray-400 dark:text-[#A1A1AA] text-4xl mb-3">
+                <div className="text-gray-400 text-4xl mb-3">
                     📄
                 </div>
-                <h3 className="text-sm font-medium text-gray-900 dark:text-[#FAFAFA] mb-1">
+                <h3 className="text-sm font-medium text-gray-900 mb-1">
                     No Bills Yet
                 </h3>
-                <p className="text-xs text-gray-500 dark:text-[#A1A1AA]">
+                <p className="text-xs text-gray-500">
                     Bills will appear here once created
                 </p>
             </div>
@@ -75,26 +75,26 @@ export default function RecentBillsTable({ bills }: RecentBillsTableProps) {
         <div className="overflow-x-auto">
             <table className="w-full">
                 <thead>
-                    <tr className="border-b border-gray-200 dark:border-[#3F3F46]">
-                        <th className="text-left py-3 px-4 text-xs font-semibold text-gray-600 dark:text-[#A1A1AA] uppercase">
+                    <tr className="border-b border-gray-200">
+                        <th className="text-left py-3 px-4 text-xs font-semibold text-gray-600 uppercase">
                             Bill #
                         </th>
-                        <th className="text-left py-3 px-4 text-xs font-semibold text-gray-600 dark:text-[#A1A1AA] uppercase">
+                        <th className="text-left py-3 px-4 text-xs font-semibold text-gray-600 uppercase">
                             Customer
                         </th>
-                        <th className="text-left py-3 px-4 text-xs font-semibold text-gray-600 dark:text-[#A1A1AA] uppercase">
+                        <th className="text-left py-3 px-4 text-xs font-semibold text-gray-600 uppercase">
                             Amount
                         </th>
-                        <th className="text-left py-3 px-4 text-xs font-semibold text-gray-600 dark:text-[#A1A1AA] uppercase">
+                        <th className="text-left py-3 px-4 text-xs font-semibold text-gray-600 uppercase">
                             Payment
                         </th>
-                        <th className="text-left py-3 px-4 text-xs font-semibold text-gray-600 dark:text-[#A1A1AA] uppercase">
+                        <th className="text-left py-3 px-4 text-xs font-semibold text-gray-600 uppercase">
                             Status
                         </th>
-                        <th className="text-left py-3 px-4 text-xs font-semibold text-gray-600 dark:text-[#A1A1AA] uppercase">
+                        <th className="text-left py-3 px-4 text-xs font-semibold text-gray-600 uppercase">
                             Date
                         </th>
-                        <th className="text-right py-3 px-4 text-xs font-semibold text-gray-600 dark:text-[#A1A1AA] uppercase">
+                        <th className="text-right py-3 px-4 text-xs font-semibold text-gray-600 uppercase">
                             Actions
                         </th>
                     </tr>
@@ -103,26 +103,26 @@ export default function RecentBillsTable({ bills }: RecentBillsTableProps) {
                     {bills.map((bill) => (
                         <tr
                             key={bill.id}
-                            className="border-b border-gray-100 dark:border-[#27272A] hover:bg-gray-50 dark:hover:bg-[#27272A] transition-colors"
+                            className="border-b border-gray-100 hover:bg-gray-50 transition-colors"
                         >
                             <td className="py-3 px-4">
-                                <span className="text-sm font-medium text-gray-900 dark:text-[#FAFAFA]">
+                                <span className="text-sm font-medium text-gray-900">
                                     {bill.bill_number}
                                 </span>
                             </td>
                             <td className="py-3 px-4">
-                                <span className="text-sm text-gray-700 dark:text-[#A1A1AA]">
+                                <span className="text-sm text-gray-700">
                                     {bill.customer_name || "Guest"}
                                 </span>
                             </td>
                             <td className="py-3 px-4">
-                                <span className="text-sm font-semibold text-gray-900 dark:text-[#FAFAFA]">
+                                <span className="text-sm font-semibold text-gray-900">
                                     {currencySymbol}
                                     {parseFloat(bill.total_amount).toFixed(2)}
                                 </span>
                             </td>
                             <td className="py-3 px-4">
-                                <span className="text-sm text-gray-700 dark:text-[#A1A1AA] capitalize">
+                                <span className="text-sm text-gray-700 capitalize">
                                     {bill.payment_method}
                                 </span>
                             </td>
@@ -136,7 +136,7 @@ export default function RecentBillsTable({ bills }: RecentBillsTableProps) {
                                 </span>
                             </td>
                             <td className="py-3 px-4">
-                                <span className="text-xs text-gray-600 dark:text-[#A1A1AA]">
+                                <span className="text-xs text-gray-600">
                                     {formatDate(bill.created_at)}
                                 </span>
                             </td>

@@ -102,7 +102,7 @@ export default function CategoriesPage() {
 
     if (loading) {
         return (
-            <div className="min-h-[60vh] flex items-center justify-center text-gray-600 dark:text-[#A1A1AA]">
+            <div className="min-h-[60vh] flex items-center justify-center text-gray-600">
                 Loading categories...
             </div>
         );
@@ -112,7 +112,7 @@ export default function CategoriesPage() {
             <div className="min-h-[60vh] flex items-center justify-center">
                 <div className="text-center">
                     <div className="text-red-500 text-5xl mb-3">⚠️</div>
-                    <p className="text-gray-600 dark:text-[#A1A1AA] mb-4">
+                    <p className="text-gray-600 mb-4">
                         {error}
                     </p>
                     <button
@@ -129,7 +129,7 @@ export default function CategoriesPage() {
     return (
         <div className="max-w-7xl mx-auto p-4 sm:p-6 space-y-4">
             <div className="flex items-center justify-between">
-                <h2 className="text-base font-semibold text-gray-900 dark:text-[#FAFAFA] flex items-center gap-2">
+                <h2 className="text-base font-semibold text-gray-900 flex items-center gap-2">
                     <Tag className="w-4 h-4 text-[#eb1700]" />
                     Expense Categories
                 </h2>
@@ -142,16 +142,16 @@ export default function CategoriesPage() {
                 </button>
             </div>
 
-            <div className="bg-white dark:bg-[#18181B] rounded-xl border border-gray-200 dark:border-[#3F3F46] p-4">
+            <div className="bg-white rounded-xl border border-gray-200 p-4">
                 {categories.length === 0 ? (
-                    <div className="py-12 text-center text-gray-600 dark:text-[#A1A1AA]">
+                    <div className="py-12 text-center text-gray-600">
                         No categories yet.
                     </div>
                 ) : (
                     <div className="overflow-x-auto">
                         <table className="min-w-full text-sm">
                             <thead>
-                                <tr className="text-left text-gray-600 dark:text-[#A1A1AA] border-b border-gray-200 dark:border-[#3F3F46]">
+                                <tr className="text-left text-gray-600 border-b border-gray-200">
                                     <th className="py-2 pr-4">Sl No</th>
                                     <th className="py-2 pr-4">Name</th>
                                     <th className="py-2 pr-4">Description</th>
@@ -163,23 +163,23 @@ export default function CategoriesPage() {
                                 {categories.map((cat, index) => (
                                     <tr
                                         key={cat.id}
-                                        className="border-b border-gray-100 dark:border-[#27272A]"
+                                        className="border-b border-gray-100"
                                     >
-                                        <td className="py-3 pr-4 text-gray-600 dark:text-[#A1A1AA]">
+                                        <td className="py-3 pr-4 text-gray-600">
                                             {index + 1}
                                         </td>
-                                        <td className="py-3 pr-4 text-gray-900 dark:text-[#FAFAFA]">
+                                        <td className="py-3 pr-4 text-gray-900">
                                             {cat.name}
                                         </td>
-                                        <td className="py-3 pr-4 text-gray-700 dark:text-[#A1A1AA]">
+                                        <td className="py-3 pr-4 text-gray-700">
                                             {cat.description || "-"}
                                         </td>
                                         <td className="py-3 pr-4">
                                             <span
                                                 className={`px-2 py-0.5 rounded text-xs ${
                                                     cat.is_active
-                                                        ? "bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-400"
-                                                        : "bg-gray-100 text-gray-700 dark:bg-[#27272A] dark:text-[#A1A1AA]"
+                                                        ? "bg-green-100 text-green-700"
+                                                        : "bg-gray-100 text-gray-700"
                                                 }`}
                                             >
                                                 {cat.is_active
@@ -193,7 +193,7 @@ export default function CategoriesPage() {
                                                     onClick={() =>
                                                         handleView(cat)
                                                     }
-                                                    className="px-2 py-1 rounded border border-gray-300 dark:border-[#3F3F46] text-gray-700 dark:text-[#A1A1AA] hover:bg-gray-100 dark:hover:bg-[#27272A] transition-colors"
+                                                    className="px-2 py-1 rounded border border-gray-300 text-gray-700 hover:bg-gray-100 transition-colors"
                                                     title="View"
                                                 >
                                                     <Eye className="w-4 h-4" />
@@ -202,7 +202,7 @@ export default function CategoriesPage() {
                                                     onClick={() =>
                                                         handleEdit(cat)
                                                     }
-                                                    className="px-2 py-1 rounded border border-gray-300 dark:border-[#3F3F46] text-gray-700 dark:text-[#A1A1AA] hover:bg-gray-100 dark:hover:bg-[#27272A] transition-colors"
+                                                    className="px-2 py-1 rounded border border-gray-300 text-gray-700 hover:bg-gray-100 transition-colors"
                                                     title="Edit"
                                                 >
                                                     <Pencil className="w-4 h-4" />
@@ -211,7 +211,7 @@ export default function CategoriesPage() {
                                                     onClick={() =>
                                                         handleDelete(cat)
                                                     }
-                                                    className="px-2 py-1 rounded border border-red-300 text-red-600 hover:bg-red-50 dark:hover:bg-[#3F1D1D] transition-colors"
+                                                    className="px-2 py-1 rounded border border-red-300 text-red-600 hover:bg-red-50 transition-colors"
                                                     title="Delete"
                                                 >
                                                     <Trash2 className="w-4 h-4" />

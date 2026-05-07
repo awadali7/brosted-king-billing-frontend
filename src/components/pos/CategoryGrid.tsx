@@ -18,13 +18,13 @@ export default function CategoryGrid({
     if (categories.length === 0) {
         return (
             <div className="text-center py-12">
-                <div className="text-gray-400 dark:text-[#A1A1AA] text-6xl mb-4">
+                <div className="text-gray-400 text-6xl mb-4">
                     📂
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-[#FAFAFA] mb-2">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
                     No Categories Found
                 </h3>
-                <p className="text-gray-600 dark:text-[#A1A1AA]">
+                <p className="text-gray-600">
                     Create some categories in the menu section to get started.
                 </p>
             </div>
@@ -34,10 +34,10 @@ export default function CategoryGrid({
     return (
         <>
             <div className="mb-6">
-                <h2 className="text-xl font-semibold text-gray-900 dark:text-[#FAFAFA] mb-2">
+                <h2 className="text-xl font-semibold text-gray-900 mb-2">
                     Select Category
                 </h2>
-                <p className="text-gray-600 dark:text-[#A1A1AA]">
+                <p className="text-gray-600">
                     Choose a category to view and add items to the order
                 </p>
             </div>

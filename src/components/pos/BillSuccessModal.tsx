@@ -52,15 +52,15 @@ export default function BillSuccessModal({
 
     return (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-2 sm:p-4">
-            <div className="bg-white dark:bg-[#18181B] rounded-lg shadow-xl w-full max-w-sm sm:max-w-md">
+            <div className="bg-white rounded-lg shadow-xl w-full max-w-sm sm:max-w-md">
                 {/* Header */}
-                <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-[#3F3F46]">
-                    <h2 className="text-lg font-semibold text-gray-900 dark:text-[#FAFAFA]">
+                <div className="flex items-center justify-between p-4 border-b border-gray-200">
+                    <h2 className="text-lg font-semibold text-gray-900">
                         Bill Created Successfully
                     </h2>
                     <button
                         onClick={onClose}
-                        className="p-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                        className="p-1 text-gray-400 hover:text-gray-600 transition-colors"
                     >
                         <X className="w-5 h-5" />
                     </button>
@@ -71,34 +71,34 @@ export default function BillSuccessModal({
                     <div className="flex justify-center mb-4">
                         <CheckCircle className="w-16 h-16 text-green-500" />
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-[#FAFAFA] mb-2">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
                         Payment Successful!
                     </h3>
-                    <p className="text-gray-600 dark:text-[#A1A1AA] mb-6">
+                    <p className="text-gray-600 mb-6">
                         Your bill has been created successfully
                     </p>
 
                     {/* Bill Details */}
-                    <div className="bg-gray-50 dark:bg-[#0F0F0F] rounded-lg p-4 mb-6 space-y-2">
+                    <div className="bg-gray-50 rounded-lg p-4 mb-6 space-y-2">
                         <div className="flex justify-between text-sm">
-                            <span className="text-gray-600 dark:text-[#A1A1AA]">
+                            <span className="text-gray-600">
                                 Bill Number
                             </span>
-                            <span className="font-semibold text-gray-900 dark:text-[#FAFAFA]">
+                            <span className="font-semibold text-gray-900">
                                 {billNumber}
                             </span>
                         </div>
                         <div className="flex justify-between text-sm">
-                            <span className="text-gray-600 dark:text-[#A1A1AA]">
+                            <span className="text-gray-600">
                                 Bill ID
                             </span>
-                            <span className="font-semibold text-gray-900 dark:text-[#FAFAFA]">
+                            <span className="font-semibold text-gray-900">
                                 #{billId}
                             </span>
                         </div>
-                        <div className="border-t border-gray-200 dark:border-[#3F3F46] pt-2 mt-2">
+                        <div className="border-t border-gray-200 pt-2 mt-2">
                             <div className="flex justify-between">
-                                <span className="text-gray-900 dark:text-[#FAFAFA] font-semibold">
+                                <span className="text-gray-900 font-semibold">
                                     Total Amount
                                 </span>
                                 <span className="text-[#eb1700] font-bold text-lg">
@@ -136,7 +136,7 @@ export default function BillSuccessModal({
 
                         <button
                             onClick={onClose}
-                            className="w-full border border-gray-300 dark:border-[#3F3F46] text-gray-700 dark:text-[#A1A1AA] py-3 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-[#27272A] transition-colors"
+                            className="w-full border border-gray-300 text-gray-700 py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors"
                         >
                             Close & New Order
                         </button>

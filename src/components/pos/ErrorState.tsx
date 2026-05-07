@@ -9,13 +9,13 @@ interface ErrorStateProps {
 
 export default function ErrorState({ error, onRetry }: ErrorStateProps) {
     return (
-        <div className="min-h-screen bg-white dark:bg-[#0F0F0F] flex items-center justify-center">
+        <div className="min-h-screen bg-white flex items-center justify-center">
             <div className="text-center">
                 <div className="text-red-500 text-6xl mb-4">⚠️</div>
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-[#FAFAFA] mb-2">
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">
                     Error Loading Categories
                 </h2>
-                <p className="text-gray-600 dark:text-[#A1A1AA] mb-4">
+                <p className="text-gray-600 mb-4">
                     {error}
                 </p>
                 <button

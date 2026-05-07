@@ -214,20 +214,20 @@ export default function AddExpenseModal({
                 className="absolute inset-0 bg-black/50 backdrop-blur-sm"
                 onClick={onClose}
             />
-            <div className="relative bg-white dark:bg-[#18181B] rounded-xl shadow-xl w-full max-w-2xl mx-4 max-h-[90vh] flex flex-col">
+            <div className="relative bg-white rounded-xl shadow-xl w-full max-w-2xl mx-4 max-h-[90vh] flex flex-col">
                 {/* Header */}
-                <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-[#3F3F46]">
+                <div className="flex items-center justify-between p-4 border-b border-gray-200">
                     <div className="flex items-center gap-2">
                         <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#eb1700] to-[#c41400] flex items-center justify-center">
                             <Receipt className="w-4 h-4 text-white" />
                         </div>
-                        <h2 className="text-lg font-semibold text-gray-900 dark:text-[#FAFAFA]">
+                        <h2 className="text-lg font-semibold text-gray-900">
                             {editExpense ? "Edit Expense" : "Add Expense"}
                         </h2>
                     </div>
                     <button
                         onClick={onClose}
-                        className="p-1.5 rounded-lg text-gray-400 hover:text-gray-600 dark:hover:text-[#FAFAFA] hover:bg-gray-100 dark:hover:bg-[#27272A] transition-colors"
+                        className="p-1.5 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors"
                     >
                         <X className="w-4 h-4" />
                     </button>
@@ -240,7 +240,7 @@ export default function AddExpenseModal({
                 >
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1">
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
                                 Amount *
                             </label>
                             <input
@@ -253,9 +253,9 @@ export default function AddExpenseModal({
                                 min="0"
                                 className={`w-full px-3 py-2 rounded-lg border transition-all focus:outline-none ${
                                     errors.amount
-                                        ? "border-red-300 dark:border-red-600"
-                                        : "border-gray-300 dark:border-[#3F3F46]"
-                                } bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA] placeholder-gray-500 dark:placeholder-[#A1A1AA]`}
+                                        ? "border-red-300"
+                                        : "border-gray-300"
+                                } bg-white text-gray-900 placeholder-gray-500`}
                             />
                             {errors.amount && (
                                 <p className="mt-1 text-sm text-red-500">
@@ -264,7 +264,7 @@ export default function AddExpenseModal({
                             )}
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1">
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
                                 Category *
                             </label>
                             <select
@@ -274,9 +274,9 @@ export default function AddExpenseModal({
                                 disabled={categoriesLoading}
                                 className={`w-full px-3 py-2 rounded-lg border transition-all focus:outline-none ${
                                     errors.category_id
-                                        ? "border-red-300 dark:border-red-600"
-                                        : "border-gray-300 dark:border-[#3F3F46]"
-                                } bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA] disabled:opacity-50`}
+                                        ? "border-red-300"
+                                        : "border-gray-300"
+                                } bg-white text-gray-900 disabled:opacity-50`}
                             >
                                 <option value="">
                                     {categoriesLoading
@@ -296,7 +296,7 @@ export default function AddExpenseModal({
                             )}
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1">
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
                                 Payment Method *
                             </label>
                             <select
@@ -305,9 +305,9 @@ export default function AddExpenseModal({
                                 onChange={handleInputChange}
                                 className={`w-full px-3 py-2 rounded-lg border transition-all focus:outline-none ${
                                     errors.payment_method
-                                        ? "border-red-300 dark:border-red-600"
-                                        : "border-gray-300 dark:border-[#3F3F46]"
-                                } bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA]`}
+                                        ? "border-red-300"
+                                        : "border-gray-300"
+                                } bg-white text-gray-900`}
                             >
                                 <option value="">Select method</option>
                                 <option value="cash">Cash</option>
@@ -324,7 +324,7 @@ export default function AddExpenseModal({
                             )}
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1">
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
                                 Date *
                             </label>
                             <div className="relative">
@@ -335,9 +335,9 @@ export default function AddExpenseModal({
                                     onChange={handleInputChange}
                                     className={`w-full pl-10 pr-3 py-2 rounded-lg border transition-all focus:outline-none ${
                                         errors.date
-                                            ? "border-red-300 dark:border-red-600"
-                                            : "border-gray-300 dark:border-[#3F3F46]"
-                                    } bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA]`}
+                                            ? "border-red-300"
+                                            : "border-gray-300"
+                                    } bg-white text-gray-900`}
                                 />
                                 <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                             </div>
@@ -351,7 +351,7 @@ export default function AddExpenseModal({
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1">
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
                                 Vendor Name
                             </label>
                             <input
@@ -360,11 +360,11 @@ export default function AddExpenseModal({
                                 value={formData.vendor_name}
                                 onChange={handleInputChange}
                                 placeholder="State Electricity Board"
-                                className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-[#3F3F46] bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA]"
+                                className="w-full px-3 py-2 rounded-lg border border-gray-300 bg-white text-gray-900"
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1">
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
                                 Receipt Number
                             </label>
                             <input
@@ -373,13 +373,13 @@ export default function AddExpenseModal({
                                 value={formData.receipt_number}
                                 onChange={handleInputChange}
                                 placeholder="INV-2025-001"
-                                className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-[#3F3F46] bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA]"
+                                className="w-full px-3 py-2 rounded-lg border border-gray-300 bg-white text-gray-900"
                             />
                         </div>
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1">
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
                             Description
                         </label>
                         <textarea
@@ -388,12 +388,12 @@ export default function AddExpenseModal({
                             onChange={handleInputChange}
                             placeholder="Monthly electricity bill"
                             rows={2}
-                            className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-[#3F3F46] bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA] placeholder-gray-500 dark:placeholder-[#A1A1AA] focus:outline-none resize-none"
+                            className="w-full px-3 py-2 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:outline-none resize-none"
                         />
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1">
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
                             Notes
                         </label>
                         <textarea
@@ -402,14 +402,14 @@ export default function AddExpenseModal({
                             onChange={handleInputChange}
                             placeholder="Paid on time"
                             rows={2}
-                            className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-[#3F3F46] bg-white dark:bg-[#27272A] text-gray-900 dark:text-[#FAFAFA] placeholder-gray-500 dark:placeholder-[#A1A1AA] focus:outline-none resize-none"
+                            className="w-full px-3 py-2 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:outline-none resize-none"
                         />
                     </div>
 
                     {/* Error */}
                     {errors.submit && (
-                        <div className="p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900/30 rounded-lg">
-                            <p className="text-sm text-red-600 dark:text-red-400">
+                        <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+                            <p className="text-sm text-red-600">
                                 {errors.submit}
                             </p>
                         </div>
@@ -417,12 +417,12 @@ export default function AddExpenseModal({
                 </form>
 
                 {/* Footer */}
-                <div className="flex items-center justify-end gap-2 p-4 border-t border-gray-200 dark:border-[#3F3F46] bg-gray-50 dark:bg-[#27272A]">
+                <div className="flex items-center justify-end gap-2 p-4 border-t border-gray-200 bg-gray-50">
                     <button
                         type="button"
                         onClick={onClose}
                         disabled={loading}
-                        className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-[#A1A1AA] bg-white dark:bg-[#18181B] border border-gray-300 dark:border-[#3F3F46] rounded-lg hover:bg-gray-50 dark:hover:bg-[#27272A] transition-colors disabled:opacity-50"
+                        className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50"
                     >
                         Cancel
                     </button>
@@ -430,7 +430,7 @@ export default function AddExpenseModal({
                         type="submit"
                         onClick={handleSubmit}
                         disabled={loading}
-                        className="px-4 py-2 text-sm font-medium text-white bg-[#eb1700] hover:bg-[#c41400] disabled:bg-gray-400 disabled:cursor-not-allowed rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#eb1700]/25 focus:outline-none focus:ring-2 focus:ring-[#eb1700] focus:ring-offset-2 dark:focus:ring-offset-[#18181B]"
+                        className="px-4 py-2 text-sm font-medium text-white bg-[#eb1700] hover:bg-[#c41400] disabled:bg-gray-400 disabled:cursor-not-allowed rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#eb1700]/25 focus:outline-none focus:ring-2 focus:ring-[#eb1700] focus:ring-offset-2"
                     >
                         {loading
                             ? "Saving..."

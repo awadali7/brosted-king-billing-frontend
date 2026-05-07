@@ -127,12 +127,12 @@ export default function ItemsPerformanceReport() {
 
     return (
         <div className="space-y-6">
-            <div className="bg-white dark:bg-[#18181B] rounded-xl border border-gray-200 dark:border-[#3F3F46] p-4 flex items-center justify-between">
+            <div className="bg-white rounded-xl border border-gray-200 p-4 flex items-center justify-between">
                 <div>
-                    <h3 className="text-sm font-medium text-gray-500 dark:text-[#A1A1AA]">
+                    <h3 className="text-sm font-medium text-gray-500">
                         Report Period
                     </h3>
-                    <p className="text-lg font-semibold text-gray-900 dark:text-[#FAFAFA] mt-1">
+                    <p className="text-lg font-semibold text-gray-900 mt-1">
                         {formatDate(data.period.start_date)} -{" "}
                         {formatDate(data.period.end_date)}
                     </p>
@@ -159,7 +159,7 @@ export default function ItemsPerformanceReport() {
                     </button>
                     <button
                         onClick={fetchReport}
-                        className="p-2 text-gray-600 dark:text-[#A1A1AA] hover:text-[#eb1700] transition-colors"
+                        className="p-2 text-gray-600 hover:text-[#eb1700] transition-colors"
                         title="Refresh"
                     >
                         <svg
@@ -218,8 +218,8 @@ export default function ItemsPerformanceReport() {
             />
 
             {/* Performance Tabs */}
-            <div className="bg-white dark:bg-[#18181B] rounded-xl border border-gray-200 dark:border-[#3F3F46] p-6">
-                <div className="border-b border-gray-200 dark:border-[#3F3F46] mb-6">
+            <div className="bg-white rounded-xl border border-gray-200 p-6">
+                <div className="border-b border-gray-200 mb-6">
                     <nav className="-mb-px flex gap-6">
                         {views.map((view) => (
                             <button
@@ -228,7 +228,7 @@ export default function ItemsPerformanceReport() {
                                 className={`py-3 px-1 border-b-2 font-medium text-sm transition-colors ${
                                     activeView === view.id
                                         ? "border-[#eb1700] text-[#eb1700]"
-                                        : "border-transparent text-gray-600 dark:text-[#A1A1AA] hover:text-gray-900 dark:hover:text-[#FAFAFA]"
+                                        : "border-transparent text-gray-600 hover:text-gray-900"
                                 }`}
                             >
                                 <span className="flex items-center gap-2">

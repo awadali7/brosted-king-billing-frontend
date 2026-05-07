@@ -17,15 +17,15 @@ export default function PaymentMethodsCard({
     formatCurrency,
 }: PaymentMethodsCardProps) {
     return (
-        <div className="bg-white dark:bg-[#18181B] rounded-xl border border-gray-200 dark:border-[#3F3F46] p-6">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-[#FAFAFA] mb-4 flex items-center gap-2">
+        <div className="bg-white rounded-xl border border-gray-200 p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <span>💳</span>Payment Methods
             </h3>
             <div className="space-y-3">
                 {paymentMethods.map((method, i) => (
                     <div
                         key={i}
-                        className="flex items-center justify-between p-3 bg-gray-50 dark:bg-[#27272A] rounded-lg"
+                        className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
                     >
                         <div className="flex items-center gap-3">
                             <div
@@ -35,15 +35,15 @@ export default function PaymentMethodsCard({
                                 }`}
                             />
                             <div>
-                                <p className="text-sm font-medium text-gray-900 dark:text-[#FAFAFA] capitalize">
+                                <p className="text-sm font-medium text-gray-900 capitalize">
                                     {method.payment_method}
                                 </p>
-                                <p className="text-xs text-gray-500 dark:text-[#A1A1AA]">
+                                <p className="text-xs text-gray-500">
                                     {method.transaction_count} transactions
                                 </p>
                             </div>
                         </div>
-                        <p className="text-lg font-bold text-gray-900 dark:text-[#FAFAFA]">
+                        <p className="text-lg font-bold text-gray-900">
                             {formatCurrency(method.total_amount)}
                         </p>
                     </div>

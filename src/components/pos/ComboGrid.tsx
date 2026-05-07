@@ -13,13 +13,13 @@ export default function ComboGrid({ combos, onAddToOrder }: ComboGridProps) {
     if (combos.length === 0) {
         return (
             <div className="text-center py-12">
-                <div className="text-gray-400 dark:text-[#A1A1AA] text-6xl mb-4">
+                <div className="text-gray-400 text-6xl mb-4">
                     🎁
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-[#FAFAFA] mb-2">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
                     No Combos Found
                 </h3>
-                <p className="text-gray-600 dark:text-[#A1A1AA]">
+                <p className="text-gray-600">
                     No combo deals available at the moment.
                 </p>
             </div>
@@ -29,10 +29,10 @@ export default function ComboGrid({ combos, onAddToOrder }: ComboGridProps) {
     return (
         <>
             <div className="mb-6">
-                <h2 className="text-xl font-semibold text-gray-900 dark:text-[#FAFAFA] mb-2">
+                <h2 className="text-xl font-semibold text-gray-900 mb-2">
                     Combo Deals
                 </h2>
-                <p className="text-gray-600 dark:text-[#A1A1AA]">
+                <p className="text-gray-600">
                     Save more with our special combo offers
                 </p>
             </div>

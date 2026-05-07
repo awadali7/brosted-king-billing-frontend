@@ -79,8 +79,8 @@ export default function CategoryPerformanceCard({
     };
 
     return (
-        <div className="bg-white dark:bg-[#18181B] rounded-xl border border-gray-200 dark:border-[#3F3F46] p-6">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-[#FAFAFA] mb-4 flex items-center gap-2">
+        <div className="bg-white rounded-xl border border-gray-200 p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <span>📂</span>Category Performance
             </h3>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -101,7 +101,7 @@ export default function CategoryPerformanceCard({
                             x="100"
                             y="95"
                             textAnchor="middle"
-                            className="text-xs fill-gray-500 dark:fill-[#A1A1AA]"
+                            className="text-xs fill-gray-500"
                         >
                             Total
                         </text>
@@ -109,7 +109,7 @@ export default function CategoryPerformanceCard({
                             x="100"
                             y="110"
                             textAnchor="middle"
-                            className="text-sm fill-gray-900 dark:fill-[#FAFAFA] font-semibold"
+                            className="text-sm fill-gray-900 font-semibold"
                         >
                             {formatCurrency(totalRevenue)}
                         </text>
@@ -126,14 +126,14 @@ export default function CategoryPerformanceCard({
                             />
                             <div className="flex-1 min-w-0">
                                 <div className="flex items-center justify-between gap-2">
-                                    <p className="text-sm font-medium text-gray-900 dark:text-[#FAFAFA] truncate">
+                                    <p className="text-sm font-medium text-gray-900 truncate">
                                         {slice.category_name}
                                     </p>
-                                    <span className="text-xs font-semibold text-gray-600 dark:text-[#A1A1AA]">
+                                    <span className="text-xs font-semibold text-gray-600">
                                         {slice.percentage.toFixed(1)}%
                                     </span>
                                 </div>
-                                <p className="text-xs text-gray-500 dark:text-[#A1A1AA]">
+                                <p className="text-xs text-gray-500">
                                     {formatCurrency(slice.total_revenue)}
                                 </p>
                             </div>

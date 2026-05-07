@@ -35,13 +35,13 @@ export default function PaymentMethodsChart({
     if (data.length === 0) {
         return (
             <div className="text-center py-8">
-                <div className="text-gray-400 dark:text-[#A1A1AA] text-4xl mb-3">
+                <div className="text-gray-400 text-4xl mb-3">
                     💳
                 </div>
-                <h3 className="text-sm font-medium text-gray-900 dark:text-[#FAFAFA] mb-1">
+                <h3 className="text-sm font-medium text-gray-900 mb-1">
                     No Payment Data
                 </h3>
-                <p className="text-xs text-gray-500 dark:text-[#A1A1AA]">
+                <p className="text-xs text-gray-500">
                     Payment methods will appear here
                 </p>
             </div>
@@ -65,27 +65,27 @@ export default function PaymentMethodsChart({
         switch (method.toLowerCase()) {
             case "cash":
                 return {
-                    bg: "bg-green-50 dark:bg-green-900/10",
-                    text: "text-green-600 dark:text-green-400",
-                    border: "border-green-200 dark:border-green-900/30",
+                    bg: "bg-green-50",
+                    text: "text-green-600",
+                    border: "border-green-200",
                 };
             case "card":
                 return {
-                    bg: "bg-blue-50 dark:bg-blue-900/10",
-                    text: "text-blue-600 dark:text-blue-400",
-                    border: "border-blue-200 dark:border-blue-900/30",
+                    bg: "bg-blue-50",
+                    text: "text-blue-600",
+                    border: "border-blue-200",
                 };
             case "upi":
                 return {
-                    bg: "bg-purple-50 dark:bg-purple-900/10",
-                    text: "text-purple-600 dark:text-purple-400",
-                    border: "border-purple-200 dark:border-purple-900/30",
+                    bg: "bg-purple-50",
+                    text: "text-purple-600",
+                    border: "border-purple-200",
                 };
             default:
                 return {
-                    bg: "bg-gray-50 dark:bg-gray-900/10",
-                    text: "text-gray-600 dark:text-gray-400",
-                    border: "border-gray-200 dark:border-gray-900/30",
+                    bg: "bg-gray-50",
+                    text: "text-gray-600",
+                    border: "border-gray-200",
                 };
         }
     };
@@ -112,15 +112,15 @@ export default function PaymentMethodsChart({
                         <div className="flex items-center justify-between mb-3">
                             <div className="flex items-center gap-3">
                                 <div
-                                    className={`p-2 rounded-lg ${colors.text} bg-white dark:bg-[#18181B]`}
+                                    className={`p-2 rounded-lg ${colors.text} bg-white}
                                 >
                                     <Icon className="w-5 h-5" />
                                 </div>
                                 <div>
-                                    <h4 className="text-sm font-semibold text-gray-900 dark:text-[#FAFAFA] capitalize">
+                                    <h4 className="text-sm font-semibold text-gray-900 capitalize">
                                         {method.payment_method}
                                     </h4>
-                                    <p className="text-xs text-gray-600 dark:text-[#A1A1AA]">
+                                    <p className="text-xs text-gray-600">
                                         {method.count} transaction
                                         {parseInt(method.count) !== 1
                                             ? "s"
@@ -129,7 +129,7 @@ export default function PaymentMethodsChart({
                                 </div>
                             </div>
                             <div className="text-right">
-                                <p className="text-sm font-bold text-gray-900 dark:text-[#FAFAFA]">
+                                <p className="text-sm font-bold text-gray-900">
                                     {currencySymbol}
                                     {amount.toFixed(2)}
                                 </p>
@@ -140,7 +140,7 @@ export default function PaymentMethodsChart({
                                 </p>
                             </div>
                         </div>
-                        <div className="w-full bg-white dark:bg-[#27272A] rounded-full h-1.5 overflow-hidden">
+                        <div className="w-full bg-white rounded-full h-1.5 overflow-hidden">
                             <div
                                 className={`h-full transition-all duration-500 ${colors.text.replace(
                                     "text-",

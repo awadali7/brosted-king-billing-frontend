@@ -150,30 +150,30 @@ export default function DailyReport() {
                     }))}
                     formatCurrency={formatCurrency}
                 />
-                <div className="bg-white dark:bg-[#18181B] rounded-xl border border-gray-200 dark:border-[#3F3F46] p-6">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-[#FAFAFA] mb-4 flex items-center gap-2">
+                <div className="bg-white rounded-xl border border-gray-200 p-6">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                         <span>📋</span>Bills Status
                     </h3>
                     <div className="space-y-3">
-                        <div className="flex items-center justify-between p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                        <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
                             <div className="flex items-center gap-3">
                                 <div className="w-3 h-3 rounded-full bg-green-500" />
-                                <p className="text-sm font-medium text-gray-900 dark:text-[#FAFAFA]">
+                                <p className="text-sm font-medium text-gray-900">
                                     Paid Bills
                                 </p>
                             </div>
-                            <p className="text-lg font-bold text-gray-900 dark:text-[#FAFAFA]">
+                            <p className="text-lg font-bold text-gray-900">
                                 {bills.paid_bills}
                             </p>
                         </div>
-                        <div className="flex items-center justify-between p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
+                        <div className="flex items-center justify-between p-3 bg-orange-50 rounded-lg">
                             <div className="flex items-center gap-3">
                                 <div className="w-3 h-3 rounded-full bg-orange-500" />
-                                <p className="text-sm font-medium text-gray-900 dark:text-[#FAFAFA]">
+                                <p className="text-sm font-medium text-gray-900">
                                     Pending Bills
                                 </p>
                             </div>
-                            <p className="text-lg font-bold text-gray-900 dark:text-[#FAFAFA]">
+                            <p className="text-lg font-bold text-gray-900">
                                 {bills.pending_bills}
                             </p>
                         </div>

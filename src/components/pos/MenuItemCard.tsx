@@ -40,9 +40,9 @@ export default function POSMenuItemCard({
         }
     }, []);
     return (
-        <div className="group cursor-pointer bg-white dark:bg-[#18181B] rounded-lg border border-gray-200 dark:border-[#3F3F46] hover:border-[#eb1700]/30 dark:hover:border-[#eb1700]/30 hover:shadow-sm transition-all duration-200 overflow-hidden">
+        <div className="group cursor-pointer bg-white rounded-lg border border-gray-200 hover:border-[#eb1700]/30 hover:shadow-sm transition-all duration-200 overflow-hidden">
             {/* Image */}
-            <div className="aspect-square bg-gray-50 dark:bg-[#27272A] relative overflow-hidden">
+            <div className="aspect-square bg-gray-50 relative overflow-hidden">
                 {item.image_url ? (
                     <img
                         src={item.image_url}
@@ -52,7 +52,7 @@ export default function POSMenuItemCard({
                 ) : (
                     <div className="w-full h-full flex items-center justify-center">
                         <svg
-                            className="w-8 h-8 text-gray-300 dark:text-[#A1A1AA]"
+                            className="w-8 h-8 text-gray-300"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -72,8 +72,8 @@ export default function POSMenuItemCard({
                     <span
                         className={`px-2 py-1 text-xs font-medium rounded-full ${
                             item.is_available
-                                ? "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400"
-                                : "bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400"
+                                ? "bg-green-100 text-green-800"
+                                : "bg-red-100 text-red-800"
                         }`}
                     >
                         {item.is_available ? "Available" : "Unavailable"}
@@ -84,7 +84,7 @@ export default function POSMenuItemCard({
             {/* Content */}
             <div className="p-4">
                 <div className="flex items-start justify-between mb-2">
-                    <h3 className="text-sm font-medium text-gray-900 dark:text-[#FAFAFA] line-clamp-1 flex-1">
+                    <h3 className="text-sm font-medium text-gray-900 line-clamp-1 flex-1">
                         {item.name}
                     </h3>
                     <span className="text-sm font-semibold text-[#eb1700] ml-2">
@@ -94,13 +94,13 @@ export default function POSMenuItemCard({
                 </div>
 
                 {item.description && (
-                    <p className="text-xs text-gray-500 dark:text-[#A1A1AA] line-clamp-2 leading-relaxed mb-3">
+                    <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed mb-3">
                         {item.description}
                     </p>
                 )}
 
                 {/* Profit Information */}
-                <div className="flex items-center justify-between text-xs text-gray-500 dark:text-[#A1A1AA] mb-3">
+                <div className="flex items-center justify-between text-xs text-gray-500 mb-3">
                     <span>
                         Cost: {currencySymbol}
                         {formatPrice(item.make_price)}
@@ -116,14 +116,14 @@ export default function POSMenuItemCard({
                 {item.is_available && onAddToOrder && (
                     <button
                         onClick={() => onAddToOrder(item)}
-                        className="w-full bg-[#eb1700] hover:bg-[#c41400] text-white text-sm font-medium py-2 px-3 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#eb1700]/25 focus:outline-none focus:ring-2 focus:ring-[#eb1700] focus:ring-offset-2 dark:focus:ring-offset-[#18181B]"
+                        className="w-full bg-[#eb1700] hover:bg-[#c41400] text-white text-sm font-medium py-2 px-3 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#eb1700]/25 focus:outline-none focus:ring-2 focus:ring-[#eb1700] focus:ring-offset-2"
                     >
                         Add to Order
                     </button>
                 )}
 
                 {!item.is_available && (
-                    <div className="w-full bg-gray-100 dark:bg-[#27272A] text-gray-500 dark:text-[#A1A1AA] text-sm font-medium py-2 px-3 rounded-lg text-center">
+                    <div className="w-full bg-gray-100 text-gray-500 text-sm font-medium py-2 px-3 rounded-lg text-center">
                         Currently Unavailable
                     </div>
                 )}

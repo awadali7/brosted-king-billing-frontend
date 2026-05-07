@@ -31,9 +31,9 @@ export default function MenuItemCard({
         }
     }, []);
     return (
-        <div className="group cursor-pointer bg-white dark:bg-[#18181B] rounded-lg border border-gray-200 dark:border-[#3F3F46] hover:border-[#eb1700]/30 dark:hover:border-[#eb1700]/30 hover:shadow-sm transition-all duration-200 overflow-hidden">
+        <div className="group cursor-pointer bg-white rounded-lg border border-gray-200 hover:border-[#eb1700]/30 hover:shadow-sm transition-all duration-200 overflow-hidden">
             {/* Compact image */}
-            <div className="aspect-square bg-gray-50 dark:bg-[#27272A] relative overflow-hidden">
+            <div className="aspect-square bg-gray-50 relative overflow-hidden">
                 {item.image_url ? (
                     <img
                         src={item.image_url}
@@ -43,7 +43,7 @@ export default function MenuItemCard({
                 ) : (
                     <div className="w-full h-full flex items-center justify-center">
                         <svg
-                            className="w-8 h-8 text-gray-300 dark:text-[#A1A1AA]"
+                            className="w-8 h-8 text-gray-300"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -66,10 +66,10 @@ export default function MenuItemCard({
                                 e.stopPropagation();
                                 onEdit(item);
                             }}
-                            className="p-1.5 bg-white dark:bg-[#18181B] rounded-full shadow-md hover:shadow-lg transition-all duration-200 hover:bg-[#eb1700] hover:text-white"
+                            className="p-1.5 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 hover:bg-[#eb1700] hover:text-white"
                             title="Edit item"
                         >
-                            <Edit className="w-3 h-3 text-gray-600 dark:text-[#A1A1AA] hover:text-white" />
+                            <Edit className="w-3 h-3 text-gray-600 hover:text-white" />
                         </button>
                     )}
                     {onDelete && (
@@ -78,10 +78,10 @@ export default function MenuItemCard({
                                 e.stopPropagation();
                                 onDelete(item);
                             }}
-                            className="p-1.5 bg-white dark:bg-[#18181B] rounded-full shadow-md hover:shadow-lg transition-all duration-200 hover:bg-red-500 hover:text-white"
+                            className="p-1.5 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 hover:bg-red-500 hover:text-white"
                             title="Delete item"
                         >
-                            <Trash2 className="w-3 h-3 text-gray-600 dark:text-[#A1A1AA] hover:text-white" />
+                            <Trash2 className="w-3 h-3 text-gray-600 hover:text-white" />
                         </button>
                     )}
                 </div>
@@ -90,7 +90,7 @@ export default function MenuItemCard({
             {/* Ultra-compact content */}
             <div className="p-3">
                 <div className="flex items-start justify-between mb-1">
-                    <h3 className="text-sm font-medium text-gray-900 dark:text-[#FAFAFA] line-clamp-1 flex-1">
+                    <h3 className="text-sm font-medium text-gray-900 line-clamp-1 flex-1">
                         {item.name}
                     </h3>
                     <span className="text-sm font-semibold text-[#eb1700] ml-2">
@@ -99,13 +99,13 @@ export default function MenuItemCard({
                     </span>
                 </div>
                 {item.description && (
-                    <p className="text-xs text-gray-500 dark:text-[#A1A1AA] line-clamp-2 leading-relaxed">
+                    <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed">
                         {item.description}
                     </p>
                 )}
                 {item.categoryName && (
                     <div className="mt-2">
-                        <span className="inline-block px-2 py-0.5 text-xs bg-gray-100 dark:bg-[#27272A] text-gray-600 dark:text-[#A1A1AA] rounded-full">
+                        <span className="inline-block px-2 py-0.5 text-xs bg-gray-100 text-gray-600 rounded-full">
                             {item.categoryName}
                         </span>
                     </div>
