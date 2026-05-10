@@ -54,7 +54,7 @@ const menuSections: MenuSection[] = [
         title: "Main",
         items: [
             { id: "dashboard", label: "Dashboard", icon: Home },
-            { id: "pos", label: "POS", icon: ShoppingCart, badge: "Hot" },
+            // { id: "pos", label: "POS", icon: ShoppingCart, badge: "Hot" },
         ],
     },
     {
@@ -71,9 +71,7 @@ const menuSections: MenuSection[] = [
 
     {
         title: "Billing",
-        items: [
-            { id: "bills", label: "Bills", icon: Receipt },
-        ],
+        items: [{ id: "bills", label: "Bills", icon: Receipt }],
     },
     {
         title: "System",

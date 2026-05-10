@@ -45,6 +45,10 @@ interface Bill {
     total_amount: string | number;
     payment_method: string;
     payment_status: string;
+    split_cash_amount?: string | number;
+    split_upi_amount?: string | number;
+    split_card_amount?: string | number;
+    split_other_amount?: string | number;
     notes?: string;
     created_at: string;
     items: BillItem[];
@@ -63,6 +67,7 @@ const methodIcons: Record<string, string> = {
     card: "💳",
     upi: "📱",
     other: "🔄",
+    split: "🔀",
 };
 
 function toISODate(d: Date) {
@@ -505,6 +510,16 @@ export default function BillsPage() {
                                             <span className="text-sm text-gray-600 capitalize">
                                                 {methodIcons[bill.payment_method] || ""} {bill.payment_method}
                                             </span>
+                                            {bill.payment_method === "split" && (
+                                                <p className="text-xs text-gray-400 mt-0.5">
+                                                    {[
+                                                        parseFloat(String(bill.split_cash_amount || 0)) > 0 && `Cash: ${fmt(bill.split_cash_amount!)}`,
+                                                        parseFloat(String(bill.split_upi_amount || 0)) > 0 && `UPI: ${fmt(bill.split_upi_amount!)}`,
+                                                        parseFloat(String(bill.split_card_amount || 0)) > 0 && `Card: ${fmt(bill.split_card_amount!)}`,
+                                                        parseFloat(String(bill.split_other_amount || 0)) > 0 && `Other: ${fmt(bill.split_other_amount!)}`,
+                                                    ].filter(Boolean).join(" · ")}
+                                                </p>
+                                            )}
                                         </td>
                                         <td className="px-4 py-3">
                                             <span className={`px-2.5 py-1 rounded-full text-xs font-medium capitalize ${statusColors[bill.payment_status] || "bg-gray-100 text-gray-600"}`}>

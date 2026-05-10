@@ -237,6 +237,7 @@ export default function PosPage() {
                 discount_percentage: paymentData.discount_percentage,
                 tax_percentage: paymentData.tax_percentage,
                 payment_method: paymentData.payment_method,
+                split_payments: paymentData.split_payments || undefined,
                 notes: paymentData.notes || undefined,
                 items: billItems,
             });

@@ -18,7 +18,8 @@ export interface PaymentData {
     customer_email?: string;
     discount_percentage: number;
     tax_percentage: number;
-    payment_method: "cash" | "card" | "upi" | "other";
+    payment_method: "cash" | "card" | "upi" | "other" | "split";
+    split_payments?: { cash: number; upi: number; card: number; other: number };
     notes?: string;
 }
 
@@ -32,6 +33,7 @@ export default function PaymentModal({
 }: PaymentModalProps) {
     const [currencySymbol, setCurrencySymbol] = useState("₹");
     const [taxPercentage, setTaxPercentage] = useState(18);
+    const [splitAmounts, setSplitAmounts] = useState({ cash: 0, upi: 0, card: 0, other: 0 });
     const [formData, setFormData] = useState<PaymentData>({
         customer_name: "",
         customer_phone: "",
@@ -81,7 +83,6 @@ export default function PaymentModal({
                 }
             }
 
-            // Reset form data to initial values
             setFormData({
                 customer_name: "",
                 customer_phone: "",
@@ -91,6 +92,7 @@ export default function PaymentModal({
                 payment_method: "cash",
                 notes: "",
             });
+            setSplitAmounts({ cash: 0, upi: 0, card: 0, other: 0 });
         }
     }, [isOpen]);
 
@@ -99,8 +101,24 @@ export default function PaymentModal({
     const taxAmount = subtotalAfterDiscount * (formData.tax_percentage / 100);
     const finalTotal = subtotalAfterDiscount + taxAmount;
 
+    const splitTotal = splitAmounts.cash + splitAmounts.upi + splitAmounts.card + splitAmounts.other;
+    const splitRemaining = Math.round((finalTotal - splitTotal) * 100) / 100;
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+        if (formData.payment_method === "split") {
+            if (splitTotal === 0) {
+                alert("Please enter split payment amounts.");
+                return;
+            }
+            if (Math.abs(splitRemaining) > 0.01) {
+                const fmt = (v: number) => `${currencySymbol}${v.toFixed(2)}`;
+                alert(`Split amounts must equal total. ${splitRemaining > 0 ? `${fmt(splitRemaining)} still remaining.` : `${fmt(Math.abs(splitRemaining))} over total.`}`);
+                return;
+            }
+            onConfirm({ ...formData, split_payments: splitAmounts });
+            return;
+        }
         onConfirm(formData);
     };
 
@@ -216,33 +234,60 @@ export default function PaymentModal({
                             <h3 className="text-sm font-semibold text-gray-900 mb-3">
                                 Payment Method
                             </h3>
-                            <div className="grid grid-cols-2 gap-2">
-                                {(
-                                    ["cash", "card", "upi", "other"] as const
-                                ).map((method) => (
+                            <div className="grid grid-cols-5 gap-2">
+                                {(["cash", "card", "upi", "other", "split"] as const).map((method) => (
                                     <button
                                         key={method}
                                         type="button"
-                                        onClick={() =>
-                                            setFormData({
-                                                ...formData,
-                                                payment_method: method,
-                                            })
-                                        }
-                                        className={`
-                                            px-4 py-2 rounded-lg text-sm font-medium transition-colors capitalize
-                                            ${
-                                                formData.payment_method ===
-                                                method
-                                                    ? "bg-[#eb1700] text-white"
-                                                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                                            }
-                                        `}
+                                        onClick={() => {
+                                            setFormData({ ...formData, payment_method: method });
+                                            if (method !== "split") setSplitAmounts({ cash: 0, upi: 0, card: 0, other: 0 });
+                                        }}
+                                        className={`px-2 py-2 rounded-lg text-sm font-medium transition-colors capitalize ${
+                                            formData.payment_method === method
+                                                ? "bg-[#eb1700] text-white"
+                                                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                                        }`}
                                     >
-                                        {method}
+                                        {method === "split" ? "Split" : method}
                                     </button>
                                 ))}
                             </div>
+
+                            {formData.payment_method === "split" && (
+                                <div className="mt-3 bg-gray-50 rounded-lg p-3 space-y-2">
+                                    <p className="text-xs font-semibold text-gray-600">Enter amount per payment method:</p>
+                                    {(["cash", "upi", "card", "other"] as const).map((m) => (
+                                        <div key={m} className="flex items-center gap-2">
+                                            <label className="text-sm text-gray-700 capitalize w-10">{m}</label>
+                                            <div className="relative flex-1">
+                                                <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-xs text-gray-400">{currencySymbol}</span>
+                                                <input
+                                                    type="number"
+                                                    min="0"
+                                                    step="0.01"
+                                                    value={splitAmounts[m] || ""}
+                                                    onChange={(e) => setSplitAmounts((prev) => ({ ...prev, [m]: parseFloat(e.target.value) || 0 }))}
+                                                    placeholder="0"
+                                                    className="w-full pl-6 pr-3 py-1.5 text-sm border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-[#eb1700] focus:border-transparent"
+                                                />
+                                            </div>
+                                        </div>
+                                    ))}
+                                    <div className={`flex justify-between text-sm font-semibold pt-2 border-t border-gray-200 ${
+                                        splitRemaining === 0 ? "text-green-600" : splitRemaining < 0 ? "text-red-600" : "text-orange-600"
+                                    }`}>
+                                        <span>Remaining</span>
+                                        <span>
+                                            {splitRemaining === 0
+                                                ? `${currencySymbol}0.00 ✓`
+                                                : splitRemaining > 0
+                                                ? `${currencySymbol}${splitRemaining.toFixed(2)} to collect`
+                                                : `${currencySymbol}${Math.abs(splitRemaining).toFixed(2)} over`}
+                                        </span>
+                                    </div>
+                                </div>
+                            )}
                         </div>
 
                         {/* Notes */}

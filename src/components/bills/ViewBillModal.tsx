@@ -29,6 +29,10 @@ interface Bill {
     total_amount: string | number;
     payment_method: string;
     payment_status: string;
+    split_cash_amount?: string | number;
+    split_upi_amount?: string | number;
+    split_card_amount?: string | number;
+    split_other_amount?: string | number;
     notes?: string;
     created_at: string;
     items: BillItem[];
@@ -212,6 +216,30 @@ Thank you! Visit us again!${reviewLink ? `\n\n⭐ Leave us a review:\n${reviewLi
                             <span className="text-[#eb1700]">{fmt(bill.total_amount)}</span>
                         </div>
                     </div>
+
+                    {/* Split Payment Breakdown */}
+                    {bill.payment_method === "split" && (
+                        <div>
+                            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Split Payment Breakdown</p>
+                            <div className="bg-blue-50 rounded-lg p-3 space-y-1.5">
+                                {[
+                                    { label: "Cash", val: bill.split_cash_amount },
+                                    { label: "UPI", val: bill.split_upi_amount },
+                                    { label: "Card", val: bill.split_card_amount },
+                                    { label: "Other", val: bill.split_other_amount },
+                                ]
+                                    .filter((r) => parseFloat(String(r.val || 0)) > 0)
+                                    .map((r) => (
+                                        <div key={r.label} className="flex justify-between text-sm">
+                                            <span className="text-gray-600">{r.label}</span>
+                                            <span className="font-semibold text-gray-900">
+                                                {currencySymbol}{parseFloat(String(r.val)).toFixed(2)}
+                                            </span>
+                                        </div>
+                                    ))}
+                            </div>
+                        </div>
+                    )}
 
                     {/* Notes */}
                     {bill.notes && (
