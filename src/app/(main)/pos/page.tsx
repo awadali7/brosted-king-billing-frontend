@@ -23,7 +23,7 @@ import BillSuccessModal from "@/components/pos/BillSuccessModal";
 
 export default function PosPage() {
     const [activeTab, setActiveTab] = useState<"categories" | "combos">(
-        "categories"
+        "categories",
     );
     const [categories, setCategories] = useState<CategoryInfo[]>([]);
     const [combos, setCombos] = useState<Combo[]>([]);
@@ -96,7 +96,7 @@ export default function PosPage() {
             setItemsError(null);
             const response = await api.menu.getItemsByCategory(
                 categoryId,
-                true
+                true,
             );
             setItems(response.data);
         } catch (err: any) {
@@ -114,7 +114,8 @@ export default function PosPage() {
 
     const handleAddToOrder = (item: MenuItem) => {
         const existingItem = orderItems.find(
-            (orderItem) => orderItem.id === item.id && orderItem.type === "item"
+            (orderItem) =>
+                orderItem.id === item.id && orderItem.type === "item",
         );
 
         if (existingItem) {
@@ -127,8 +128,8 @@ export default function PosPage() {
                               quantity: orderItem.quantity + 1,
                               total: (orderItem.quantity + 1) * orderItem.price,
                           }
-                        : orderItem
-                )
+                        : orderItem,
+                ),
             );
         } else {
             // Add new item to order
@@ -155,7 +156,7 @@ export default function PosPage() {
     const handleAddComboToOrder = (combo: Combo) => {
         const existingCombo = orderItems.find(
             (orderItem) =>
-                orderItem.id === combo.id && orderItem.type === "combo"
+                orderItem.id === combo.id && orderItem.type === "combo",
         );
 
         const comboPrice =
@@ -173,8 +174,8 @@ export default function PosPage() {
                               quantity: orderItem.quantity + 1,
                               total: (orderItem.quantity + 1) * orderItem.price,
                           }
-                        : orderItem
-                )
+                        : orderItem,
+                ),
             );
         } else {
             // Add new combo to order
@@ -197,8 +198,8 @@ export default function PosPage() {
             prev.map((item) =>
                 item.id === id
                     ? { ...item, quantity, total: quantity * item.price }
-                    : item
-            )
+                    : item,
+            ),
         );
     };
 
@@ -366,7 +367,7 @@ ${billData.data.items
         (item: any) =>
             `${item.item_name} x ${
                 item.quantity
-            } - ${currencySymbol}${parseFloat(item.total_price).toFixed(2)}`
+            } - ${currencySymbol}${parseFloat(item.total_price).toFixed(2)}`,
     )
     .join("\n")}
 
@@ -377,7 +378,7 @@ ${
         ? `*Discount (${
               billData.data.discount_percentage
           }%):* -${currencySymbol}${parseFloat(
-              billData.data.discount_amount
+              billData.data.discount_amount,
           ).toFixed(2)}\n`
         : ""
 }${
@@ -385,11 +386,11 @@ ${
                     ? `*Tax (${
                           billData.data.tax_percentage
                       }%):* ${currencySymbol}${parseFloat(
-                          billData.data.tax_amount
+                          billData.data.tax_amount,
                       ).toFixed(2)}\n`
                     : ""
             }*TOTAL:* ${currencySymbol}${parseFloat(
-                billData.data.total_amount
+                billData.data.total_amount,
             ).toFixed(2)}
 *Payment Method:* ${billData.data.payment_method.toUpperCase()}
 ━━━━━━━━━━━━━━━━━━━━
@@ -405,7 +406,7 @@ ${
             // Clean phone number (remove spaces, dashes, and ensure it has country code)
             let phoneNumber = createdBill.customer_phone.replace(
                 /[\s\-\(\)]/g,
-                ""
+                "",
             );
 
             // If phone doesn't start with country code, assume India (+91)
@@ -417,7 +418,7 @@ ${
 
             // Open WhatsApp with the message
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
-                message
+                message,
             )}`;
             window.open(whatsappUrl, "_blank");
 
