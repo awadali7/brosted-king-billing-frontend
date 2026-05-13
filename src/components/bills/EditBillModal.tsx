@@ -30,11 +30,12 @@ interface Bill {
     customer_name?: string;
     customer_phone?: string;
     customer_email?: string;
-    discount_percentage: string | number;
+    discount_amount: string | number;
     tax_percentage: string | number;
     payment_status: string;
     payment_method: string;
     notes?: string;
+    created_at?: string;
     items: BillItemProp[];
 }
 
@@ -55,8 +56,11 @@ export default function EditBillModal({ bill, onClose, onSave }: EditBillModalPr
     const [customerName, setCustomerName] = useState(bill.customer_name || "");
     const [customerPhone, setCustomerPhone] = useState(bill.customer_phone || "");
     const [customerEmail, setCustomerEmail] = useState(bill.customer_email || "");
-    const [discountPct, setDiscountPct] = useState(parseFloat(String(bill.discount_percentage)) || 0);
+    const [discountAmt, setDiscountAmt] = useState(parseFloat(String(bill.discount_amount)) || 0);
     const [taxPct, setTaxPct] = useState(parseFloat(String(bill.tax_percentage)) || 0);
+    const [billDate, setBillDate] = useState(
+        bill.created_at ? new Date(bill.created_at).toISOString().split("T")[0] : new Date().toISOString().split("T")[0]
+    );
     const [paymentStatus, setPaymentStatus] = useState(bill.payment_status);
     const [paymentMethod, setPaymentMethod] = useState(bill.payment_method);
     const [notes, setNotes] = useState(bill.notes || "");
@@ -129,7 +133,7 @@ export default function EditBillModal({ bill, onClose, onSave }: EditBillModalPr
 
     // Derived totals
     const subtotal = items.reduce((s, i) => s + i.total_price, 0);
-    const discountAmount = (subtotal * discountPct) / 100;
+    const discountAmount = discountAmt;
     const afterDiscount = subtotal - discountAmount;
     const taxAmount = (afterDiscount * taxPct) / 100;
     const total = afterDiscount + taxAmount;
@@ -187,8 +191,9 @@ export default function EditBillModal({ bill, onClose, onSave }: EditBillModalPr
                 customer_name: customerName || undefined,
                 customer_phone: customerPhone || undefined,
                 customer_email: customerEmail || undefined,
-                discount_percentage: discountPct,
+                discount_amount: discountAmt,
                 tax_percentage: taxPct,
+                bill_date: billDate,
                 payment_status: paymentStatus,
                 payment_method: paymentMethod,
                 notes: notes || undefined,
@@ -243,13 +248,22 @@ export default function EditBillModal({ bill, onClose, onSave }: EditBillModalPr
                                         className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-[#eb1700] focus:border-transparent"
                                     />
                                 </div>
-                                <div className="col-span-2">
+                                <div>
                                     <label className="block text-xs font-medium text-gray-700 mb-1">Email</label>
                                     <input
                                         type="email"
                                         value={customerEmail}
                                         onChange={(e) => setCustomerEmail(e.target.value)}
                                         placeholder="Email address"
+                                        className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-[#eb1700] focus:border-transparent"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-xs font-medium text-gray-700 mb-1">Bill Date</label>
+                                    <input
+                                        type="date"
+                                        value={billDate}
+                                        onChange={(e) => setBillDate(e.target.value)}
                                         className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-[#eb1700] focus:border-transparent"
                                     />
                                 </div>
@@ -373,14 +387,13 @@ export default function EditBillModal({ bill, onClose, onSave }: EditBillModalPr
                             <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Pricing</h3>
                             <div className="grid grid-cols-2 gap-3 mb-3">
                                 <div>
-                                    <label className="block text-xs font-medium text-gray-700 mb-1">Discount (%)</label>
+                                    <label className="block text-xs font-medium text-gray-700 mb-1">Discount ({currencySymbol})</label>
                                     <input
                                         type="number"
                                         min="0"
-                                        max="100"
                                         step="0.01"
-                                        value={discountPct}
-                                        onChange={(e) => setDiscountPct(parseFloat(e.target.value) || 0)}
+                                        value={discountAmt}
+                                        onChange={(e) => setDiscountAmt(parseFloat(e.target.value) || 0)}
                                         className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-[#eb1700] focus:border-transparent"
                                     />
                                 </div>
@@ -401,9 +414,9 @@ export default function EditBillModal({ bill, onClose, onSave }: EditBillModalPr
                                 <div className="flex justify-between text-sm text-gray-600">
                                     <span>Subtotal</span><span>{fmt(subtotal)}</span>
                                 </div>
-                                {discountPct > 0 && (
+                                {discountAmt > 0 && (
                                     <div className="flex justify-between text-sm text-green-600">
-                                        <span>Discount ({discountPct}%)</span><span>-{fmt(discountAmount)}</span>
+                                        <span>Discount</span><span>-{fmt(discountAmount)}</span>
                                     </div>
                                 )}
                                 {taxPct > 0 && (

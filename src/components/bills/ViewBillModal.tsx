@@ -117,7 +117,7 @@ ${billData.data.items
 
 ━━━━━━━━━━━━━━━━━━━━
 *Subtotal:* ${sym}${parseFloat(billData.data.subtotal).toFixed(2)}
-${billData.data.discount_amount > 0 ? `*Discount (${billData.data.discount_percentage}%):* -${sym}${parseFloat(billData.data.discount_amount).toFixed(2)}\n` : ""}${billData.data.tax_amount > 0 ? `*Tax (${billData.data.tax_percentage}%):* ${sym}${parseFloat(billData.data.tax_amount).toFixed(2)}\n` : ""}*TOTAL:* ${sym}${parseFloat(billData.data.total_amount).toFixed(2)}
+${billData.data.discount_amount > 0 ? `*Discount:* -${sym}${parseFloat(billData.data.discount_amount).toFixed(2)}\n` : ""}${billData.data.tax_amount > 0 ? `*Tax (${billData.data.tax_percentage}%):* ${sym}${parseFloat(billData.data.tax_amount).toFixed(2)}\n` : ""}*TOTAL:* ${sym}${parseFloat(billData.data.total_amount).toFixed(2)}
 *Payment:* ${billData.data.payment_method.toUpperCase()}
 ━━━━━━━━━━━━━━━━━━━━
 
@@ -201,7 +201,7 @@ Thank you! Visit us again!${reviewLink ? `\n\n⭐ Leave us a review:\n${reviewLi
                         </div>
                         {parseFloat(String(bill.discount_amount)) > 0 && (
                             <div className="flex justify-between text-sm text-green-600">
-                                <span>Discount ({bill.discount_percentage}%)</span>
+                                <span>Discount</span>
                                 <span>-{fmt(bill.discount_amount)}</span>
                             </div>
                         )}

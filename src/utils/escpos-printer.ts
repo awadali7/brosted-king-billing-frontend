@@ -306,7 +306,7 @@ export function createReceipt(billData: any, settings: any): ESCPOSPrinter {
             32
         )
         .leftRight(
-            `Discount (${billData.discount_percentage}%):`,
+            `Discount:`,
             `-${currencySymbol}${parseFloat(billData.discount_amount).toFixed(2)}`,
             32
         )

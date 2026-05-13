@@ -254,9 +254,7 @@ export class PrintService {
                         billData.discount_amount > 0
                             ? `
                         <div class="total-row">
-                            <span>Discount (${
-                                billData.discount_percentage
-                            }%):</span>
+                            <span>Discount:</span>
                             <span>-${currencySymbol}${parseFloat(
                                   billData.discount_amount
                               ).toFixed(2)}</span>

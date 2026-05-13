@@ -16,7 +16,7 @@ export interface PaymentData {
     customer_name?: string;
     customer_phone?: string;
     customer_email?: string;
-    discount_percentage: number;
+    discount_amount: number;
     tax_percentage: number;
     payment_method: "cash" | "card" | "upi" | "other" | "split";
     split_payments?: { cash: number; upi: number; card: number; other: number };
@@ -38,7 +38,7 @@ export default function PaymentModal({
         customer_name: "",
         customer_phone: "",
         customer_email: "",
-        discount_percentage: 0,
+        discount_amount: 0,
         tax_percentage: 18,
         payment_method: "cash",
         notes: "",
@@ -87,7 +87,7 @@ export default function PaymentModal({
                 customer_name: "",
                 customer_phone: "",
                 customer_email: "",
-                discount_percentage: 0,
+                discount_amount: 0,
                 tax_percentage: defaultTaxPercentage,
                 payment_method: "cash",
                 notes: "",
@@ -96,7 +96,7 @@ export default function PaymentModal({
         }
     }, [isOpen]);
 
-    const discountAmount = orderSubtotal * (formData.discount_percentage / 100);
+    const discountAmount = formData.discount_amount;
     const subtotalAfterDiscount = orderSubtotal - discountAmount;
     const taxAmount = subtotalAfterDiscount * (formData.tax_percentage / 100);
     const finalTotal = subtotalAfterDiscount + taxAmount;
@@ -206,18 +206,17 @@ export default function PaymentModal({
                                 </div>
                                 <div>
                                     <label className="block text-xs font-medium text-gray-700 mb-1">
-                                        Discount (%)
+                                        Discount ({currencySymbol})
                                     </label>
                                     <input
                                         type="number"
                                         min="0"
-                                        max="100"
                                         step="0.01"
-                                        value={formData.discount_percentage}
+                                        value={formData.discount_amount}
                                         onChange={(e) =>
                                             setFormData({
                                                 ...formData,
-                                                discount_percentage:
+                                                discount_amount:
                                                     parseFloat(
                                                         e.target.value
                                                     ) || 0,
@@ -323,11 +322,10 @@ export default function PaymentModal({
                                     {orderSubtotal.toFixed(2)}
                                 </span>
                             </div>
-                            {formData.discount_percentage > 0 && (
+                            {formData.discount_amount > 0 && (
                                 <div className="flex justify-between text-sm">
                                     <span className="text-gray-600">
-                                        Discount ({formData.discount_percentage}
-                                        %)
+                                        Discount
                                     </span>
                                     <span className="text-green-600">
                                         -{currencySymbol}

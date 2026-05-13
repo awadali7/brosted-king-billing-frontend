@@ -239,7 +239,6 @@ export default function BillsPage() {
                 "Items": b.items.map((i) => `${i.item_name} x${i.quantity}`).join(", "),
                 "Items Count": b.items.length,
                 [`Subtotal (${currencySymbol})`]: parseFloat(String(b.subtotal)).toFixed(2),
-                "Discount %": parseFloat(String(b.discount_percentage)).toFixed(2),
                 [`Discount (${currencySymbol})`]: parseFloat(String(b.discount_amount)).toFixed(2),
                 "Tax %": parseFloat(String(b.tax_percentage)).toFixed(2),
                 [`Tax (${currencySymbol})`]: parseFloat(String(b.tax_amount)).toFixed(2),

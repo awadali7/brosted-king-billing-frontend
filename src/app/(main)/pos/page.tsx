@@ -235,7 +235,7 @@ export default function PosPage() {
                 customer_name: paymentData.customer_name || undefined,
                 customer_phone: paymentData.customer_phone || undefined,
                 customer_email: paymentData.customer_email || undefined,
-                discount_percentage: paymentData.discount_percentage,
+                discount_amount: paymentData.discount_amount,
                 tax_percentage: paymentData.tax_percentage,
                 payment_method: paymentData.payment_method,
                 split_payments: paymentData.split_payments || undefined,
@@ -375,9 +375,7 @@ ${billData.data.items
 *Subtotal:* ${currencySymbol}${parseFloat(billData.data.subtotal).toFixed(2)}
 ${
     billData.data.discount_amount > 0
-        ? `*Discount (${
-              billData.data.discount_percentage
-          }%):* -${currencySymbol}${parseFloat(
+        ? `*Discount:* -${currencySymbol}${parseFloat(
               billData.data.discount_amount,
           ).toFixed(2)}\n`
         : ""

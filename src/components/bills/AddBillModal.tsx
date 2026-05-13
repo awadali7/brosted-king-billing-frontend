@@ -29,8 +29,9 @@ export default function AddBillModal({ onClose, onCreated }: AddBillModalProps) 
     const [customerName, setCustomerName] = useState("");
     const [customerPhone, setCustomerPhone] = useState("");
     const [customerEmail, setCustomerEmail] = useState("");
-    const [discountPct, setDiscountPct] = useState(0);
+    const [discountAmt, setDiscountAmt] = useState(0);
     const [taxPct, setTaxPct] = useState(0);
+    const [billDate, setBillDate] = useState(new Date().toISOString().split("T")[0]);
     const [paymentMethod, setPaymentMethod] = useState<"cash" | "card" | "upi" | "other" | "split">("cash");
     const [splitAmounts, setSplitAmounts] = useState({ cash: 0, upi: 0, card: 0, other: 0 });
     const [notes, setNotes] = useState("");
@@ -94,7 +95,7 @@ export default function AddBillModal({ onClose, onCreated }: AddBillModalProps) 
     }, [showSearch]);
 
     const subtotal = items.reduce((s, i) => s + i.total_price, 0);
-    const discountAmount = (subtotal * discountPct) / 100;
+    const discountAmount = discountAmt;
     const afterDiscount = subtotal - discountAmount;
     const taxAmount = (afterDiscount * taxPct) / 100;
     const total = afterDiscount + taxAmount;
@@ -166,8 +167,9 @@ export default function AddBillModal({ onClose, onCreated }: AddBillModalProps) 
                 customer_name: customerName.trim(),
                 customer_phone: customerPhone || undefined,
                 customer_email: customerEmail || undefined,
-                discount_percentage: discountPct,
+                discount_amount: discountAmt,
                 tax_percentage: taxPct,
+                bill_date: billDate,
                 payment_method: paymentMethod,
                 split_payments: paymentMethod === "split" ? splitAmounts : undefined,
                 notes: notes || undefined,
@@ -226,13 +228,22 @@ export default function AddBillModal({ onClose, onCreated }: AddBillModalProps) 
                                         className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-[#eb1700] focus:border-transparent"
                                     />
                                 </div>
-                                <div className="col-span-2">
+                                <div>
                                     <label className="block text-xs font-medium text-gray-700 mb-1">Email</label>
                                     <input
                                         type="email"
                                         value={customerEmail}
                                         onChange={(e) => setCustomerEmail(e.target.value)}
                                         placeholder="Email address"
+                                        className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-[#eb1700] focus:border-transparent"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-xs font-medium text-gray-700 mb-1">Bill Date</label>
+                                    <input
+                                        type="date"
+                                        value={billDate}
+                                        onChange={(e) => setBillDate(e.target.value)}
                                         className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-[#eb1700] focus:border-transparent"
                                     />
                                 </div>
@@ -335,9 +346,9 @@ export default function AddBillModal({ onClose, onCreated }: AddBillModalProps) 
                             <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Pricing</h3>
                             <div className="grid grid-cols-2 gap-3 mb-3">
                                 <div>
-                                    <label className="block text-xs font-medium text-gray-700 mb-1">Discount (%)</label>
-                                    <input type="number" min="0" max="100" step="0.01" value={discountPct}
-                                        onChange={(e) => setDiscountPct(parseFloat(e.target.value) || 0)}
+                                    <label className="block text-xs font-medium text-gray-700 mb-1">Discount ({currencySymbol})</label>
+                                    <input type="number" min="0" step="0.01" value={discountAmt}
+                                        onChange={(e) => setDiscountAmt(parseFloat(e.target.value) || 0)}
                                         className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-[#eb1700] focus:border-transparent" />
                                 </div>
                                 <div>
@@ -351,9 +362,9 @@ export default function AddBillModal({ onClose, onCreated }: AddBillModalProps) 
                                 <div className="flex justify-between text-sm text-gray-600">
                                     <span>Subtotal</span><span>{fmt(subtotal)}</span>
                                 </div>
-                                {discountPct > 0 && (
+                                {discountAmt > 0 && (
                                     <div className="flex justify-between text-sm text-green-600">
-                                        <span>Discount ({discountPct}%)</span><span>-{fmt(discountAmount)}</span>
+                                        <span>Discount</span><span>-{fmt(discountAmount)}</span>
                                     </div>
                                 )}
                                 {taxPct > 0 && (
