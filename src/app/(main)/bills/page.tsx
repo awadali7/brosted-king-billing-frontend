@@ -595,7 +595,11 @@ export default function BillsPage() {
                     onCreated={() => {
                         toast.success("Bill created successfully");
                         setShowAddModal(false);
-                        fetchBills();
+                        if (page !== 1) {
+                            setPage(1);
+                        } else {
+                            fetchBills();
+                        }
                     }}
                 />
             )}
